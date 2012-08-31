@@ -13,7 +13,7 @@
 function already_upvoted($story_id = 0, $user_id = 0)
 {
     $CI =& get_instance();
-    $CI->load->model('vote_model', 'vote');
+    $CI->load->model('vote/vote_model', 'vote');
 
     $CI->vote->user_has_upvoted($story_id, $user_id);
 
@@ -33,7 +33,7 @@ function already_upvoted($story_id = 0, $user_id = 0)
 function already_downvoted($story_id = 0, $user_id = 0)
 {
     $CI =& get_instance();
-    $CI->load->model('vote_model', 'vote');
+    $CI->load->model('vote/vote_model', 'vote');
 
     $CI->vote->user_has_downvoted($story_id, $user_id);
 
