@@ -19,7 +19,10 @@ class Story extends MY_Controller {
         }
 
 		// Get all stories
-		$this->data['stories'] = $this->story->get_stories(50, 0);
+		$this->data['stories'] = $this->story->get_popular_stories(50, 0);
+
+        print_r($this->data['stories']);
+        return;
 
 		$this->parser->parse('stories', $this->data);
 	}
