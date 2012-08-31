@@ -456,20 +456,21 @@ img {
   position: relative;
 }
 body {
-  background: white;
+  background: #eeeeee;
   font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
   font-size: 100%;
   line-height: 1.5;
 }
 #container {
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 1600px;
   width: 92%;
 }
 header {
   /* for IE */
   zoom: 1;
-  background: #c56346;
+  background: #4d90fe;
+  margin: 10px 0 0 0;
   padding: 5px;
 }
 header:before,
@@ -485,14 +486,17 @@ header #logo {
   font-size: 1.25em;
   color: #efefef;
   font-weight: bold;
+  line-height: 1;
+  margin: 0 20px 0 0;
   text-decoration: none;
 }
 header nav {
   /* for IE */
   zoom: 1;
   float: left;
-  margin: 0 0 0 10px;
-  padding-top: 8px;
+  line-height: 1;
+  margin: 0;
+  padding-top: 3px;
 }
 header nav:before,
 header nav:after {
@@ -512,7 +516,7 @@ header nav li {
 }
 header nav li {
   float: left;
-  font-size: 0.8125em;
+  font-size: 0.875em;
   color: black;
   margin: 0 15px 0 0;
 }
@@ -524,6 +528,8 @@ header nav li a {
 #story-book {
   /* for IE */
   zoom: 1;
+  background: white;
+  padding: 10px;
 }
 #story-book:before,
 #story-book:after {
@@ -536,6 +542,7 @@ header nav li a {
 #story-book .story-row {
   /* for IE */
   zoom: 1;
+  margin: 0 0 15px 0;
 }
 #story-book .story-row:before,
 #story-book .story-row:after {
@@ -546,8 +553,44 @@ header nav li a {
   clear: both;
 }
 #story-book .story-row .story-voting,
-#story-book .story-row .tory-meat {
+#story-book .story-row .story-meat {
   float: left;
+}
+#story-book .story-row .story-voting {
+  line-height: 1;
+  margin: 0 10px 0 0;
+  text-align: center;
+}
+#story-book .story-row .story-voting a {
+  font-size: 1.5em;
+  color: #111111;
+  display: block;
+  font-weight: bold;
+  line-height: 0.7;
+  text-decoration: none;
+}
+#story-book .story-row .story-voting .story-upvotes {
+  font-size: 0.9375em;
+  color: #555555;
+  display: block;
+  margin: 0 0 -5px 0;
+}
+#story-book .story-row .story-meat .story-title {
+  font-size: 1.125em;
+  font-weight: bold;
+}
+#story-book .story-row .story-meat .story-meta p {
+  font-size: 0.8125em;
+  color: #666666;
+  display: block;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  text-transform: lowercase;
+}
+#story-book .story-row .story-meat .story-meta p a {
+  color: #666666;
+  text-decoration: none;
 }
 @media only screen and (max-width: 1024px) {
   

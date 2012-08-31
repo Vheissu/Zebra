@@ -23,7 +23,7 @@ audio, video, img {
 }
 
 body {
-	background: @white;
+	background: #EEE;
 	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
 	font-size: @defaultfontsize;
 	line-height: @defaultlineheight;
@@ -37,7 +37,8 @@ body {
 
 header {
 	.clearfix;
-	background: #C56346;
+	background: #4D90FE;
+	margin: 10px 0 0 0;
 	padding: 5px;
 
 	#logo {
@@ -45,14 +46,17 @@ header {
 		.emfont(20);
 		color: #EFEFEF;
 		font-weight: bold;
+		line-height: 1;
+		margin: 0 20px 0 0;
 		text-decoration: none;
 	}
 
 	nav {
 		.clearfix;
 		.floatleft;
-		margin: 0 0 0 10px;
-		padding-top: 8px;
+		line-height: 1;
+		margin: 0;
+		padding-top: 3px;
 
 		ul, li {
 			.resetlist;
@@ -60,7 +64,7 @@ header {
 
 		li {
 			.floatleft;
-			.emfont(13);
+			.emfont(14);
 			color: #000;
 			margin: 0 15px 0 0;
 
@@ -75,13 +79,64 @@ header {
 
 #story-book {
 	.clearfix;
+	background: #FFF;
+	padding: 10px;
 
 	.story-row {
 		.clearfix;
+		margin: 0 0 15px 0;
 
 		.story-voting,
-		.tory-meat {
+		.story-meat {
 			.floatleft;
+		}
+
+		.story-voting {
+			line-height: 1;
+			margin: 0 10px 0 0;
+			text-align: center;
+
+			a {
+				.emfont(24);
+				color: #111;
+				display: block;
+				font-weight: bold;
+				line-height: 0.7;
+				text-decoration: none;
+			}
+
+			.story-upvotes {
+				.emfont(15);
+				color: #555;
+				display: block;
+				margin: 0 0 -5px 0;
+			}
+		}
+
+		.story-meat {
+
+			.story-title {
+				.emfont(18);
+				font-weight: bold;
+			}
+
+			.story-meta {
+
+				p {
+					.emfont(13);
+					color: #666;
+					display: block;
+					line-height: 1;
+					margin: 0;
+					padding: 0;
+					text-transform: lowercase;
+
+					a {
+						color: #666;
+						text-decoration: none;
+					}
+				}
+			}
 		}
 	}
 }
