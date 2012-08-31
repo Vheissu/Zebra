@@ -10,7 +10,7 @@
  * @return string
  * 
  */
-function already_upvoted($story_id = 0)
+function already_upvoted($story_id = 0, $user_id = 0)
 {
     $CI =& get_instance();
     $CI->load->model('vote_model', 'vote');
