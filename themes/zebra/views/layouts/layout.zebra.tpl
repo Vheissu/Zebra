@@ -13,6 +13,11 @@
     {css('zebra.css')}
 
     {block name=header_styles}{/block}
+
+    <script type="text/javascript">
+        var base_url   = "{base_url()}";
+    </script>
+
     {block name=header_scripts}{/block}
 
     <!--[if lt IE 9]>  
@@ -42,6 +47,11 @@
         </div>
 
     </div>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    {js('zebra.js')}
+
+    {block name=footer}{/block}
 
 </body>  
 </html>
