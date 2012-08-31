@@ -6,7 +6,6 @@ class Story extends MY_Controller {
     {
         parent::__construct();
 
-        $this->load->helper('ranking');
         $this->load->model('story_model', 'story');
     }
 
@@ -20,9 +19,6 @@ class Story extends MY_Controller {
 
 		// Get all stories
 		$this->data['stories'] = $this->story->get_popular_stories(50, 0);
-
-        print_r($this->data['stories']);
-        return;
 
 		$this->parser->parse('stories', $this->data);
 	}

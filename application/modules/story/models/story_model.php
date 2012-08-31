@@ -9,10 +9,12 @@ class Story_model extends MY_Model {
 
     public function get_popular_stories($limit = 50, $offset = 0)
     {
+        $table = $this->db->dbprefix.$this->_table;
+
         $stories = $this->db->query('
-            SELECT zebra_stories.*,
-            ((zebra_stories.upvotes-1) - (zebra_stories.downvotes) / power(((unix_timestamp(NOW()) - unix_timestamp(zebra_stories.created))/60)/60,1.8)) AS rank
-            FROM zebra_stories ORDER BY rank DESC'
+            SELECT '.$table.'.*,
+            (('.$table.'.upvotes-1) - ('.$table.'.downvotes) / power(((unix_timestamp(NOW()) - unix_timestamp('.$table.'.created))/60)/60,1.8)) AS rank
+            FROM '.$table.' ORDER BY rank DESC LIMIT '.$offset.', '.$limit.''
         );
 
         return $stories->result();  
