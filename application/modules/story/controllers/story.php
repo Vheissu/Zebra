@@ -26,10 +26,30 @@ class Story extends MY_Controller {
     public function submit()
     {
         $this->data['current_segment'] = "submit";
-        
+
         if (!$this->input->post())
         {
             $this->parser->parse('add', $this->data);
+        }
+        else
+        {
+            $title = $this->input->post('title');
+            $link  = $this->input->post('link', '');
+            $text  = $this->input->post('text', '');
+
+            $field_data = array(
+                'title' => $title,
+                'link'  => $link,
+                'text'  => $text
+            );
+
+            $insert = $this->story->insert($field);
+
+            if ($insert)
+            {
+                $this->session->set_flashdata('success', lang('submission_success'));
+                redirect('stories/new');
+            }
         }    
     }
 }
