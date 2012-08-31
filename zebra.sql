@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2012-08-31 12:11:28
+Date: 2012-08-31 13:11:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -99,7 +99,7 @@ CREATE TABLE `zebra_sessions` (
 -- ----------------------------
 -- Records of zebra_sessions
 -- ----------------------------
-INSERT INTO `zebra_sessions` VALUES ('c8eb239851962c29fc2795c0ae50e9b4', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346378767', '');
+INSERT INTO `zebra_sessions` VALUES ('bdacf17bba11e1d7283d8ddf0c71d914', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346382336', '');
 
 -- ----------------------------
 -- Table structure for `zebra_stories`
@@ -123,7 +123,22 @@ CREATE TABLE `zebra_stories` (
 -- ----------------------------
 -- Records of zebra_stories
 -- ----------------------------
-INSERT INTO `zebra_stories` VALUES ('1', '1', 'How We Deploy At Github', '', null, 'http://www.github.com', '0', '0', '0', '1346366020', '0');
+INSERT INTO `zebra_stories` VALUES ('1', '1', 'How We Deploy At Github', '', null, 'http://www.github.com', '7', '0', '0', '1346366020', '0');
+
+-- ----------------------------
+-- Table structure for `zebra_topics`
+-- ----------------------------
+DROP TABLE IF EXISTS `zebra_topics`;
+CREATE TABLE `zebra_topics` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(120) NOT NULL,
+  `slug` varchar(155) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zebra_topics
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `zebra_users`
