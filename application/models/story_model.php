@@ -4,7 +4,7 @@ class Story_model extends MY_Model {
 
 	protected $_table = 'stories';
 
-    protected $has_many = array('comment', 'vote');
-    protected $has_one  = array('user');
+    protected $has_many    = array('comment', 'topic', 'vote');
+    protected $belongs_to  = array('user');
 
 }

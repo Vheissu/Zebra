@@ -4,7 +4,7 @@ class Vote_model extends MY_Model {
 
 	protected $_table = 'votes';
 
-    protected $has_one  = array('user', 'comment', 'story');
+    protected $belongs_to  = array('user', 'comment', 'story');
 
     public function user_has_upvoted($story_id, $user_id)
     {
