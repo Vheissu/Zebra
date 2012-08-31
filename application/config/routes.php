@@ -4,7 +4,7 @@ $route['default_controller']  = 'story';
 
 // Story routes
 $route['stories']     = 'story';
-$route['stories/(:num)'] = 'story/$1';
+$route['stories/(:num)'] = 'story/index/$1';
 $route['stories/new'] = 'story/new';
 $route['stories/recently-popular'] = 'story/recently_popular';
 $route['story/(:num)/(:any)'] = 'story/view/$1/$2';

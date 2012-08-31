@@ -9,10 +9,16 @@ class Story extends MY_Controller {
         $this->load->model('story_model', 'story');
     }
 
-	public function index()
+	public function index($page = 0)
 	{
+        // Page 1 is technically page zero
+        if ($page == 1)
+        {
+            $page = 0;
+        }
+
 		// Get all stories
-		$this->data['stories'] = $this->story->get_all();
+		$this->data['stories'] = $this->story->get_all_paged(25, $page);
 
 		$this->parser->parse('stories', $this->data);
 	}

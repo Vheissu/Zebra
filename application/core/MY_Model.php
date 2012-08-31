@@ -5,6 +5,11 @@
  *
  * @link http://github.com/jamierumbelow/codeigniter-base-model
  * @copyright Copyright (c) 2012, Jamie Rumbelow <http://jamierumbelow.net>
+ * 
+ * =====================================
+ * @author Dwayne Charrington (c) 2012
+ * Added in some additional methods.
+ * =====================================
  */
 
 class MY_Model extends CI_Model
@@ -194,6 +199,28 @@ class MY_Model extends CI_Model
         $this->trigger('before_get');
 
         $result = $this->db->get($this->_table)
+                           ->{$this->_return_type(1)}();
+        $this->_temporary_return_type = $this->return_type;
+
+        foreach ($result as &$row)
+        {
+            $row = $this->trigger('after_get', $row);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Fetch all the records in the table with support for limit
+     * and offset parameters.
+     * 
+     * @author Dwayne Charrington
+     */
+    public function get_all_paged($limit = 10, $offset = 0)
+    {
+        $this->trigger('before_get');
+
+        $result = $this->db->get($this->_table, $limit, $offset)
                            ->{$this->_return_type(1)}();
         $this->_temporary_return_type = $this->return_type;
 
