@@ -25,7 +25,12 @@ class Story extends MY_Controller {
 
     public function submit()
     {
-        $this->parser->parse('add', $this->data);    
+        $this->data['current_segment'] = "submit";
+        
+        if (!$this->input->post())
+        {
+            $this->parser->parse('add', $this->data);
+        }    
     }
 }
 

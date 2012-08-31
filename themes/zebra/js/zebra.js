@@ -1,11 +1,86 @@
 (function(w, Zebra, $, undefined) {
+
+    var pageEls = Zebra.Elements || {};
     
     $(function() {
+
+        pageEls.link = $("#link");
+        pageEls.text = $("#text");
 
         $(".story-voting").on("click", "a", function(e) {
 
             e.preventDefault();
         });
+
+        if (pageEls.link.length) {
+
+            pageEls.link.on("blur", function() {
+
+                var $this = $(this);
+
+                if ($.trim($this.val()) == '')
+                {
+                    pageEls.text.fadeIn("fast").removeAttr('disabled');
+                }
+                else
+                {
+                    pageEls.text.fadeOut("fast").attr('disabled', 'disabled');   
+                }
+
+
+            });
+
+            pageEls.link.on("keyup", function() {
+
+                var $this = $(this);
+
+                if ($.trim($this.val()) == '')
+                {
+                    pageEls.text.fadeIn("fast").removeAttr('disabled');
+                }
+                else
+                {
+                    pageEls.text.fadeOut("fast").attr('disabled', 'disabled');   
+                }
+
+            });
+
+        }
+
+        if (pageEls.text.length) {
+
+            pageEls.text.on("blur", function() {
+
+                var $this = $(this);
+
+                if ($.trim($this.val()) == '')
+                {
+                    pageEls.link.fadeIn("fast").removeAttr('disabled');
+                }
+                else
+                {
+                    pageEls.link.fadeOut("fast").attr('disabled', 'disabled');   
+                }
+
+
+            });
+
+            pageEls.text.on("keyup", function() {
+
+                var $this = $(this);
+
+                if ($.trim($this.val()) == '')
+                {
+                    pageEls.link.fadeIn("fast").removeAttr('disabled');
+                }
+                else
+                {
+                    pageEls.link.fadeOut("fast").attr('disabled', 'disabled');   
+                }
+
+            });
+
+        }
 
     });
 
@@ -61,4 +136,4 @@
 
     }();
 
-})();})(window, window.Zebra = window.Zebra || {}, jQuery);
+})(window, window.Zebra = window.Zebra || {}, jQuery);

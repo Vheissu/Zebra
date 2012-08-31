@@ -592,6 +592,29 @@ header nav li a {
   color: #666666;
   text-decoration: none;
 }
+.form-row {
+  /* for IE */
+  zoom: 1;
+  margin: 0 0 10px 0;
+}
+.form-row:before,
+.form-row:after {
+  content: "";
+  display: table;
+}
+.form-row:after {
+  clear: both;
+}
+.form-row label {
+  font-size: 0.875em;
+  color: #888888;
+  padding: 0 8px 0 0;
+}
+.form-row input,
+.form-row textarea {
+  padding: 5px;
+  width: 35%;
+}
 @media only screen and (max-width: 1024px) {
   
 }

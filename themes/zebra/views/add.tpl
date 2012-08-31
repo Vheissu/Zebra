@@ -1,15 +1,18 @@
 {extends file='layout.zebra.tpl'}
 
 {block name=content}
-	<form id="submission-form" action="" method="POST">
+	<form id="submission-form" action="story/submit" method="POST">
 		<div class="form-row">
-			<label>Title:</label> <input type="text" name="title" id="title" placeholder="Title">
+			<input type="text" name="title" id="title" placeholder="Title">
 		</div>
 		<div class="form-row">
-			<label>Link:</label> <input type="text" name="link" id="link" placeholder="http://www.somewebsite.com">
+			<input type="text" name="link" id="link" placeholder="Website URL">
 		</div>
 		<div class="form-row">
-			<label>Text:</label> <textarea name="text" id="text" placeholder="http://www.somewebsite.com"></textarea>
+			<textarea name="text" id="text" placeholder="Something smart, something witty but most of all make sure it's not shitty." rows="6" cols="50"></textarea>
+		</div>
+		<div class="form-row button-row">
+			<input type="submit" name="submit" value="Submit">
 		</div>
 	</form>
 {/block}

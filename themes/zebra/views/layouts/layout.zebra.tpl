@@ -33,10 +33,10 @@
 
             <nav>
               <ul>
-                  <li><a href="{base_url('stories/new')}">New</a></li>
-                  <li><a href="{base_url('stories/recently-popular')}">Recently Popular</a></li>
-                  <li><a href="{base_url('comments/latest')}">Comments</a></li>
-                  <li><a href="{base_url('story/submit')}">Submit</a></li>
+                  <li><a href="{base_url('stories/new')}" {if $current_segment == 'submit'}class="new"{/if}>New</a></li>
+                  <li><a href="{base_url('stories/recently-popular')}" {if $current_segment == 'recently_popular'}class="current"{/if}>Recently Popular</a></li>
+                  <li><a href="{base_url('comments/latest')}" {if $current_segment == 'comments'}class="current"{/if}>Comments</a></li>
+                  <li><a href="{base_url('story/submit')}" {if $current_segment == 'submit'}class="current"{/if}>Submit</a></li>
               </ul>   
             </nav>
 
