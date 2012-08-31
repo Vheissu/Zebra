@@ -2,19 +2,18 @@
 Navicat MySQL Data Transfer
 
 Source Server         : Localhost
-Source Server Version : 50525
+Source Server Version : 50516
 Source Host           : localhost:3306
 Source Database       : zebra
 
 Target Server Type    : MYSQL
-Target Server Version : 50525
+Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-08-31 16:33:26
+Date: 2012-08-31 21:28:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
-
 -- ----------------------------
 -- Table structure for `zebra_comments`
 -- ----------------------------
@@ -78,9 +77,9 @@ CREATE TABLE `zebra_roles` (
 -- ----------------------------
 -- Records of zebra_roles
 -- ----------------------------
-INSERT INTO `zebra_roles` VALUES ('1', 'user', 'Standard User');
-INSERT INTO `zebra_roles` VALUES ('2', 'admin', 'Administrator');
-INSERT INTO `zebra_roles` VALUES ('3', 'super_admin', 'Super Administrator');
+INSERT INTO zebra_roles VALUES ('1', 'user', 'Standard User');
+INSERT INTO zebra_roles VALUES ('2', 'admin', 'Administrator');
+INSERT INTO zebra_roles VALUES ('3', 'super_admin', 'Super Administrator');
 
 -- ----------------------------
 -- Table structure for `zebra_sessions`
@@ -99,7 +98,7 @@ CREATE TABLE `zebra_sessions` (
 -- ----------------------------
 -- Records of zebra_sessions
 -- ----------------------------
-INSERT INTO `zebra_sessions` VALUES ('d192afe7d385513b5c3256555394dd9e', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346394258', '');
+INSERT INTO zebra_sessions VALUES ('ad7fe6bc812de24b5590ddc89c62709e', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346409605', '');
 
 -- ----------------------------
 -- Table structure for `zebra_stories`
@@ -123,7 +122,7 @@ CREATE TABLE `zebra_stories` (
 -- ----------------------------
 -- Records of zebra_stories
 -- ----------------------------
-INSERT INTO `zebra_stories` VALUES ('1', '1', 'How We Deploy At Github', '', null, 'http://www.github.com', '7', '0', '0', '1346366020', '0');
+INSERT INTO zebra_stories VALUES ('1', '1', 'How We Deploy At Github', 'how-we-deploy-at-github', null, 'http://www.github.com', '22', '4', '0', '1346366020', '0');
 
 -- ----------------------------
 -- Table structure for `zebra_topics`
@@ -159,7 +158,7 @@ CREATE TABLE `zebra_users` (
 -- ----------------------------
 -- Records of zebra_users
 -- ----------------------------
-INSERT INTO `zebra_users` VALUES ('1', '3', 'wolf@wolfphp.com', '1c40ed3c114c927b0c77bcea4a200f4348cd806bce9b6b641df2f586432ae8d6', '1346121757', '', 'active', null);
+INSERT INTO zebra_users VALUES ('1', '3', 'wolf@wolfphp.com', '1c40ed3c114c927b0c77bcea4a200f4348cd806bce9b6b641df2f586432ae8d6', '1346121757', '', 'active', null);
 
 -- ----------------------------
 -- Table structure for `zebra_user_meta`
@@ -178,8 +177,8 @@ CREATE TABLE `zebra_user_meta` (
 -- ----------------------------
 -- Records of zebra_user_meta
 -- ----------------------------
-INSERT INTO `zebra_user_meta` VALUES ('1', '1', 'first_name', 'Wolf', '0', '0');
-INSERT INTO `zebra_user_meta` VALUES ('2', '1', 'last_name', 'De Wolfe', '0', '0');
+INSERT INTO zebra_user_meta VALUES ('1', '1', 'first_name', 'Wolf', '0', '0');
+INSERT INTO zebra_user_meta VALUES ('2', '1', 'last_name', 'De Wolfe', '0', '0');
 
 -- ----------------------------
 -- Table structure for `zebra_votes`

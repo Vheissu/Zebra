@@ -34,13 +34,15 @@ class Story extends MY_Controller {
         else
         {
             $title = $this->input->post('title');
+            $slug  = url_title($this->input->post('title'), '-', TRUE);
             $link  = $this->input->post('link', '');
             $text  = $this->input->post('text', '');
 
             $field_data = array(
-                'title' => $title,
-                'link'  => $link,
-                'text'  => $text
+                'title'       => $title,
+                'slug'        => $slug,
+                'link'        => $link,
+                'description' => $text
             );
 
             $insert = $this->story->insert($field);
