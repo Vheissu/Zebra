@@ -1,0 +1,126 @@
+.box-sizing (@type: border-box) {
+    -webkit-box-sizing: @type;
+    -moz-box-sizing:    @type;
+    -ms-box-sizing:     @type;
+    box-sizing:         @type;
+}
+
+// Prevents long lines of text with no spaces from breaking out of containers
+// Use this anywhere user generated content can be displayed
+.prevent-text-breakouts {
+  -ms-word-break: break-all;
+      word-break: break-all;
+      word-break: break-word;
+  -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+          hyphens: auto;
+}
+
+// Fixes the box model to account for paddings and margins with widths
+.fixboxmodel {
+    .box-sizing (border-box);
+}
+
+// Resets the box model calculating back to browser default
+.resetboxmodel {
+    .box-sizing (content-box);
+}
+
+// Percentage based widths
+.pwidth(@target, @context) {
+    width: (@target/@context)*100%; 
+}
+
+.resetlist {
+    background: none;
+    line-height: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+// Allows us to calculate EM font sizes from pixel values
+// The context is the parent font size of the containing element
+// Default browser font sizes are generally 16px
+.emfont(@target, @context: 16) {
+    font-size: (@target/@context)+0em;    
+}
+
+.font(@fontsize:16, @lineheight:24, @multiplier:1, @lineheightreducer:1) {
+	font-size: (@fontsize/@defaultfontsize)*1em;
+	line-height: @lineheight/@fontsize/@lineheightreducer;
+	margin: (@lineheight/@fontsize*(@multiplier/(@lineheight/@defaultlineheight)))*1em 0 0;
+}
+
+.inlineblock {
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.opacity(@opacity: 0.5) {
+    -moz-opacity: @opacity;
+    -khtml-opacity: @opacity;
+    -webkit-opacity: @opacity;
+    opacity: @opacity;
+}
+
+.rounded(@radius: 4px) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+.border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+	-webkit-border-top-right-radius:    @topright;
+	-webkit-border-bottom-right-radius: @bottomright;
+	-webkit-border-bottom-left-radius:  @bottomleft;
+	-webkit-border-top-left-radius:     @topleft;
+	-moz-border-radius-topright:        @topright;
+	-moz-border-radius-bottomright:     @bottomright;
+	-moz-border-radius-bottomleft:      @bottomleft;
+	-moz-border-radius-topleft:         @topleft;
+	border-top-right-radius:            @topright;
+	border-bottom-right-radius:         @bottomright;
+	border-bottom-left-radius:          @bottomleft;
+	border-top-left-radius:             @topleft;
+	-webkit-background-clip:            padding-box;
+	-moz-background-clip:               padding;  
+	background-clip:                    padding-box; 
+}
+
+.clearfix { 
+	&:before,
+	&:after {
+		content: "";
+    	display: table;
+	}
+	&:after {
+		clear: both;
+	}
+	/* for IE */
+	zoom: 1; 
+}
+
+/* http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/ */
+.text-indent {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/* http://simplebits.com/notebook/2008/08/14/ampersands-2/ */
+span.amp {
+  font-family: Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif;
+  font-style: italic;
+}
+
+/* text alignment */
+.text-left   { text-align: left; }
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+
+/* Floating */
+.floatleft  { float: left; }
+.floatright { float: right; }

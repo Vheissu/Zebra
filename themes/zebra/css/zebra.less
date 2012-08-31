@@ -1,0 +1,94 @@
+
+// Normalize is a CSS reset stylesheet, but only better
+@import "normalize";
+@import "variables";
+@import "mixins";
+
+// Reset heights and widths
+html, 
+body { 
+	height: 100%; 
+	width: 100%; 
+}
+
+// Responsive imagery
+audio, video, img { 
+	height: auto; 
+	max-width: 100%; 
+}
+
+* {
+	.fixboxmodel;
+	position: relative;
+}
+
+body {
+	background: @white;
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: @defaultfontsize;
+	line-height: @defaultlineheight;
+}
+
+#container {
+	margin: 0 auto;
+	max-width: @containerWidth;
+	width: 92%;
+}
+
+header {
+	.clearfix;
+	background: #C56346;
+	padding: 5px;
+
+	#logo {
+		.floatleft;
+		.emfont(20);
+		color: #EFEFEF;
+		font-weight: bold;
+		text-decoration: none;
+	}
+
+	nav {
+		.clearfix;
+		.floatleft;
+		margin: 0 0 0 10px;
+		padding-top: 8px;
+
+		ul, li {
+			.resetlist;
+		}
+
+		li {
+			.floatleft;
+			.emfont(13);
+			color: #000;
+			margin: 0 15px 0 0;
+
+			a {
+				color: #000;
+				display: block;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+#story-book {
+	.clearfix;
+
+	.story-row {
+		.clearfix;
+
+		.story-voting,
+		.tory-meat {
+			.floatleft;
+		}
+	}
+}
+
+footer {
+	
+}
+
+
+@import "media_queries";
