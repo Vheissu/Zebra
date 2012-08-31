@@ -22,6 +22,11 @@ class Story extends MY_Controller {
 
 		$this->parser->parse('stories', $this->data);
 	}
+
+    public function submit()
+    {
+        $this->parser->parse('add', $this->data);    
+    }
 }
 
 /* End of file story.php */

@@ -5,10 +5,10 @@ $route['default_controller']  = 'story';
 // Story routes
 $route['stories']     = 'story';
 $route['stories/(:num)'] = 'story/index/$1';
-$route['stories/new'] = 'story/new';
+$route['stories/new'] = 'story/new_stories';
 $route['stories/recently-popular'] = 'story/recently_popular';
 $route['story/(:num)/(:any)'] = 'story/view/$1/$2';
-$route['story/submit'] = 'story/new';
+$route['story/submit'] = 'story/submit';
 
 // Comment routes
 $route['comments/latest'] = 'comment/latest';

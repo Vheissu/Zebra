@@ -36,7 +36,7 @@
                   <li><a href="{base_url('stories/new')}">New</a></li>
                   <li><a href="{base_url('stories/recently-popular')}">Recently Popular</a></li>
                   <li><a href="{base_url('comments/latest')}">Comments</a></li>
-                  <li><a href="{base_url('stories/submit')}">Submit</a></li>
+                  <li><a href="{base_url('story/submit')}">Submit</a></li>
               </ul>   
             </nav>
 
