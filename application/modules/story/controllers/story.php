@@ -6,6 +6,7 @@ class Story extends MY_Controller {
     {
         parent::__construct();
 
+        $this->load->helper('ranking');
         $this->load->model('story_model', 'story');
     }
 
@@ -18,7 +19,7 @@ class Story extends MY_Controller {
         }
 
 		// Get all stories
-		$this->data['stories'] = $this->story->with('vote')->with('comment')->get_all_paged(25, $page);
+		$this->data['stories'] = $this->story->get_stories(50, 0);
 
 		$this->parser->parse('stories', $this->data);
 	}
