@@ -18,7 +18,7 @@ class Story extends MY_Controller {
         }
 
 		// Get all stories
-		$this->data['stories'] = $this->story->get_all_paged(25, $page);
+		$this->data['stories'] = $this->story->with('vote')->with('comment')->get_all_paged(25, $page);
 
 		$this->parser->parse('stories', $this->data);
 	}
