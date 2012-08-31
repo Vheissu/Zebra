@@ -20,8 +20,8 @@ $config['wolfauth'] = array(
 	// Are registered users required to confirm their account by email?
 	'register.require_email_confirmation' => 1,
 	
-	// Site status (0 site is down for maintenance mode, 1 site is active)
-	'site.status' => 1,
+	// Register status (1 is enabled and 0 is disabled)
+	'register.status' => 1,
 
 	// The amount of failed login attempts before you're banned for a specified amount of time
 	'login.max_attempts' => 3,

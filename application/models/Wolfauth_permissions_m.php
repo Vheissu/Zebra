@@ -14,9 +14,9 @@ class Wolfauth_permissions_m extends CI_Model {
 	 */
 	public function get_role_permissions($role_id)
 	{
-		$this->db->select('permissions.permission_string AS permission');
-		$this->db->where('permissions_roles.role_id', $role_id);
-		$this->db->join('permissions_roles', 'permissions_roles.permission_id = permissions.permission_id');
+		$this->db->select(''.$this->db->dbprefix.'permissions.permission_string AS permission');
+		$this->db->where(''.$this->db->dbprefix.'permissions_roles.role_id', $role_id);
+		$this->db->join(''.$this->db->dbprefix.'permissions_roles', ''.$this->db->dbprefix.'permissions_roles.permission_id = '.$this->db->dbprefix.'permissions.permission_id');
 
 		$permissions = $this->db->get('permissions');
 
@@ -40,9 +40,9 @@ class Wolfauth_permissions_m extends CI_Model {
 
         if ($user)
         {
-            $this->db->select('permissions.permission_string AS permission');
-            $this->db->where('permissions_roles.role_id', $user->row('role_id'));
-            $this->db->join('permissions_roles', 'permissions_roles.permission_id = permissions.permission_id');
+            $this->db->select(''.$this->db->dbprefix.'permissions.permission_string AS permission');
+            $this->db->where(''.$this->db->dbprefix.'permissions_roles.role_id', $user->row('role_id'));
+            $this->db->join(''.$this->db->dbprefix.'permissions_roles', ''.$this->db->dbprefix.'permissions_roles.permission_id = '.$this->db->dbprefix.'permissions.permission_id');
 
             $permissions = $this->db->get('permissions');
 
