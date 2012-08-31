@@ -15,7 +15,7 @@ function already_upvoted($story_id = 0, $user_id = 0)
     $CI =& get_instance();
     $CI->load->model('vote_model', 'vote');
 
-    $CI->vote->user_has_voted($story_id);
+    $CI->vote->user_has_voted($story_id, $user_id);
 
 	return FALSE;
 }
