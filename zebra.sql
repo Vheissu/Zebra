@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-09-01 12:47:27
+Date: 2012-09-01 13:08:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -98,7 +98,7 @@ CREATE TABLE `zebra_sessions` (
 -- ----------------------------
 -- Records of zebra_sessions
 -- ----------------------------
-INSERT INTO zebra_sessions VALUES ('cba57acda8d849c9f6cac9e611d9b181', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346467242', '');
+INSERT INTO zebra_sessions VALUES ('33f2cc43b69dcf4a617870532dde982e', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346468340', '');
 
 -- ----------------------------
 -- Table structure for `zebra_stories`
@@ -117,7 +117,7 @@ CREATE TABLE `zebra_stories` (
   `created` int(5) NOT NULL DEFAULT '0',
   `updated` int(5) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_stories
@@ -130,6 +130,40 @@ INSERT INTO zebra_stories VALUES ('5', '1', 'Valve Finds Value In Open-Source Dr
 INSERT INTO zebra_stories VALUES ('6', '1', 'What Powers Etsy', 'what-powers-etsy', null, 'http://codeascraft.etsy.com/2012/08/31/what-hardware-powers-etsy-com/', '1', '0', '0', '1346465205', '0');
 INSERT INTO zebra_stories VALUES ('7', '1', 'What Is Good API Design?', 'what-is-good-api-design', null, 'http://richardminerich.com/2012/08/what-is-good-api-design/', '1', '0', '0', '1346465234', '0');
 INSERT INTO zebra_stories VALUES ('8', '1', 'Open WebOS Beta Officially Released', 'open-webos-beta-officially-released', null, 'http://blog.openwebosproject.org/post/30593510898/open-webos-august-edition', '1', '0', '0', '1346465259', '0');
+INSERT INTO zebra_stories VALUES ('9', '1', 'Moving From Heroku To Hardware', 'moving-from-heroku-to-hardware', null, 'http://justcramer.com/2012/08/30/how-noops-works-for-sentry/', '1', '0', '0', '1346288196', '0');
+
+-- ----------------------------
+-- Table structure for `zebra_stories_topics`
+-- ----------------------------
+DROP TABLE IF EXISTS `zebra_stories_topics`;
+CREATE TABLE `zebra_stories_topics` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `story_id` bigint(20) unsigned NOT NULL,
+  `topic_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`id`,`story_id`,`topic_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zebra_stories_topics
+-- ----------------------------
+INSERT INTO zebra_stories_topics VALUES ('1', '1', '10');
+INSERT INTO zebra_stories_topics VALUES ('2', '1', '1');
+INSERT INTO zebra_stories_topics VALUES ('3', '2', '6');
+INSERT INTO zebra_stories_topics VALUES ('4', '3', '3');
+INSERT INTO zebra_stories_topics VALUES ('5', '0', '7');
+INSERT INTO zebra_stories_topics VALUES ('6', '4', '6');
+INSERT INTO zebra_stories_topics VALUES ('7', '5', '7');
+INSERT INTO zebra_stories_topics VALUES ('8', '5', '8');
+INSERT INTO zebra_stories_topics VALUES ('9', '5', '11');
+INSERT INTO zebra_stories_topics VALUES ('10', '6', '1');
+INSERT INTO zebra_stories_topics VALUES ('11', '6', '5');
+INSERT INTO zebra_stories_topics VALUES ('12', '6', '12');
+INSERT INTO zebra_stories_topics VALUES ('13', '7', '13');
+INSERT INTO zebra_stories_topics VALUES ('14', '7', '4');
+INSERT INTO zebra_stories_topics VALUES ('15', '8', '14');
+INSERT INTO zebra_stories_topics VALUES ('16', '8', '8');
+INSERT INTO zebra_stories_topics VALUES ('17', '9', '12');
+INSERT INTO zebra_stories_topics VALUES ('18', '9', '5');
 
 -- ----------------------------
 -- Table structure for `zebra_topics`
@@ -140,11 +174,27 @@ CREATE TABLE `zebra_topics` (
   `name` varchar(120) NOT NULL,
   `slug` varchar(155) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_topics
 -- ----------------------------
+INSERT INTO zebra_topics VALUES ('1', 'Web', 'web');
+INSERT INTO zebra_topics VALUES ('2', 'Startups', 'startups');
+INSERT INTO zebra_topics VALUES ('3', 'Javascript', 'javascript');
+INSERT INTO zebra_topics VALUES ('4', 'Api\'s', 'api');
+INSERT INTO zebra_topics VALUES ('5', 'Scaling', 'scaling');
+INSERT INTO zebra_topics VALUES ('6', 'Security', 'security');
+INSERT INTO zebra_topics VALUES ('7', 'Gaming', 'gaming');
+INSERT INTO zebra_topics VALUES ('8', 'Open Source', 'open-source');
+INSERT INTO zebra_topics VALUES ('9', 'E-commerce', 'ecommerce');
+INSERT INTO zebra_topics VALUES ('10', 'Source Control', 'source-control');
+INSERT INTO zebra_topics VALUES ('11', 'Linux', 'linux');
+INSERT INTO zebra_topics VALUES ('12', 'Hosting', 'hosting');
+INSERT INTO zebra_topics VALUES ('13', 'Programming', 'programming');
+INSERT INTO zebra_topics VALUES ('14', 'Mobile', 'mobile');
+INSERT INTO zebra_topics VALUES ('15', 'HTML5', 'html5');
+INSERT INTO zebra_topics VALUES ('16', 'CSS', 'css');
 
 -- ----------------------------
 -- Table structure for `zebra_users`
@@ -200,7 +250,7 @@ CREATE TABLE `zebra_votes` (
   `comment_id` bigint(20) unsigned NOT NULL,
   `vote_type` enum('upvote','downvote') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_votes
@@ -213,6 +263,7 @@ INSERT INTO zebra_votes VALUES ('5', '1', '5', '0', '0', 'upvote');
 INSERT INTO zebra_votes VALUES ('6', '1', '6', '0', '0', 'upvote');
 INSERT INTO zebra_votes VALUES ('7', '1', '7', '0', '0', 'upvote');
 INSERT INTO zebra_votes VALUES ('8', '1', '8', '0', '0', 'upvote');
+INSERT INTO zebra_votes VALUES ('9', '1', '9', '0', '0', 'upvote');
 
 -- ----------------------------
 -- Table structure for `zebra_vote_reasons`
