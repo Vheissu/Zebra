@@ -108,15 +108,15 @@ class Wolfauth {
 	 *
 	 * Log a user in via email address
 	 *
-	 * @param string $email - Email address
+	 * @param string $username - Username
 	 * @param string $password - Password unencrypted
 	 * @param string $redirect_to - The location to redirect to
 	 *
 	 */
-	public function login($email, $password, $redirect_to = '')
+	public function login($username, $password, $redirect_to = '')
 	{
 		// Find the user
-		$user = get_user($email);
+		$user = get_user($username);
 
 		// If we have a user
 		if ($user)
@@ -126,7 +126,7 @@ class Wolfauth {
 			{
 				$this->CI->session->set_userdata(array(
 					'user_id'   => $user->row('id'),
-					'email'		=> $user->row('email'),
+					'username'  => $user->row('username'),
 					'role_id'   => $user->row('role_id'),
 					'role_name' => $user->row('role_name')
 				));
@@ -147,13 +147,13 @@ class Wolfauth {
 			}
 			else
 			{
-                $this->set_error('Unknown email address and or incorrect password.');
+                $this->set_error('Unknown username and or incorrect password.');
 				return FALSE;
 			}
 		}
         else
         {
-            $this->set_error('Unknown email address and or incorrect password.');
+            $this->set_error('Unknown username and or incorrect password.');
         }
 
 		return FALSE;
@@ -166,19 +166,19 @@ class Wolfauth {
 	 * a password or any other details.
 	 *
 	 * @access public
-	 * @param string $email - Email address
+	 * @param string $username - Username
 	 * @return bool - True on success or False on failure
 	 *
 	 */
-	public function force_login($email)
+	public function force_login($username)
 	{
-		$user = get_user($email);
+		$user = get_user($username);
 
 		if ($user)
 		{
 			$this->CI->session->set_userdata(array(
 				'user_id'   => $user->row('id'),
-				'email'		=> $user->row('email'),
+				'username'  => $user->row('username'),
 				'role_id'   => $user->row('role_id'),
 				'role_name' => $user->row('role_name')
 			));
@@ -237,6 +237,7 @@ class Wolfauth {
 	 * Insert a new user into the users table.
 	 *
 	 * @access public
+	 * @param $username
 	 * @param $email
 	 * @param $password
 	 * @param $role_id
@@ -244,13 +245,13 @@ class Wolfauth {
 	 * @return mixed
 	 *
 	 */
-	public function add_user($email, $password, $role_id = 1, $status = "active", $additional_data = array())
+	public function add_user($username, $email, $password, $role_id = 1, $status = "active", $additional_data = array())
 	{
 		// Hash the password ASAP
 		$password = $this->hash($password);
 
 		// Call the add user function and return the result
-		return $this->CI->wolfauth_m->add_user($email, $password, $role_id, $status, $additional_data);
+		return $this->CI->wolfauth_m->add_user($username, $email, $password, $role_id, $status, $additional_data);
 	}
 
     /**
@@ -503,7 +504,7 @@ class Wolfauth {
 				// Set session values
 				$this->CI->session->set_userdata(array(
 					'user_id'   => $user_id,
-					'email'     => $data->row('email'),
+					'username'  => $data->row('email'),
 					'role_id'   => $data->row('role_id'),
 					'role_name' => $data->row('role_name')
 				));

@@ -6,11 +6,11 @@
 			{foreach $stories AS $story}
 				<div class="story-row">
 					<div class="story-voting">
-						{if !already_upvoted()}
+						{if !story_upvoted()}
 						<a href="javascript:void(0);" data-story-id="{$story->id}" class="upvote">&#9652;</a>
 						{/if}
 						<span class="story-upvotes">{$story->upvotes}</span>
-						{if !already_downvoted()}
+						{if !story_downvoted()}
 						<a href="javascript:void(0);" data-story-id="{$story->id}" class="downvote">&#9662;</a>
 						{/if}
 					</div>
@@ -22,7 +22,7 @@
 							<a class="story-title" href="story/{$story->id}/{$story->slug}">{$story->title}</a>
 						{/if}
 						<div class="story-meta">
-							<p>by <a href="user/dwayne">Dwayne</a> 6 hours ago | <a href="story/{$story->id}/{$story->slug}#comments">5 comments</a></p>
+							<p>by <a href="user/dwayne">{$story->user->username}</a> 6 hours ago | <a href="story/{$story->id}/{$story->slug}#comments">5 comments</a></p>
 						</div>
 					</div>
 				</div>

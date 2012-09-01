@@ -5,17 +5,17 @@ class Wolfauth_m extends CI_Model {
 	/**
 	 * Get User
 	 *
-	 * Get a user via their email address
+	 * Get a user via their username
 	 * 
 	 * @access public
 	 * @param string $email - Email address
 	 * @return Object on success, False on failure
 	 *
 	 */
-	public function get_user($email)
+	public function get_user($username)
 	{
 		$this->db->select(''.$this->db->dbprefix.'users.*, '.$this->db->dbprefix.'roles.role_name, '.$this->db->dbprefix.'roles.role_display_name');
-		$this->db->where(''.$this->db->dbprefix.'users.email', $email);
+		$this->db->where(''.$this->db->dbprefix.'users.username', $email);
 		$this->db->join('roles', ''.$this->db->dbprefix.'roles.role_id = '.$this->db->dbprefix.'users.role_id');
 
 		$user = $this->db->get('users', 1, 0);
@@ -37,6 +37,27 @@ class Wolfauth_m extends CI_Model {
 	{
 		$this->db->select(''.$this->db->dbprefix.'users.*, '.$this->db->dbprefix.'roles.role_name, '.$this->db->dbprefix.'roles.role_display_name');
 		$this->db->where(''.$this->db->dbprefix.'users.id', $user_id);
+		$this->db->join('roles', ''.$this->db->dbprefix.'roles.role_id = '.$this->db->dbprefix.'users.role_id');
+		
+		$user = $this->db->get('users', 1, 0);
+
+		return ($user->num_rows() == 1) ? $user : FALSE;
+	}
+
+	/**
+	 * Get User By Email
+	 *
+	 * Get a user via their email
+	 * 
+	 * @access public
+	 * @param string $email - Email address
+	 * @return Object on success, False on failure
+	 *
+	 */
+	public function get_user_by_email($email)
+	{
+		$this->db->select(''.$this->db->dbprefix.'users.*, '.$this->db->dbprefix.'roles.role_name, '.$this->db->dbprefix.'roles.role_display_name');
+		$this->db->where(''.$this->db->dbprefix.'users.email', $email);
 		$this->db->join('roles', ''.$this->db->dbprefix.'roles.role_id = '.$this->db->dbprefix.'users.role_id');
 		
 		$user = $this->db->get('users', 1, 0);

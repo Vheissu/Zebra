@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-08-31 21:28:28
+Date: 2012-09-01 12:47:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -98,7 +98,7 @@ CREATE TABLE `zebra_sessions` (
 -- ----------------------------
 -- Records of zebra_sessions
 -- ----------------------------
-INSERT INTO zebra_sessions VALUES ('ad7fe6bc812de24b5590ddc89c62709e', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346409605', '');
+INSERT INTO zebra_sessions VALUES ('cba57acda8d849c9f6cac9e611d9b181', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346467242', '');
 
 -- ----------------------------
 -- Table structure for `zebra_stories`
@@ -117,12 +117,19 @@ CREATE TABLE `zebra_stories` (
   `created` int(5) NOT NULL DEFAULT '0',
   `updated` int(5) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_stories
 -- ----------------------------
-INSERT INTO zebra_stories VALUES ('1', '1', 'How We Deploy At Github', 'how-we-deploy-at-github', null, 'http://www.github.com', '22', '4', '0', '1346366020', '0');
+INSERT INTO zebra_stories VALUES ('1', '1', 'How We Deploy At Github', 'how-we-deploy-at-github', null, 'https://github.com/blog/1241-deploying-at-github', '22', '4', '0', '1346366020', '0');
+INSERT INTO zebra_stories VALUES ('2', '1', 'How Tracking Down My Stolen Computer Triggered a Drug Bust', 'how-tracking-down-my-stolen-computer-triggered-a-drug-bust', null, 'http://blog.makezine.com/2012/08/31/how-tracking-down-my-stolen-computer-triggered-a-drug-bust/', '1', '0', '0', '1346464971', '0');
+INSERT INTO zebra_stories VALUES ('3', '1', 'Building Atari With CreateJS', 'building-atari-with-createjs', null, 'http://atari.com/arcade/developers/building-atari-createjs', '1', '0', '0', '1346465070', '0');
+INSERT INTO zebra_stories VALUES ('4', '1', 'A Lesson In Timing Attacks', 'a-lesson-in-timing-attacks', null, 'http://codahale.com/a-lesson-in-timing-attacks/', '1', '0', '0', '1346465121', '0');
+INSERT INTO zebra_stories VALUES ('5', '1', 'Valve Finds Value In Open-Source Drivers', 'valve-finds-value-in-open-source-drivers', null, 'http://www.phoronix.com/scan.php?page=article&item=intel_valve_linux&num=1', '1', '0', '0', '1346465182', '0');
+INSERT INTO zebra_stories VALUES ('6', '1', 'What Powers Etsy', 'what-powers-etsy', null, 'http://codeascraft.etsy.com/2012/08/31/what-hardware-powers-etsy-com/', '1', '0', '0', '1346465205', '0');
+INSERT INTO zebra_stories VALUES ('7', '1', 'What Is Good API Design?', 'what-is-good-api-design', null, 'http://richardminerich.com/2012/08/what-is-good-api-design/', '1', '0', '0', '1346465234', '0');
+INSERT INTO zebra_stories VALUES ('8', '1', 'Open WebOS Beta Officially Released', 'open-webos-beta-officially-released', null, 'http://blog.openwebosproject.org/post/30593510898/open-webos-august-edition', '1', '0', '0', '1346465259', '0');
 
 -- ----------------------------
 -- Table structure for `zebra_topics`
@@ -146,19 +153,20 @@ DROP TABLE IF EXISTS `zebra_users`;
 CREATE TABLE `zebra_users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `role_id` int(5) NOT NULL,
+  `username` varchar(80) NOT NULL,
   `email` varchar(80) NOT NULL,
   `password` varchar(140) NOT NULL,
   `register_date` int(11) NOT NULL DEFAULT '0',
   `activation_key` varchar(120) NOT NULL,
   `user_status` enum('active','pending','banned') NOT NULL,
   `remember_me` text,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`,`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of zebra_users
 -- ----------------------------
-INSERT INTO zebra_users VALUES ('1', '3', 'wolf@wolfphp.com', '1c40ed3c114c927b0c77bcea4a200f4348cd806bce9b6b641df2f586432ae8d6', '1346121757', '', 'active', null);
+INSERT INTO zebra_users VALUES ('1', '3', 'Zebra', 'wolf@wolfphp.com', '1c40ed3c114c927b0c77bcea4a200f4348cd806bce9b6b641df2f586432ae8d6', '1346121757', '', 'active', null);
 
 -- ----------------------------
 -- Table structure for `zebra_user_meta`
@@ -188,11 +196,44 @@ CREATE TABLE `zebra_votes` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL,
   `story_id` bigint(20) unsigned NOT NULL,
+  `reason_id` int(5) NOT NULL DEFAULT '0',
   `comment_id` bigint(20) unsigned NOT NULL,
   `vote_type` enum('upvote','downvote') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_votes
 -- ----------------------------
+INSERT INTO zebra_votes VALUES ('1', '1', '1', '0', '0', 'upvote');
+INSERT INTO zebra_votes VALUES ('2', '1', '2', '0', '0', 'upvote');
+INSERT INTO zebra_votes VALUES ('3', '1', '3', '0', '0', 'upvote');
+INSERT INTO zebra_votes VALUES ('4', '1', '4', '0', '0', 'upvote');
+INSERT INTO zebra_votes VALUES ('5', '1', '5', '0', '0', 'upvote');
+INSERT INTO zebra_votes VALUES ('6', '1', '6', '0', '0', 'upvote');
+INSERT INTO zebra_votes VALUES ('7', '1', '7', '0', '0', 'upvote');
+INSERT INTO zebra_votes VALUES ('8', '1', '8', '0', '0', 'upvote');
+
+-- ----------------------------
+-- Table structure for `zebra_vote_reasons`
+-- ----------------------------
+DROP TABLE IF EXISTS `zebra_vote_reasons`;
+CREATE TABLE `zebra_vote_reasons` (
+  `id` int(5) unsigned NOT NULL AUTO_INCREMENT,
+  `reason` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zebra_vote_reasons
+-- ----------------------------
+INSERT INTO zebra_vote_reasons VALUES ('1', 'Spam');
+INSERT INTO zebra_vote_reasons VALUES ('2', 'Hateful');
+INSERT INTO zebra_vote_reasons VALUES ('3', 'This made absolutely no sense');
+INSERT INTO zebra_vote_reasons VALUES ('4', 'I\'m offended');
+INSERT INTO zebra_vote_reasons VALUES ('5', 'Too controversial');
+INSERT INTO zebra_vote_reasons VALUES ('6', 'Too many spelling and grammar errors');
+INSERT INTO zebra_vote_reasons VALUES ('7', 'Too biased');
+INSERT INTO zebra_vote_reasons VALUES ('8', 'Fails to make a compelling argument');
+INSERT INTO zebra_vote_reasons VALUES ('9', 'Lacking facts');
+INSERT INTO zebra_vote_reasons VALUES ('10', 'Quite clearly don\'t know what they\'re on about');

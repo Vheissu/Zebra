@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Already Upvoted
+ * Story Upvoted
  * 
  * Has the currently logged in user already 
  * upvoted a particular story
@@ -10,7 +10,7 @@
  * @return string
  * 
  */
-function already_upvoted($story_id = 0, $user_id = 0)
+function story_upvoted($story_id = 0, $user_id = 0)
 {
     $CI =& get_instance();
     $CI->load->model('vote/vote_model', 'vote');
@@ -21,7 +21,7 @@ function already_upvoted($story_id = 0, $user_id = 0)
 }
 
 /**
- * Already Downvoted
+ * Story Downvoted
  * 
  * Has the currently logged in user already 
  * downvoted a particular story
@@ -30,7 +30,7 @@ function already_upvoted($story_id = 0, $user_id = 0)
  * @return string
  * 
  */
-function already_downvoted($story_id = 0, $user_id = 0)
+function story_downvoted($story_id = 0, $user_id = 0)
 {
     $CI =& get_instance();
     $CI->load->model('vote/vote_model', 'vote');

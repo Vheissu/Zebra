@@ -7,6 +7,13 @@ class Story_model extends MY_Model {
     protected $has_many    = array('comment', 'topic', 'vote');
     protected $belongs_to  = array('user');
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->load->model('user/user_model');
+    }
+
     public function get_popular_stories($limit = 50, $offset = 0)
     {
         $table = $this->db->dbprefix.$this->_table;
@@ -17,7 +24,15 @@ class Story_model extends MY_Model {
             FROM '.$table.' ORDER BY rank DESC LIMIT '.$offset.', '.$limit.''
         );
 
-        return $stories->result();  
+        return ($stories->num_rows() >= 1) ? $stories->result() : FALSE;  
+    }
+
+    public function get_new_stories($limit = 50, $offset = 0)
+    {
+        $this->db->order_by("created", "DESC");
+        $stories = $this->db->get($this->_table, $limit, $offset);
+
+        return ($stories->num_rows() >= 1) ? $stories->result() : FALSE; 
     }
 
 }

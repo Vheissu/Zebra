@@ -525,6 +525,9 @@ header nav li a {
   display: block;
   text-decoration: none;
 }
+header nav li a.current {
+  font-weight: bold;
+}
 #content {
   /* for IE */
   zoom: 1;

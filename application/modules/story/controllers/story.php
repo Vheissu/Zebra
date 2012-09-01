@@ -18,7 +18,7 @@ class Story extends MY_Controller {
         }
 
 		// Get all stories
-		$this->data['stories'] = $this->story->get_popular_stories(50, 0);
+		$this->data['stories'] = $this->story->get_popular_stories(50, $page);
 
 		$this->parser->parse('stories', $this->data);
 	}
@@ -39,13 +39,16 @@ class Story extends MY_Controller {
             $text  = $this->input->post('text', '');
 
             $field_data = array(
-                'title'       => $title,
-                'slug'        => $slug,
-                'link'        => $link,
-                'description' => $text
+                'user_id'       => 1,
+                'title'         => $title,
+                'slug'          => $slug,
+                'external_link' => $link,
+                'description'   => $text,
+                'upvotes'       => 1,
+                'created'       => time()
             );
 
-            $insert = $this->story->insert($field);
+            $insert = $this->story->insert($field_data);
 
             if ($insert)
             {
@@ -53,6 +56,22 @@ class Story extends MY_Controller {
                 redirect('stories/new');
             }
         }    
+    }
+
+    public function new_stories($page = 0)
+    {
+        $this->data['current_segment'] = "new";
+
+        // Page 1 is technically page zero
+        if ($page == 1)
+        {
+            $page = 0;
+        }
+
+        // Get all stories
+        $this->data['stories'] = $this->story->get_new_stories(50, $page);
+
+        $this->parser->parse('stories', $this->data); 
     }
 }
 

@@ -30,6 +30,25 @@ if (!function_exists('auth_errors'))
     }
 }
 
+if (!function_exists('current_user_id'))
+{
+	/**
+	 * Current User ID
+	 *
+	 * Helper function for checking getting the ID of
+	 * the currently logged in user
+	 *
+	 */
+	function current_user_id()
+	{
+        $CI =& get_instance();
+        $CI->load->library('wolfauth');
+
+		return $CI->wolfauth->user_id();
+	}
+}
+
+
 if (!function_exists('logged_in'))
 {
 	/**
@@ -55,17 +74,17 @@ if (!function_exists('login'))
 	 *
 	 * Helper function for logging a user in
 	 *
-	 * @param string $email - Email address
+	 * @param string $username - Username
 	 * @param string $password - The password
 	 * @param string $redirect_to - Redirect here after login
 	 *
 	 */
-	function login($email, $password, $redirect_to = '')
+	function login($username, $password, $redirect_to = '')
 	{
         $CI =& get_instance();
         $CI->load->library('wolfauth');
 
-		return $CI->wolfauth->login($email, $password, $redirect_to);
+		return $CI->wolfauth->login($username, $password, $redirect_to);
 	}
 }
 
@@ -77,15 +96,15 @@ if (!function_exists('force_login'))
 	 * Helper function for logging in as a user
 	 * without needing a password.
 	 *
-	 * @param string $email - Email address
+	 * @param string $username - Username
 	 *
 	 */
-	function force_login($email)
+	function force_login($username)
 	{
         $CI =& get_instance();
         $CI->load->library('wolfauth');
 
-		return $CI->wolfauth->force_login($email);
+		return $CI->wolfauth->force_login($username);
 	}
 }
 
@@ -158,15 +177,14 @@ if (!function_exists('get_user'))
 	 * Helper function for getting a user from the database
 	 * if the user exists or not.
 	 *
-	 * @param string $email - Email address
-	 *
+	 * @param string $username - Username
 	 */
-	function get_user($email)
+	function get_user($username)
 	{
 		$CI =& get_instance();
 		$CI->load->model('wolfauth_m');
 
-		return $CI->wolfauth_m->get_user($email);
+		return $CI->wolfauth_m->get_user($username);
 	}
 }
 
