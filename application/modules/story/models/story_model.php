@@ -11,6 +11,7 @@ class Story_model extends MY_Model {
     {
         parent::__construct();
 
+        $this->load->helper('story');
         $this->load->model('user/user_model');
     }
 

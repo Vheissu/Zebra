@@ -1,5 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+function get_username($user_id)
+{
+	$user = get_user_by_id($user_id);
+
+	return ($user) ? $user->row('username') : FALSE;
+}
+
 function cast_vote($direction = "up", $story_id = 0, $reason_id = 0)
 {
 	// Get the currently logged in user ID
@@ -15,7 +22,7 @@ function cast_vote($direction = "up", $story_id = 0, $reason_id = 0)
 		{
 			if (!already_upvoted($story_id, $user_id))
 			{
-				
+
 			}
 		}
 	}
