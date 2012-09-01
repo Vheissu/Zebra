@@ -6,6 +6,7 @@ class Story extends MY_Controller {
     {
         parent::__construct();
 
+        $this->load->helper('date');
         $this->load->model('story_model', 'story');
     }
 

@@ -7,7 +7,6 @@ $route['stories']     = 'story';
 $route['stories/new'] = 'story/new_stories';
 $route['stories/new/(:num)'] = 'story/new_stories/$1';
 $route['stories/(:num)'] = 'story/index/$1';
-$route['stories/recently-popular'] = 'story/recently_popular';
 $route['story/(:num)/(:any)'] = 'story/view/$1/$2';
 $route['story/submit'] = 'story/submit';
 

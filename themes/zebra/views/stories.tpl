@@ -22,7 +22,7 @@
 							<a class="story-title" href="story/{$story->id}/{$story->slug}">{$story->title}</a>
 						{/if}
 						<div class="story-meta">
-							<p>by <a href="user/{strtolower(get_username($story->user_id))}">{strtolower(get_username($story->user_id))}</a> 6 hours ago | <a href="story/{$story->id}/{$story->slug}#comments">5 comments</a></p>
+							<p>by <a href="user/{strtolower(get_username($story->user_id))}">{strtolower(get_username($story->user_id))}</a> {timespan($story->created, time(), 1)} ago | <a href="story/{$story->id}/{$story->slug}#comments">5 comments</a></p>
 						</div>
 					</div>
 				</div>

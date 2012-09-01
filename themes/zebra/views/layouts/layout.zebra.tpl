@@ -34,7 +34,6 @@
             <nav>
               <ul>
                   <li><a href="{base_url('stories/new')}" {if $current_segment == 'new'}class="current"{/if}>New</a></li>
-                  <li><a href="{base_url('stories/recently-popular')}" {if $current_segment == 'recently_popular'}class="current"{/if}>Recently Popular</a></li>
                   <li><a href="{base_url('comments/latest')}" {if $current_segment == 'comments'}class="current"{/if}>Comments</a></li>
                   <li><a href="{base_url('story/submit')}" {if $current_segment == 'submit'}class="current"{/if}>Submit</a></li>
               </ul>   
