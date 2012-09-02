@@ -11,10 +11,10 @@ class Topic_model extends MY_Model {
     	$table  = $this->db->dbprefix.$this->_table;
         $prefix = $this->db->dbprefix;
 
-    	$this->db->select('zebra_topics.name, zebra_topics.slug');
-        $this->db->from('stories_topics');
-        $this->db->join('zebra_topics', 'zebra_topics.id = zebra_stories_topics.topic_id');
-        $this->db->where('zebra_stories.id', $story_id);
+    	$this->db->select('t.name, t.slug');
+        $this->db->from('stories_topics st');
+        $this->db->where('st.story_id', $story_id);
+        $this->db->join('topics t', 't.id = st.topic_id');
         $this->db->limit($limit, 0);
 
     	$topics = $this->db->get();
