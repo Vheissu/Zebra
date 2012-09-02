@@ -613,7 +613,8 @@ header nav li a.current {
   color: #888888;
   padding: 0 8px 0 0;
 }
-.form-row input,
+.form-row input[type=text],
+.form-row input[type=password],
 .form-row textarea {
   padding: 5px;
   width: 35%;
