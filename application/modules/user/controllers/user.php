@@ -16,6 +16,8 @@ class User extends MY_Controller {
 
     public function login()
     {
+        $this->data['page']['title'] = "Login";
+
         if (!$this->input->post())
         {
             $this->parser->parse('login.tpl', $this->data);
@@ -28,6 +30,11 @@ class User extends MY_Controller {
             if ($this->wolfauth->login($username, $password))
             {
                 redirect(base_url());
+            }
+            else
+            {
+                $this->session->set_flashdata('error', $this->wolfauth->auth_errors());
+                $this->parser->parse('login.tpl', $this->data);        
             }
         }
     }
