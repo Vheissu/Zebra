@@ -9,7 +9,7 @@
 			<input type="text" name="link" id="link" placeholder="Website URL">
 		</div>
 		<div class="form-row">
-			<textarea name="text" id="text" placeholder="Something smart, something witty but most of all make sure it's not shitty." rows="6" cols="50"></textarea>
+			<textarea name="text" id="text" placeholder="Something smart, something witty." rows="6" cols="50"></textarea>
 		</div>
 		<div class="form-row button-row">
 			<input type="submit" name="submit" value="Submit">

@@ -1,6 +1,7 @@
 {extends file='layout.zebra.tpl'}
 
 {block name=content}
+	
 	{if $stories}
 		<div id="story-book">
 			{foreach $stories AS $story}
@@ -21,7 +22,6 @@
 						{else}
 							<a class="story-title" href="story/{$story->id}/{$story->slug}">{$story->title}</a>
 						{/if}
-						{get_story_topics($story->id)}
 						<div class="story-meta">
 							<p>by <a href="user/{strtolower(get_username($story->user_id))}">{strtolower(get_username($story->user_id))}</a> {timespan($story->created, time(), 1)} ago | <a href="story/{$story->id}/{$story->slug}#comments">5 comments</a></p>
 						</div>

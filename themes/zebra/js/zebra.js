@@ -4,8 +4,9 @@
     
     $(function() {
 
-        pageEls.link = $("#link");
-        pageEls.text = $("#text");
+        pageEls.link   = $("#link");
+        pageEls.text   = $("#text");
+        pageEls.topics = $("#topics");
 
         $(".story-voting").on("click", "a", function(e) {
 

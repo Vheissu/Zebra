@@ -4,7 +4,7 @@ class Story_model extends MY_Model {
 
 	protected $_table = 'stories';
 
-    protected $has_many    = array('comment', 'topic', 'vote');
+    protected $has_many    = array('comment', 'vote');
     protected $belongs_to  = array('user');
 
     public function __construct()
@@ -12,7 +12,6 @@ class Story_model extends MY_Model {
         parent::__construct();
 
         $this->load->helper('story');
-        $this->load->helper('topic/topic');
         $this->load->model('user/user_model');
     }
 

@@ -23,7 +23,7 @@ class Ajax extends MY_Controller {
     public function vote()
     {
         // Result to return
-        $result "Invalid action or URL parameter(s).";
+        $result = 'Invalid action or URL parameter(s).';
 
         if ($this->input->post('action'))
         {
@@ -36,14 +36,14 @@ class Ajax extends MY_Controller {
                 case 'upvote':
                     if (cast_vote('up', $story_id))
                     {
-                        $result = "success|upvote|"$story_id"";
+                        $result = "success|upvote|".$story_id."";
                     }
                 break;
 
                 case 'downvote':
                     if (cast_vote('down', $story_id, $reason))
                     {
-                        $result = "success|downvote|"$story_id"";
+                        $result = "success|downvote|".$story_id."";
                     }
                 break;
             }
