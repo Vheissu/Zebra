@@ -614,6 +614,8 @@ header nav li a.current {
   padding: 0 8px 0 0;
 }
 .form-row input[type=text],
+.form-row input[type=email],
+.form-row input[type=number],
 .form-row input[type=password],
 .form-row textarea {
   padding: 5px;

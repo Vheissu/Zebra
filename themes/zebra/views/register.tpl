@@ -1,7 +1,8 @@
 {extends file='layout.zebra.tpl'}
 
 {block name=content}
-	<form id="login-form" action="login" method="POST">
+	{get_flashdata('error')}
+	<form id="login-form" action="register" method="POST">
 		<div class="form-row">
 			<input type="text" name="username" id="username" placeholder="Username max characters 20">
 		</div>

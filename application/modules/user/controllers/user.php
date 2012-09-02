@@ -34,6 +34,8 @@ class User extends MY_Controller {
 
     public function register()
     {
+        $this->data['page']['title'] = "Register";
+
         if (!$this->input->post())
         {
             $this->parser->parse('register.tpl', $this->data);
@@ -47,7 +49,13 @@ class User extends MY_Controller {
             if ($this->wolfauth->add_user($username, $email, $password))
             {
                 $this->session->set_flashdata('success', lang('register_success'));
+                $this->wolfauth->force_login($username);
                 redirect(base_url());
+            }
+            else
+            {
+                $this->session->set_flashdata('error', $this->wolfauth->auth_errors());
+                $this->parser->parse('register.tpl', $this->data);    
             }
         }
     }

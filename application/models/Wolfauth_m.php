@@ -15,7 +15,7 @@ class Wolfauth_m extends CI_Model {
 	public function get_user($username)
 	{
 		$this->db->select(''.$this->db->dbprefix.'users.*, '.$this->db->dbprefix.'roles.role_name, '.$this->db->dbprefix.'roles.role_display_name');
-		$this->db->where(''.$this->db->dbprefix.'users.username', $email);
+		$this->db->where(''.$this->db->dbprefix.'users.username', $username);
 		$this->db->join('roles', ''.$this->db->dbprefix.'roles.role_id = '.$this->db->dbprefix.'users.role_id');
 
 		$user = $this->db->get('users', 1, 0);
@@ -78,10 +78,11 @@ class Wolfauth_m extends CI_Model {
 	 * @return Insert ID on success or False on failure
 	 *
 	 */
-	public function add_user($email, $password, $role_id = 1, $status = "active", $additional_data = array())
+	public function add_user($username, $email, $password, $role_id = 1, $status = "active", $additional_data = array())
 	{
 		$data = array(
 			'role_id'       => $role_id,
+			'username'      => $username,
 			'email'         => $email,
 			'password'      => $password,
 			'register_date' => time(),
