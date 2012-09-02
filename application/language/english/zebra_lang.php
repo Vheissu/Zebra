@@ -2,4 +2,5 @@
 
 $lang['user_not_logged_in'] = "Only logged in users can vote";
 
+$lang['register_success']   = "You have successfully registered";
 $lang['submission_success'] = "Story submitted successfully";
