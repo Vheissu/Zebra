@@ -7,7 +7,7 @@ function get_story_topics($story_id, $limit = 3)
 
 	$topics =  $CI->topic->get_story_topics($story_id, $limit);
 
-	$html = '';
+	$html = false;
 
 	if ($topics)
 	{

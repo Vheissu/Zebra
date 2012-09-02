@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-09-01 13:08:34
+Date: 2012-09-02 20:06:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -98,7 +98,7 @@ CREATE TABLE `zebra_sessions` (
 -- ----------------------------
 -- Records of zebra_sessions
 -- ----------------------------
-INSERT INTO zebra_sessions VALUES ('33f2cc43b69dcf4a617870532dde982e', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346468340', '');
+INSERT INTO zebra_sessions VALUES ('b038850a70e22acb334cc35372d4a58e', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1', '1346567204', '');
 
 -- ----------------------------
 -- Table structure for `zebra_stories`
@@ -117,7 +117,7 @@ CREATE TABLE `zebra_stories` (
   `created` int(5) NOT NULL DEFAULT '0',
   `updated` int(5) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_stories
@@ -131,6 +131,8 @@ INSERT INTO zebra_stories VALUES ('6', '1', 'What Powers Etsy', 'what-powers-ets
 INSERT INTO zebra_stories VALUES ('7', '1', 'What Is Good API Design?', 'what-is-good-api-design', null, 'http://richardminerich.com/2012/08/what-is-good-api-design/', '1', '0', '0', '1346465234', '0');
 INSERT INTO zebra_stories VALUES ('8', '1', 'Open WebOS Beta Officially Released', 'open-webos-beta-officially-released', null, 'http://blog.openwebosproject.org/post/30593510898/open-webos-august-edition', '1', '0', '0', '1346465259', '0');
 INSERT INTO zebra_stories VALUES ('9', '1', 'Moving From Heroku To Hardware', 'moving-from-heroku-to-hardware', null, 'http://justcramer.com/2012/08/30/how-noops-works-for-sentry/', '1', '0', '0', '1346288196', '0');
+INSERT INTO zebra_stories VALUES ('10', '1', 'The Human Who Outrun Horses', 'the-human-who-outrun-horses', null, 'http://www.smh.com.au/world/science/the-humans-who-outrun-horses-20120606-1zv96.html', '1', '0', '0', '1346469806', '0');
+INSERT INTO zebra_stories VALUES ('11', '1', 'Birds Hold \'Funerals\' For Dead', 'birds-hold-funerals-for-dead', null, 'http://www.bbc.co.uk/nature/19421217', '1', '0', '0', '1346470110', '0');
 
 -- ----------------------------
 -- Table structure for `zebra_stories_topics`

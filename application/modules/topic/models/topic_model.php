@@ -8,13 +8,16 @@ class Topic_model extends MY_Model {
 
     public function get_story_topics($story_id, $limit = 3)
     {
-    	$table = $this->db->dbprefix.$this->_table;
+    	$table  = $this->db->dbprefix.$this->_table;
+        $prefix = $this->db->dbprefix;
 
-    	$this->db->select("".$table.".name, ".$table.".slug");
-    	$this->db->join(''.$this->db->dbprefix.'stories_topics', ''.$this->db->dbprefix.'stories_topics.story_id = '.$table.'.id ');
-        $this->db->where($table.'.id', $story_id);
+    	$this->db->select('zebra_topics.name, zebra_topics.slug');
+        $this->db->from('stories_topics');
+        $this->db->join('zebra_topics', 'zebra_topics.id = zebra_stories_topics.topic_id');
+        $this->db->where('zebra_stories.id', $story_id);
+        $this->db->limit($limit, 0);
 
-    	$topics = $this->db->get($this->_table, $limit, 0);
+    	$topics = $this->db->get();
 
     	return ($topics->num_rows() >= 1) ? $topics->result() : FALSE;
     }
