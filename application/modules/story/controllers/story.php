@@ -55,6 +55,8 @@ class Story extends MY_Controller {
 
                 if ($insert)
                 {
+                    $this->load->model('user/user_model', 'user');
+                    $this->user->increment_submission_count(current_user_id());
                     $this->session->set_flashdata('success', lang('submission_success'));
                     redirect('stories/new');
                 }
