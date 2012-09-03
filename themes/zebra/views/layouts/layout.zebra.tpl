@@ -41,7 +41,7 @@
 
             <nav id="meta-links">
             {if logged_in()}
-            <a href="user/{strtolower(get_userdata('username'))}">{get_userdata('username')}</a>
+            <a href="user/{strtolower(get_userdata('username'))}">{get_userdata('username')} ({get_user_karma()})</a> | <a href="logout">Logout</a>
             {else}
             <a href="login">Login</a> <span>|</span> <a href="register">Register</a>
             {/if}

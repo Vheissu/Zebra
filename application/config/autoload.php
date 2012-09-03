@@ -107,7 +107,7 @@ $autoload['drivers'] = array('session');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'zebra', 'language');
+$autoload['helper'] = array('url', 'zebra', 'user/user', 'language');
 
 
 /*
