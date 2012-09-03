@@ -25,5 +25,9 @@ function cast_vote($direction = "up", $story_id = 0, $reason_id = 0)
 
 			}
 		}
+		elseif ($direction == 'down')
+		{
+
+		}
 	}
 }

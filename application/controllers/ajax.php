@@ -2,12 +2,6 @@
 
 class Ajax extends MY_Controller {
 
-    public function __construct()
-    {
-        // Story helper allows us to perform votes, etc
-        $this->load->helper('story/story');
-    }
-
 	public function index()
 	{
 		die('Access Denied');
@@ -22,6 +16,12 @@ class Ajax extends MY_Controller {
      */ 
     public function vote()
     {
+        // Story helper allows us to perform votes, etc
+        $this->load->helper('story/story');
+
+        // User helper for user related things
+        $this->load->helper('user/user');
+
         // Result to return
         $result = 'Invalid action or URL parameter(s).';
 
@@ -48,6 +48,8 @@ class Ajax extends MY_Controller {
                 break;
             }
         }
+
+        set_status_header(200);
 
         die ($result);
     }

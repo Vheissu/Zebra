@@ -97,7 +97,6 @@
 
             up: function(story_id) {
                 if (base_url) {
-
                     if (processing == false) {
                         processing = true;
                         $.post(base_url + 'ajax/vote', { action: "upvote", story_id: story_id }, function(response) {
