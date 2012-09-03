@@ -10,7 +10,7 @@
 			<p><span>User:</span> {$user.username}</p>
 			<p><span>Created:</span> {timespan($user.register_date, now(), 1)} ago</p>
 			<p><strong>Submissions</strong></p>
-			<p>Number of submissions: {$user.meta.submissions}</p>
+			<p>Number of submissions: {$user.meta->submissions}</p>
 		</div>
 	</div>
 	{/if}

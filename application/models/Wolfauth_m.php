@@ -93,7 +93,7 @@ class Wolfauth_m extends CI_Model {
 		$this->db->insert('users', $data);
 
 		// If we have user meta to insert
-		if (!empty($addition_data) AND $this->db->insert_id())
+		if (!empty($additional_data) AND $this->db->insert_id())
 		{
 			$this->add_user_meta($this->db->insert_id(), $additional_data);
 		}
@@ -205,7 +205,7 @@ class Wolfauth_m extends CI_Model {
 			}
 		}
 
-		return $data;
+		return (object) $data;
 	}
 
 }

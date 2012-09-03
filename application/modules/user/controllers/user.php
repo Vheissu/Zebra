@@ -24,9 +24,10 @@ class User extends MY_Controller {
             $this->data['page']['title'] = "Profile of ".$user->row('username')."";
 
             $this->data['user'] = array(
-                'username' => $user->row('username'),
-                'email'    => $user->row('email'),
-                'meta'     => $this->wolfauth->get_user_meta($user->row('id'))
+                'username'      => $user->row('username'),
+                'email'         => $user->row('email'),
+                'register_date' => $user->row('register_date'),
+                'meta'          => $this->wolfauth->get_user_meta($user->row('id'))
             );
 
             $this->parser->parse('profile.tpl', $this->data);
