@@ -6,6 +6,7 @@ class User extends MY_Controller {
     {
         parent::__construct();
 
+        $this->load->helper('date');
         $this->load->library('wolfauth');
     }
 

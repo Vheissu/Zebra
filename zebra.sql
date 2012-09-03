@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2012-09-03 13:00:31
+Date: 2012-09-03 13:05:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -99,7 +99,7 @@ CREATE TABLE `zebra_sessions` (
 -- ----------------------------
 -- Records of zebra_sessions
 -- ----------------------------
-INSERT INTO `zebra_sessions` VALUES ('bb4b8bf6db6e78958eb3ab4ed8ebfa6d', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346641045', 'a:4:{s:7:\"user_id\";s:1:\"2\";s:8:\"username\";s:5:\"Maxxx\";s:7:\"role_id\";s:1:\"1\";s:9:\"role_name\";s:4:\"user\";}');
+INSERT INTO `zebra_sessions` VALUES ('c35080d3552c25b056f23820fcafc638', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346641350', 'a:4:{s:7:\"user_id\";s:1:\"2\";s:8:\"username\";s:5:\"Maxxx\";s:7:\"role_id\";s:1:\"1\";s:9:\"role_name\";s:4:\"user\";}');
 
 -- ----------------------------
 -- Table structure for `zebra_stories`
@@ -157,8 +157,8 @@ CREATE TABLE `zebra_users` (
 -- ----------------------------
 -- Records of zebra_users
 -- ----------------------------
-INSERT INTO `zebra_users` VALUES ('1', '3', 'Zebra', 'wolf@wolfphp.com', '1c40ed3c114c927b0c77bcea4a200f4348cd806bce9b6b641df2f586432ae8d6', '1346121757', '', 'active', null);
-INSERT INTO `zebra_users` VALUES ('2', '1', 'Maxxx', 'throwaway@hotmail.com', '6fcf016c8435510cd7cb42fd355a1d72a80abe4fdacff89e1d4dfa72d164770e', '1346627308', '', 'active', null);
+INSERT INTO `zebra_users` VALUES ('1', '3', 'Zebra', 'wolf@wolfphp.com', '1c40ed3c114c927b0c77bcea4a200f4348cd806bce9b6b641df2f586432ae8d6', '1338865395', '', 'active', null);
+INSERT INTO `zebra_users` VALUES ('2', '1', 'Maxxx', 'throwaway@hotmail.com', '6fcf016c8435510cd7cb42fd355a1d72a80abe4fdacff89e1d4dfa72d164770e', '1342580595', '', 'active', null);
 
 -- ----------------------------
 -- Table structure for `zebra_user_meta`
