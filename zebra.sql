@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2012-09-03 14:26:20
+Date: 2012-09-03 16:48:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,6 +21,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `zebra_comments`;
 CREATE TABLE `zebra_comments` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(5) NOT NULL DEFAULT '0',
   `story_id` bigint(20) NOT NULL,
   `user_id` bigint(20) unsigned NOT NULL,
   `comment` text NOT NULL,
@@ -29,11 +30,12 @@ CREATE TABLE `zebra_comments` (
   `created` int(5) NOT NULL DEFAULT '0',
   `updated` int(5) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_comments
 -- ----------------------------
+INSERT INTO `zebra_comments` VALUES ('1', '0', '8', '1', 'Will definitely keep my ears open for further announcements. As much as I avoid webOS due to the lack of quality apps, booting into it even for a short while causes me to realize just how smooth its UX is and how awkward and backwards in a lot of ways the other mobile OSs are.', '12', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `zebra_permissions`
@@ -99,7 +101,7 @@ CREATE TABLE `zebra_sessions` (
 -- ----------------------------
 -- Records of zebra_sessions
 -- ----------------------------
-INSERT INTO `zebra_sessions` VALUES ('a29f644b2b29844c94a6e80ac9483d4c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346646136', 'a:4:{s:7:\"user_id\";s:1:\"2\";s:8:\"username\";s:5:\"Maxxx\";s:7:\"role_id\";s:1:\"1\";s:9:\"role_name\";s:4:\"user\";}');
+INSERT INTO `zebra_sessions` VALUES ('16956b214b3732241008714af34bf7f5', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346653398', 'a:4:{s:7:\"user_id\";s:1:\"2\";s:8:\"username\";s:5:\"Maxxx\";s:7:\"role_id\";s:1:\"1\";s:9:\"role_name\";s:4:\"user\";}');
 
 -- ----------------------------
 -- Table structure for `zebra_stories`
@@ -114,7 +116,6 @@ CREATE TABLE `zebra_stories` (
   `external_link` varchar(255) DEFAULT NULL,
   `upvotes` int(5) NOT NULL DEFAULT '0',
   `downvotes` int(5) NOT NULL DEFAULT '0',
-  `views` int(10) NOT NULL DEFAULT '0',
   `created` int(5) NOT NULL DEFAULT '0',
   `updated` int(5) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
@@ -123,19 +124,19 @@ CREATE TABLE `zebra_stories` (
 -- ----------------------------
 -- Records of zebra_stories
 -- ----------------------------
-INSERT INTO `zebra_stories` VALUES ('1', '1', 'How We Deploy At Github', 'how-we-deploy-at-github', null, 'https://github.com/blog/1241-deploying-at-github', '22', '4', '0', '1346366020', '0');
-INSERT INTO `zebra_stories` VALUES ('2', '1', 'How Tracking Down My Stolen Computer Triggered a Drug Bust', 'how-tracking-down-my-stolen-computer-triggered-a-drug-bust', null, 'http://blog.makezine.com/2012/08/31/how-tracking-down-my-stolen-computer-triggered-a-drug-bust/', '1', '0', '0', '1346464971', '0');
-INSERT INTO `zebra_stories` VALUES ('3', '1', 'Building Atari With CreateJS', 'building-atari-with-createjs', null, 'http://atari.com/arcade/developers/building-atari-createjs', '1', '0', '0', '1346465070', '0');
-INSERT INTO `zebra_stories` VALUES ('4', '1', 'A Lesson In Timing Attacks', 'a-lesson-in-timing-attacks', null, 'http://codahale.com/a-lesson-in-timing-attacks/', '1', '0', '0', '1346465121', '0');
-INSERT INTO `zebra_stories` VALUES ('5', '1', 'Valve Finds Value In Open-Source Drivers', 'valve-finds-value-in-open-source-drivers', null, 'http://www.phoronix.com/scan.php?page=article&item=intel_valve_linux&num=1', '1', '0', '0', '1346465182', '0');
-INSERT INTO `zebra_stories` VALUES ('6', '1', 'What Powers Etsy', 'what-powers-etsy', null, 'http://codeascraft.etsy.com/2012/08/31/what-hardware-powers-etsy-com/', '1', '0', '0', '1346465205', '0');
-INSERT INTO `zebra_stories` VALUES ('7', '1', 'What Is Good API Design?', 'what-is-good-api-design', null, 'http://richardminerich.com/2012/08/what-is-good-api-design/', '1', '0', '0', '1346465234', '0');
-INSERT INTO `zebra_stories` VALUES ('8', '1', 'Open WebOS Beta Officially Released', 'open-webos-beta-officially-released', null, 'http://blog.openwebosproject.org/post/30593510898/open-webos-august-edition', '1', '0', '0', '1346465259', '0');
-INSERT INTO `zebra_stories` VALUES ('9', '1', 'Moving From Heroku To Hardware', 'moving-from-heroku-to-hardware', null, 'http://justcramer.com/2012/08/30/how-noops-works-for-sentry/', '1', '0', '0', '1346288196', '0');
-INSERT INTO `zebra_stories` VALUES ('10', '1', 'The Human Who Outrun Horses', 'the-human-who-outrun-horses', null, 'http://www.smh.com.au/world/science/the-humans-who-outrun-horses-20120606-1zv96.html', '1', '0', '0', '1346469806', '0');
-INSERT INTO `zebra_stories` VALUES ('11', '1', 'Birds Hold \'Funerals\' For Dead', 'birds-hold-funerals-for-dead', null, 'http://www.bbc.co.uk/nature/19421217', '1', '0', '0', '1346470110', '0');
-INSERT INTO `zebra_stories` VALUES ('12', '2', 'Left Alone by Its Owner, Reddit Soars', 'left-alone-by-its-owner-reddit-soars', null, 'http://www.nytimes.com/2012/09/03/business/media/reddit-thrives-after-advance-publications-let-it-sink-or-swim.html?hp', '1', '0', '0', '1346637769', '0');
-INSERT INTO `zebra_stories` VALUES ('13', '2', 'Apple Never Invented Anything', 'apple-never-invented-anything', null, 'http://www.mondaynote.com/2012/09/02/apple-never-invented-anything/', '1', '0', '0', '1346639849', '0');
+INSERT INTO `zebra_stories` VALUES ('1', '1', 'How We Deploy At Github', 'how-we-deploy-at-github', null, 'https://github.com/blog/1241-deploying-at-github', '22', '4', '1346366020', '0');
+INSERT INTO `zebra_stories` VALUES ('2', '1', 'How Tracking Down My Stolen Computer Triggered a Drug Bust', 'how-tracking-down-my-stolen-computer-triggered-a-drug-bust', null, 'http://blog.makezine.com/2012/08/31/how-tracking-down-my-stolen-computer-triggered-a-drug-bust/', '1', '0', '1346464971', '0');
+INSERT INTO `zebra_stories` VALUES ('3', '1', 'Building Atari With CreateJS', 'building-atari-with-createjs', null, 'http://atari.com/arcade/developers/building-atari-createjs', '1', '0', '1346465070', '0');
+INSERT INTO `zebra_stories` VALUES ('4', '1', 'A Lesson In Timing Attacks', 'a-lesson-in-timing-attacks', null, 'http://codahale.com/a-lesson-in-timing-attacks/', '1', '0', '1346465121', '0');
+INSERT INTO `zebra_stories` VALUES ('5', '1', 'Valve Finds Value In Open-Source Drivers', 'valve-finds-value-in-open-source-drivers', null, 'http://www.phoronix.com/scan.php?page=article&item=intel_valve_linux&num=1', '1', '0', '1346465182', '0');
+INSERT INTO `zebra_stories` VALUES ('6', '1', 'What Powers Etsy', 'what-powers-etsy', null, 'http://codeascraft.etsy.com/2012/08/31/what-hardware-powers-etsy-com/', '1', '0', '1346465205', '0');
+INSERT INTO `zebra_stories` VALUES ('7', '1', 'What Is Good API Design?', 'what-is-good-api-design', null, 'http://richardminerich.com/2012/08/what-is-good-api-design/', '1', '0', '1346465234', '0');
+INSERT INTO `zebra_stories` VALUES ('8', '1', 'Open WebOS Beta Officially Released', 'open-webos-beta-officially-released', null, 'http://blog.openwebosproject.org/post/30593510898/open-webos-august-edition', '1', '0', '1346465259', '0');
+INSERT INTO `zebra_stories` VALUES ('9', '1', 'Moving From Heroku To Hardware', 'moving-from-heroku-to-hardware', null, 'http://justcramer.com/2012/08/30/how-noops-works-for-sentry/', '1', '0', '1346288196', '0');
+INSERT INTO `zebra_stories` VALUES ('10', '1', 'The Human Who Outrun Horses', 'the-human-who-outrun-horses', null, 'http://www.smh.com.au/world/science/the-humans-who-outrun-horses-20120606-1zv96.html', '1', '0', '1346469806', '0');
+INSERT INTO `zebra_stories` VALUES ('11', '1', 'Birds Hold \'Funerals\' For Dead', 'birds-hold-funerals-for-dead', null, 'http://www.bbc.co.uk/nature/19421217', '1', '0', '1346470110', '0');
+INSERT INTO `zebra_stories` VALUES ('12', '2', 'Left Alone by Its Owner, Reddit Soars', 'left-alone-by-its-owner-reddit-soars', null, 'http://www.nytimes.com/2012/09/03/business/media/reddit-thrives-after-advance-publications-let-it-sink-or-swim.html?hp', '1', '0', '1346637769', '0');
+INSERT INTO `zebra_stories` VALUES ('13', '2', 'Apple Never Invented Anything', 'apple-never-invented-anything', null, 'http://www.mondaynote.com/2012/09/02/apple-never-invented-anything/', '1', '0', '1346639849', '0');
 
 -- ----------------------------
 -- Table structure for `zebra_users`
