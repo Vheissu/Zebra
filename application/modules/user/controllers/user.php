@@ -14,6 +14,24 @@ class User extends MY_Controller {
 
 	}
 
+    public function view($username)
+    {
+        $user = get_user($username);
+
+        if ($user)
+        {
+            $this->data['page']['title'] = "Profile of ".$user->row('username')."";
+
+            $this->data['user'] = array(
+                'username' => $user->row('username'),
+                'email'    => $user->row('email'),
+                'meta'     => $this->wolfauth->get_user_meta($user->row('id'))
+            );
+
+            $this->parser->parse('profile.tpl', $this->data);
+        }
+    }
+
     public function login()
     {
         $this->data['page']['title'] = "Login";

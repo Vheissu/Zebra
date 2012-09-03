@@ -405,6 +405,20 @@ class Wolfauth {
 		return $this->CI->permissions_m->delete_permission_by_id($permission_id);
 	}
 
+    /**
+     * Get User Meta
+     *
+     * Get user meta for a particular user from the user_meta
+     * table.
+     *
+     * @param $permission_id
+     * @return array
+     */
+    public function get_user_meta($user_id)
+    {
+        return $this->CI->wolfauth_m->get_user_meta($user_id);
+    }
+
 	/**
 	 * Hash
 	 *

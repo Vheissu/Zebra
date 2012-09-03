@@ -178,4 +178,34 @@ class Wolfauth_m extends CI_Model {
 		return ($this->db->affected_rows() >= 1) ? TRUE : FALSE;
 	}
 
+	/**
+	 * Get User Meta
+	 *
+	 * Retrieve user meta for a particular user
+	 * in the user meta table.
+	 *
+	 * @param int $user_id - User ID
+	 * @return array
+	 *
+	 */
+	public function get_user_meta($user_id)
+	{
+		$data = array();
+
+		$this->db->where('user_id', $user_id);
+		$this->db->from('user_meta');
+
+		$meta = $this->db->get();
+
+		if ($meta->num_rows() >= 1)
+		{
+			foreach ($meta->result() AS $row)
+			{
+				$data[$row->umeta_key] = $row->umeta_value;
+			}
+		}
+
+		return $data;
+	}
+
 }
