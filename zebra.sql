@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2012-09-03 08:21:20
+Date: 2012-09-03 13:00:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -99,7 +99,7 @@ CREATE TABLE `zebra_sessions` (
 -- ----------------------------
 -- Records of zebra_sessions
 -- ----------------------------
-INSERT INTO `zebra_sessions` VALUES ('76d00b9032099171cd0c4d10e41a3c94', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346624191', '');
+INSERT INTO `zebra_sessions` VALUES ('bb4b8bf6db6e78958eb3ab4ed8ebfa6d', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346641045', 'a:4:{s:7:\"user_id\";s:1:\"2\";s:8:\"username\";s:5:\"Maxxx\";s:7:\"role_id\";s:1:\"1\";s:9:\"role_name\";s:4:\"user\";}');
 
 -- ----------------------------
 -- Table structure for `zebra_stories`
@@ -118,7 +118,7 @@ CREATE TABLE `zebra_stories` (
   `created` int(5) NOT NULL DEFAULT '0',
   `updated` int(5) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_stories
@@ -134,6 +134,8 @@ INSERT INTO `zebra_stories` VALUES ('8', '1', 'Open WebOS Beta Officially Releas
 INSERT INTO `zebra_stories` VALUES ('9', '1', 'Moving From Heroku To Hardware', 'moving-from-heroku-to-hardware', null, 'http://justcramer.com/2012/08/30/how-noops-works-for-sentry/', '1', '0', '0', '1346288196', '0');
 INSERT INTO `zebra_stories` VALUES ('10', '1', 'The Human Who Outrun Horses', 'the-human-who-outrun-horses', null, 'http://www.smh.com.au/world/science/the-humans-who-outrun-horses-20120606-1zv96.html', '1', '0', '0', '1346469806', '0');
 INSERT INTO `zebra_stories` VALUES ('11', '1', 'Birds Hold \'Funerals\' For Dead', 'birds-hold-funerals-for-dead', null, 'http://www.bbc.co.uk/nature/19421217', '1', '0', '0', '1346470110', '0');
+INSERT INTO `zebra_stories` VALUES ('12', '2', 'Left Alone by Its Owner, Reddit Soars', 'left-alone-by-its-owner-reddit-soars', null, 'http://www.nytimes.com/2012/09/03/business/media/reddit-thrives-after-advance-publications-let-it-sink-or-swim.html?hp', '1', '0', '0', '1346637769', '0');
+INSERT INTO `zebra_stories` VALUES ('13', '2', 'Apple Never Invented Anything', 'apple-never-invented-anything', null, 'http://www.mondaynote.com/2012/09/02/apple-never-invented-anything/', '1', '0', '0', '1346639849', '0');
 
 -- ----------------------------
 -- Table structure for `zebra_users`
@@ -150,12 +152,13 @@ CREATE TABLE `zebra_users` (
   `user_status` enum('active','pending','banned') NOT NULL,
   `remember_me` text,
   PRIMARY KEY (`id`,`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of zebra_users
 -- ----------------------------
 INSERT INTO `zebra_users` VALUES ('1', '3', 'Zebra', 'wolf@wolfphp.com', '1c40ed3c114c927b0c77bcea4a200f4348cd806bce9b6b641df2f586432ae8d6', '1346121757', '', 'active', null);
+INSERT INTO `zebra_users` VALUES ('2', '1', 'Maxxx', 'throwaway@hotmail.com', '6fcf016c8435510cd7cb42fd355a1d72a80abe4fdacff89e1d4dfa72d164770e', '1346627308', '', 'active', null);
 
 -- ----------------------------
 -- Table structure for `zebra_user_meta`
@@ -169,13 +172,16 @@ CREATE TABLE `zebra_user_meta` (
   `created` int(10) NOT NULL DEFAULT '0',
   `updated` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`umeta_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of zebra_user_meta
 -- ----------------------------
 INSERT INTO `zebra_user_meta` VALUES ('1', '1', 'first_name', 'Wolf', '0', '0');
 INSERT INTO `zebra_user_meta` VALUES ('2', '1', 'last_name', 'De Wolfe', '0', '0');
+INSERT INTO `zebra_user_meta` VALUES ('3', '2', 'first_name', 'Max', '0', '0');
+INSERT INTO `zebra_user_meta` VALUES ('4', '2', 'last_name', 'Green', '0', '0');
+INSERT INTO `zebra_user_meta` VALUES ('5', '2', 'submissions', '2', '0', '0');
 
 -- ----------------------------
 -- Table structure for `zebra_votes`
