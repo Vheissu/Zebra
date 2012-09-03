@@ -1,25 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-if (!function_exists('get_flashdata'))
-{
-    function get_flashdata($key)
-    {
-        $CI =& get_instance();
-
-        return $CI->session->flashdata($key);
-    }
-}
-
-if (!function_exists('set_flashdata'))
-{
-    function set_flashdata($key, $value)
-    {
-        $CI =& get_instance();
-
-        return $CI->session->set_flashdata($key, $value);
-    }
-}
-
 if (!function_exists('auth_errors'))
 {
     function auth_errors($before = '<p class="error">', $after = '</p>')
@@ -45,6 +25,24 @@ if (!function_exists('current_user_id'))
         $CI->load->library('wolfauth');
 
 		return $CI->wolfauth->user_id();
+	}
+}
+
+
+if (!function_exists('current_username'))
+{
+	/**
+	 * Current Username
+	 *
+	 * Helper function for checking getting the username of
+	 * the currently logged in user
+	 *
+	 */
+	function current_username()
+	{
+    	$username = get_sessiondata('username');
+
+    	return ($username) ? $username : FALSE;
 	}
 }
 

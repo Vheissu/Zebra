@@ -4,6 +4,7 @@ $route['default_controller']  = 'story';
 
 $route['login']    = "user/login";
 $route['register'] = "user/register";
+$route['logout']   = "user/logout";
 
 // Story routes
 $route['stories']     = 'story';

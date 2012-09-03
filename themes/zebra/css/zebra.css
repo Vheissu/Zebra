@@ -528,6 +528,13 @@ header nav li a {
 header nav li a.current {
   font-weight: bold;
 }
+header #meta-links {
+  float: right;
+}
+header #meta-links a {
+  color: black;
+  text-decoration: none;
+}
 #content {
   /* for IE */
   zoom: 1;

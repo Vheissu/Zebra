@@ -18,6 +18,7 @@ class Wolfauth {
 		// Load needed Codeigniter Goodness
 		$this->CI->load->database();
         $this->CI->load->library('session');
+        $this->CI->load->helper('session');
 		$this->CI->load->helper('cookie');
 		$this->CI->load->helper('url');
 		$this->CI->load->helper('wolfauth');

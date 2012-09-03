@@ -66,6 +66,12 @@ class User extends MY_Controller {
             }
         }
     }
+
+    public function logout()
+    {
+        $this->session->set_flashdata('success', lang('logout_success'));
+        $this->wolfauth->logout(base_url());
+    }
 }
 
 /* End of file story.php */

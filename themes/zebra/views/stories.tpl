@@ -2,6 +2,7 @@
 
 {block name=content}
 	
+	{get_flashdata('error')}
 	{if $stories}
 		<div id="story-book">
 			{foreach $stories AS $story}

@@ -34,27 +34,35 @@ class Story extends MY_Controller {
         }
         else
         {
-            $title = $this->input->post('title');
-            $slug  = url_title($this->input->post('title'), '-', TRUE);
-            $link  = $this->input->post('link', '');
-            $text  = $this->input->post('text', '');
-
-            $field_data = array(
-                'user_id'       => 1,
-                'title'         => $title,
-                'slug'          => $slug,
-                'external_link' => $link,
-                'description'   => $text,
-                'upvotes'       => 1,
-                'created'       => time()
-            );
-
-            $insert = $this->story->insert($field_data);
-
-            if ($insert)
+            if (logged_in())
             {
-                $this->session->set_flashdata('success', lang('submission_success'));
-                redirect('stories/new');
+                $title = $this->input->post('title');
+                $slug  = url_title($this->input->post('title'), '-', TRUE);
+                $link  = $this->input->post('link', '');
+                $text  = $this->input->post('text', '');
+
+                $field_data = array(
+                    'user_id'       => current_user_id(),
+                    'title'         => $title,
+                    'slug'          => $slug,
+                    'external_link' => $link,
+                    'description'   => $text,
+                    'upvotes'       => 1,
+                    'created'       => time()
+                );
+
+                $insert = $this->story->insert($field_data);
+
+                if ($insert)
+                {
+                    $this->session->set_flashdata('success', lang('submission_success'));
+                    redirect('stories/new');
+                }
+            }
+            else
+            {
+                $this->session->set_flashdata('error', lang('submission_login'));
+                redirect(base_url());
             }
         }    
     }

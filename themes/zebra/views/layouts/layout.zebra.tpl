@@ -39,6 +39,14 @@
               </ul>   
             </nav>
 
+            <nav id="meta-links">
+            {if logged_in()}
+            <a href="user/{strtolower(get_userdata('username'))}">{get_userdata('username')}</a>
+            {else}
+            <a href="login">Login</a> <span>|</span> <a href="register">Register</a>
+            {/if}
+            </nav>
+
         </header>
 
         <div id="content">
