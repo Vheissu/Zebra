@@ -45,4 +45,31 @@ class Story_model extends MY_Model {
         return ($stories->num_rows() >= 1) ? $stories->result() : FALSE; 
     }
 
+    public function get_user_story_votes($user_id)
+    {
+        $this->db->select('upvotes, downvotes');
+        $this->db->where('user_id', $user_id);
+        $stories = $this->db->get($this->_table);
+
+        $upvotes   = 0;
+        $downvotes = 0;
+
+        if ($stories->num_rows() >= 1)
+        {
+            foreach ($stories->result() AS $result)
+            {
+                $upvotes = $upvotes + $result->upvotes;
+
+                if ($result->downvotes !== 0)
+                {
+                    $downvotes = $downvotes + $result->downvotes; 
+                }
+            }
+        }
+
+        $total = $upvotes - $downvotes;
+
+        return $total;   
+    }
+
 }

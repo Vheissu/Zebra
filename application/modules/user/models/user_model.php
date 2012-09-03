@@ -6,7 +6,13 @@ class User_model extends MY_Model {
 
     public function get_user_karma($user_id)
     {
-        return 25;
+        $this->load->model('comment/comment_model', 'comment');
+        $this->load->model('story/story_model', 'story');
+
+        $story_votes   = $this->story->get_user_story_votes($user_id);
+        $comment_votes = $this->comment->get_user_comment_votes($user_id);
+
+        return $story_votes + $comment_votes;
     }
 
     public function get_users($limit = 50, $offset = 0)
