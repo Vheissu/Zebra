@@ -36,4 +36,13 @@ class Story_model extends MY_Model {
         return ($stories->num_rows() >= 1) ? $stories->result() : FALSE; 
     }
 
+    public function get_user_stories($limit = 50, $offset = 0, $user_id)
+    {
+        $this->db->order_by("created", "DESC");
+        $this->db->where('user_id', $user_id);
+        $stories = $this->db->get($this->_table, $limit, $offset);
+
+        return ($stories->num_rows() >= 1) ? $stories->result() : FALSE; 
+    }
+
 }

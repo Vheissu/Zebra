@@ -6,6 +6,8 @@ $route['login']    = "user/login";
 $route['register'] = "user/register";
 $route['logout']   = "user/logout";
 
+$route['user/(:any)/stories/(:num)'] = "story/user_stories/$1/$2";
+$route['user/(:any)/stories'] = "story/user_stories/$1";
 $route['user/(:any)'] = "user/view/$1";
 
 // Story routes

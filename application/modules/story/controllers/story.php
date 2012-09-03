@@ -82,6 +82,23 @@ class Story extends MY_Controller {
 
         $this->parser->parse('stories', $this->data); 
     }
+
+    public function user_stories($username, $page = 0)
+    {
+        // Page 1 is technically page zero
+        if ($page == 1)
+        {
+            $page = 0;
+        }
+
+        $user = get_user($username);
+        $user_id = $user->row('id');
+
+        // Get all stories
+        $this->data['stories'] = $this->story->get_user_stories(50, $page, $user_id);
+
+        $this->parser->parse('stories', $this->data);     
+    }
 }
 
 /* End of file story.php */
