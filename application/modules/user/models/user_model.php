@@ -4,6 +4,14 @@ class User_model extends MY_Model {
 
 	protected $_table = 'users';
 
+    /**
+     * Get User Karma
+     * 
+     * Calculates a users karma score
+     * 
+     * @param int $user_id
+     * 
+     */
     public function get_user_karma($user_id)
     {
         $this->load->model('comment/comment_model', 'comment');
@@ -13,6 +21,29 @@ class User_model extends MY_Model {
         $comment_votes = $this->comment->get_user_comment_votes($user_id);
 
         return $story_votes + $comment_votes;
+    }
+
+    /**
+     * Calculate Average KArma
+     * 
+     * Calculates a users average karma score
+     * 
+     * @param int $user_id
+     * 
+     */
+    public function calculate_average_karma($user_id)
+    {
+        $user  = get_user_by_id($user_id);
+        $karma = get_user_karma($user_id);
+        
+        if ($user)
+        {
+            $days = abs($user->row('register_date') - now())/60/60/24;
+
+            $average = round(($karma/$days), 2);
+
+            return $average;
+        }  
     }
 
     public function get_users($limit = 50, $offset = 0)

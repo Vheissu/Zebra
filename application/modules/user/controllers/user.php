@@ -7,6 +7,7 @@ class User extends MY_Controller {
         parent::__construct();
 
         $this->load->helper('date');
+        $this->load->helper('user');
         $this->load->library('wolfauth');
     }
 
@@ -27,6 +28,8 @@ class User extends MY_Controller {
                 'username'      => $user->row('username'),
                 'email'         => $user->row('email'),
                 'register_date' => $user->row('register_date'),
+                'karma'         => get_user_karma($user->row('id')),
+                'average_karma' => calculate_average_karma($user->row('id')),
                 'meta'          => $this->wolfauth->get_user_meta($user->row('id'))
             );
 
@@ -94,4 +97,4 @@ class User extends MY_Controller {
     }
 }
 
-/* End of file story.php */
+/* End of file user.php */
