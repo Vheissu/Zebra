@@ -12,7 +12,9 @@
 			<p><span>Karma:</span> {$user.karma}</p>
 			<p><span>Average Karma:</span> {$user.average_karma}</p>
 			<p><strong>Submissions</strong></p>
-			<p>Number of submissions: {$user.meta->submissions}</p>
+			<p><span>Number of submissions:</span> {$user.meta->submissions}</p>
+			<p><span>Average submissions per day:</span> {$user.average_submissions}</p>
+			<p><a href="user/{$user.username|strtolower}/stories">View all submissions</a></p>
 		</div>
 	</div>
 	{/if}

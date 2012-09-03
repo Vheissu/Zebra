@@ -46,6 +46,31 @@ class User_model extends MY_Model {
         }  
     }
 
+    /**
+     * Calculate Average Submissions
+     * 
+     * Calculates a users average submission score
+     * 
+     * @param int $user_id
+     * 
+     */
+    public function calculate_average_submissions($user_id)
+    {
+        $user  = get_user_by_id($user_id);
+        
+        if ($user)
+        {
+            $user_meta = $this->wolfauth->get_user_meta($user_id);
+
+            $days        = abs($user->row('register_date') - now())/60/60/24;
+            $submissions = $user_meta->submissions;
+
+            $average = round(($submissions/$days), 2);
+
+            return $average;
+        }  
+    }
+
     public function get_users($limit = 50, $offset = 0)
     {
         

@@ -25,3 +25,16 @@ function calculate_average_karma($user_id = 0)
 
     return $CI->user->calculate_average_karma($user_id);
 }
+
+function calculate_average_submissions($user_id = 0)
+{
+    $CI =& get_instance();
+    $CI->load->model('user/user_model', 'user');
+
+    if ($user_id == 0)
+    {
+        $user_id = current_user_id();
+    }
+
+    return $CI->user->calculate_average_submissions($user_id);
+}
