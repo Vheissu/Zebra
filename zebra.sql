@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2012-09-03 13:05:53
+Date: 2012-09-03 14:26:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -99,7 +99,7 @@ CREATE TABLE `zebra_sessions` (
 -- ----------------------------
 -- Records of zebra_sessions
 -- ----------------------------
-INSERT INTO `zebra_sessions` VALUES ('c35080d3552c25b056f23820fcafc638', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346641350', 'a:4:{s:7:\"user_id\";s:1:\"2\";s:8:\"username\";s:5:\"Maxxx\";s:7:\"role_id\";s:1:\"1\";s:9:\"role_name\";s:4:\"user\";}');
+INSERT INTO `zebra_sessions` VALUES ('a29f644b2b29844c94a6e80ac9483d4c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346646136', 'a:4:{s:7:\"user_id\";s:1:\"2\";s:8:\"username\";s:5:\"Maxxx\";s:7:\"role_id\";s:1:\"1\";s:9:\"role_name\";s:4:\"user\";}');
 
 -- ----------------------------
 -- Table structure for `zebra_stories`
@@ -169,19 +169,18 @@ CREATE TABLE `zebra_user_meta` (
   `user_id` bigint(20) NOT NULL,
   `umeta_key` varchar(255) NOT NULL,
   `umeta_value` longtext NOT NULL,
-  `created` int(10) NOT NULL DEFAULT '0',
-  `updated` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`umeta_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of zebra_user_meta
 -- ----------------------------
-INSERT INTO `zebra_user_meta` VALUES ('1', '1', 'first_name', 'Wolf', '0', '0');
-INSERT INTO `zebra_user_meta` VALUES ('2', '1', 'last_name', 'De Wolfe', '0', '0');
-INSERT INTO `zebra_user_meta` VALUES ('3', '2', 'first_name', 'Max', '0', '0');
-INSERT INTO `zebra_user_meta` VALUES ('4', '2', 'last_name', 'Green', '0', '0');
-INSERT INTO `zebra_user_meta` VALUES ('5', '2', 'submissions', '2', '0', '0');
+INSERT INTO `zebra_user_meta` VALUES ('1', '1', 'first_name', 'Wolf');
+INSERT INTO `zebra_user_meta` VALUES ('2', '1', 'last_name', 'De Wolfe');
+INSERT INTO `zebra_user_meta` VALUES ('3', '2', 'first_name', 'Max');
+INSERT INTO `zebra_user_meta` VALUES ('4', '2', 'last_name', 'Green');
+INSERT INTO `zebra_user_meta` VALUES ('5', '2', 'submissions', '2');
+INSERT INTO `zebra_user_meta` VALUES ('6', '1', 'submissions', '11');
 
 -- ----------------------------
 -- Table structure for `zebra_votes`
