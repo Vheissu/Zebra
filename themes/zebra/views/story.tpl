@@ -46,7 +46,7 @@
 				{if $story->comments}
 					<div id="comments">
 						{foreach $story->comments AS $comment}
-							<div class="comment-row">
+							<div class="comment-row {if $comment->parent_id >= 1}child-comment{/if}">
 								<div>Comment by: {strtolower(get_username($comment->user_id))}</div>
 								<div>{$comment->comment}</div>
 							</div>

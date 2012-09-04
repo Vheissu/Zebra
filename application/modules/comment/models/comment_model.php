@@ -8,10 +8,9 @@ class Comment_model extends MY_Model {
 
     public function get_comments($story_id)
     {
-        $this->db->select('c.*');
+        $this->db->select('c.*, c2.*');
         $this->db->from('comments c');
-        $this->db->where('c.story_id', $story_id);
-        $this->db->join('comments', 'comments.id = c.parent_id', 'left');
+        $this->db->join('comments c2', 'c2.parent_id = c.id', 'left');
 
         $result = $this->db->get();
 

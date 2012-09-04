@@ -632,6 +632,9 @@ header #meta-links a {
 #comment-form:after {
   clear: both;
 }
+.child-comment {
+  padding-left: 2.5%;
+}
 .form-row {
   /* for IE */
   zoom: 1;
