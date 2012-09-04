@@ -6,8 +6,12 @@ class User extends MY_Controller {
     {
         parent::__construct();
 
+        $this->load->helper('form');
         $this->load->helper('date');
         $this->load->helper('user');
+        $this->load->helper('story/story');
+        $this->load->helper('vote/vote');
+        $this->load->library('form_validation');
         $this->load->library('wolfauth');
     }
 
@@ -34,7 +38,7 @@ class User extends MY_Controller {
                 'meta'                => $this->wolfauth->get_user_meta($user->row('id'))
             );
 
-            $this->parser->parse('profile.tpl', $this->data);
+            $this->parser->parse('profile', $this->data);
         }
     }
 
@@ -42,11 +46,7 @@ class User extends MY_Controller {
     {
         $this->data['page']['title'] = "Login";
 
-        if (!$this->input->post())
-        {
-            $this->parser->parse('login.tpl', $this->data);
-        }
-        else
+        if ($this->form_validation->run('login') !== FALSE)
         {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
@@ -58,8 +58,12 @@ class User extends MY_Controller {
             else
             {
                 $this->session->set_flashdata('error', $this->wolfauth->auth_errors());
-                $this->parser->parse('login.tpl', $this->data);        
+                $this->parser->parse('login', $this->data);        
             }
+        }
+        else
+        {
+            $this->parser->parse('login', $this->data);   
         }
     }
 
@@ -67,11 +71,7 @@ class User extends MY_Controller {
     {
         $this->data['page']['title'] = "Register";
 
-        if (!$this->input->post())
-        {
-            $this->parser->parse('register.tpl', $this->data);
-        }
-        else
+        if ($this->form_validation->run('register') !== FALSE)
         {
             $username = $this->input->post('username');
             $email    = $this->input->post('email');
@@ -86,8 +86,12 @@ class User extends MY_Controller {
             else
             {
                 $this->session->set_flashdata('error', $this->wolfauth->auth_errors());
-                $this->parser->parse('register.tpl', $this->data);    
+                $this->parser->parse('register', $this->data);    
             }
+        }
+        else
+        {
+            $this->parser->parse('register', $this->data);
         }
     }
 

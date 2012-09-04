@@ -2,12 +2,13 @@
 
 {block name=content}
 	{get_flashdata('error')}
+	{validation_errors()}
 	<form id="login-form" action="register" method="POST">
 		<div class="form-row">
 			<input type="text" name="username" id="username" placeholder="Username max characters 20">
 		</div>
 		<div class="form-row">
-			<input type="email" name="email" id="email" placeholder="Make sure it's valid in-case you forget your password">
+			<input type="email" name="email" id="email" placeholder="Email address in-case you forget your password">
 		</div>
 		<div class="form-row">
 			<input type="password" name="password" id="password" placeholder="Password">

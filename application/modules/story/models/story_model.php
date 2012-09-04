@@ -4,6 +4,11 @@ class Story_model extends MY_Model {
 
 	protected $_table = 'stories';
 
+    protected $belongs_to = array('user');
+    protected $has_many = array('comments');
+
+    public $before_create = array( 'timestamps' );
+
     public function __construct()
     {
         parent::__construct();
@@ -72,6 +77,15 @@ class Story_model extends MY_Model {
         $total = $upvotes - $downvotes;
 
         return $total;   
+    }
+    
+    protected function timestamps($story)
+    {
+        $this->load->helper('date');
+
+        $story['created'] = now();
+
+        return $story;
     }
 
 }

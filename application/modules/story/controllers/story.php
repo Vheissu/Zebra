@@ -55,8 +55,7 @@ class Story extends MY_Controller {
                     'slug'          => $slug,
                     'external_link' => $link,
                     'description'   => $text,
-                    'upvotes'       => 1,
-                    'created'       => time()
+                    'upvotes'       => 1
                 );
 
                 $insert = $this->story->insert($field_data);

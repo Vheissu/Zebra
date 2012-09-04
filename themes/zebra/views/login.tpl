@@ -2,6 +2,7 @@
 
 {block name=content}
 	{get_flashdata('error')}
+	{validation_errors()}
 	<form id="login-form" action="login" method="POST">
 		<div class="form-row">
 			<input type="text" name="username" id="username" placeholder="Username">
