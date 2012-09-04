@@ -65,12 +65,19 @@ function story_vote($direction = "up", $story_id = 0, $reason_id = 0)
 			}
 			else
 			{
-
+				return FALSE;
 			}
 		}
 		elseif ($direction == 'down')
 		{
-			return $CI->vote->cast_story_vote("down", $story_id, $user_id, $reason_id);
+			if (!story_downvoted($story_id, $user_id))
+			{
+				return $CI->vote->cast_story_vote("down", $story_id, $user_id, $reason_id);
+			}
+			else
+			{
+				return FALSE;
+			}
 		}
 	}
 }

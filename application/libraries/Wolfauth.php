@@ -136,7 +136,7 @@ class Wolfauth {
 				// Remember me?
 				if ($this->CI->input->post('remember_me') == 'yes')
 				{
-					$this->_set_remember_me($user_id);
+					$this->_set_remember_me($user->row('id'));
 				}
 
 				// If we want to redirect somewhere
