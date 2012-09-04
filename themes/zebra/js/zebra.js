@@ -16,6 +16,8 @@ var Zebra = Zebra || {};
             var $this       = $(this);
             var $storyId    = $this.data('story-id');
             var $voteAction = $this.data('vote-action');
+            var $entryRow   = $("#entry-"+$storyId);
+            var $storyVotes = $(".story-votes", $entryRow);
 
             if ($voteAction == "up" && !$this.hasClass('disabled'))
             {
@@ -30,6 +32,11 @@ var Zebra = Zebra || {};
 
                     if (status == "success") {
                         $this.addClass('disabled');
+                        
+                        var voteValue = parseInt($storyVotes.text());
+                            voteValue = voteValue+1;
+
+                        $storyVotes.text(voteValue);
                     }  
                 }
             }

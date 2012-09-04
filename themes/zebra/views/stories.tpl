@@ -7,7 +7,7 @@
 		<div id="story-book">
 			{foreach $stories AS $story}
 				{assign var="usernames" value=get_username($story->user_id)}
-				<div class="story-row">
+				<div id="entry-{$story->id}" class="story-row">
 					<div class="story-voting">
 						<a href="javascript:void(0);" data-story-id="{$story->id}" data-vote-action="up" class="upvote{if story_upvoted($story->id)} disabled{/if}">&#9652;</a>
 						<span class="story-upvotes">{$story->upvotes}</span>
