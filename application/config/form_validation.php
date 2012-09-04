@@ -46,5 +46,17 @@ $config = array(
                 'label' => 'Text',
                 'rules' => 'trim'
             )
+        ),
+        'comment' => array(
+            array(
+                'field' => 'in_reply_to',
+                'label' => 'Reply ID',
+                'rules' => 'required|numeric'
+            ),
+            array(
+                'field' => 'comment',
+                'label' => 'Comment',
+                'rules' => 'required|xss_clean'
+            )
         )
 );

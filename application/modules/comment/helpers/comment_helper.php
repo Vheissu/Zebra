@@ -1,6 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
+ * Count Story Comments
+ * 
+ * Count the number of total comments made
+ * on a submitted story.
+ * 
+ * @param int $story_id
+ * @return object or boolean false
+ * 
+ */
+function count_story_comments($story_id)
+{
+    $CI =& get_instance();
+    $CI->load->model('comment/comment_model', 'comment');
+
+    return $CI->comment->count_story_comments($story_id);    
+}
+
+/**
  * Comment Upvoted
  * 
  * Has the currently logged in user already 

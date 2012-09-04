@@ -28,6 +28,24 @@
 					{$story->description}
 				</div>
 				{/if}
+
+				<div id="comment-form">
+					<form action="story/{$story->id}/comment" method="POST">
+						<textarea name="comment" id="comment"></textarea>
+						<input type="hidden" name="in_reply_to" id="in_reply_to" value="0">
+						<input type="submit" value="Comment">
+					</form>
+				</div>
+
+				{if $story->comments}
+					<div id="comments">
+						{foreach $story->comments AS $comment}
+							<div class="comment-row">
+								<div>Comment by: {strtolower(get_username($comment->user_id))}</div>
+							</div>
+						{/foreach}
+					</div>
+				{/if}
 			</div>
 		</div>
 	{else}

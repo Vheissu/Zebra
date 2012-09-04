@@ -8,9 +8,11 @@ class Story extends MY_Controller {
 
         $this->load->helper('date');
         $this->load->helper('form');
+        $this->load->helper('comment/comment');
         $this->load->helper('vote/vote');
         $this->load->library('form_validation');
         $this->load->model('story_model', 'story');
+        $this->load->model('comment/comment_model', 'comment');
     }
 
 	public function index($page = 0)
@@ -27,11 +29,46 @@ class Story extends MY_Controller {
 		$this->parser->parse('stories', $this->data);
 	}
 
-    public function view($story_id)
+    public function view($story_id, $slug = '')
     {
-        $this->data['story'] = $this->story->get_story($story_id);
+        $this->data['story']                = $this->story->get_story($story_id);
+        $this->data['story']->comments      = $this->comment->get_comments($story_id);
+        $this->data['story']->comment_count = $this->comment->count_story_comments($story_id);
+
+        if ($slug !== $this->data['story']->slug)
+        {
+            redirect('story/view/'.$story_id.'/'.$this->data['story']->slug.'', 'location', 301);
+        }
 
         $this->parser->parse('story', $this->data);
+    }
+
+    public function comment($story_id)
+    {
+        if ($this->form_validation->run('comment') !== FALSE)
+        {
+            // Get the story
+            $story = $this->story->get_story($story_id);
+
+            if (logged_in())
+            {
+                $comment   = $this->input->post('comment');
+                $reply_to = $this->input->post('in_reply_to', '0');
+                
+                $save = $this->comment->save_comment($story_id, current_user_id(), $reply_to, $comment);
+
+                if ($save)
+                {
+                    $this->session->set_flashdata('success', lang('comment_success'));
+                    redirect('story/view/'.$story->id.'/'.$story->slug.'');
+                }
+            }
+            else
+            {
+                $this->session->set_flashdata('error', lang('comment_login'));
+                redirect('story/view/'.$story->id.'/'.$story->slug.'');    
+            }
+        }     
     }
 
     public function submit()

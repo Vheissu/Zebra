@@ -617,6 +617,21 @@ header #meta-links a {
 #content .story-row #story-description:after {
   clear: both;
 }
+#comment-form {
+  /* for IE */
+  zoom: 1;
+  clear: both;
+  display: block;
+  padding: 25px 0 0 25px;
+}
+#comment-form:before,
+#comment-form:after {
+  content: "";
+  display: table;
+}
+#comment-form:after {
+  clear: both;
+}
 .form-row {
   /* for IE */
   zoom: 1;
