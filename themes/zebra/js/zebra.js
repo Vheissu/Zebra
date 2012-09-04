@@ -175,56 +175,52 @@ var Zebra = Zebra || {};
                     }
 
                 }
-            }
-        }
-
-    }();
-
-    Zebra.Vote.Comment = function() {
-
-        var processing     = false;
-        var slowDown       = "Slow down, you can only vote so fast";
-        var missingBaseurl = "Base URL is missing!";
-
-        return {
-
-            up: function(comment_id) {
-                if (base_url) {
-                    if (processing == false) {
-                        processing = true;
-                        $.post(base_url + 'ajax/comment_vote', { action: "upvote", comment_id: comment_id }, function(response) {
-                            processing = false;
-                            return response;
-                        });
-                    } else {
-                        alert(slowDown);
-                    }
-
-                } else {
-                    alert(missingBaseurl);
-                }
             },
 
-            down: function(comment_id, reason_id) {
+            Comment: function() {
 
-                if (base_url) {
+                return {
 
-                    if (processing == false) {
-                        processing = true;
-                        $.post(base_url + 'ajax/comment_vote', { action: "downvote", comment_id: comment_id, downvote_reason: reason_id }, function(response) {
-                            processing = false;
-                            return response;
-                        });
-                    } else {
-                        alert(slowDown);
+                    up: function(comment_id) {
+                        if (base_url) {
+                            if (processing == false) {
+                                processing = true;
+                                $.post(base_url + 'ajax/comment_vote', { action: "upvote", comment_id: comment_id }, function(response) {
+                                    processing = false;
+                                    return response;
+                                });
+                            } else {
+                                alert(slowDown);
+                            }
+
+                        } else {
+                            alert(missingBaseurl);
+                        }
+                    },
+
+                    down: function(comment_id, reason_id) {
+
+                        if (base_url) {
+
+                            if (processing == false) {
+                                processing = true;
+                                $.post(base_url + 'ajax/comment_vote', { action: "downvote", comment_id: comment_id, downvote_reason: reason_id }, function(response) {
+                                    processing = false;
+                                    return response;
+                                });
+                            } else {
+                                alert(slowDown);
+                            }
+
+                        } else {
+                            alert(missingBaseurl);
+                        }
+
                     }
 
-                } else {
-                    alert(missingBaseurl);
                 }
 
-            }
-
+            },
         }
 
     }();

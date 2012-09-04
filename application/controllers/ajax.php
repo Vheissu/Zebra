@@ -49,9 +49,8 @@ class Ajax extends MY_Controller {
             }
         }
 
-        set_status_header(200);
-
-        die ($result);
+        $this->output->set_status_header(200);
+        $this->output->set_output($result);
     }
 
     /**
@@ -96,9 +95,8 @@ class Ajax extends MY_Controller {
             }
         }
 
-        set_status_header(200);
-
-        die ($result);
+        $this->output->set_status_header(200);
+        $this->output->set_output($result);
     }
 }
 

@@ -145,7 +145,7 @@ class User_model extends MY_Model {
 
         $result = $this->db->get('user_meta');
 
-        return ($result->num_rows() == 1) ? $result->umeta_value : FALSE;
+        return ($result->num_rows() == 1) ? $result->row('umeta_value') : FALSE;
     }
 
 }
