@@ -8,13 +8,12 @@ class Comment_model extends MY_Model {
 
     public function get_comments($story_id)
     {
-        $this->db->select('c.*, c2.*');
-        $this->db->from('comments c');
-        $this->db->join('comments c2', 'c2.parent_id = c.id', 'left');
+        $this->db->select('*');
+        $this->db->from('comments');
 
-        $result = $this->db->get();
+        $comments = $this->db->get();
 
-        return ($result->num_rows() >= 1) ? $result->result() : FALSE;
+        return ($comments->num_rows() >= 1) ? $comments->result() : FALSE;
     }
 
     public function save_comment($story_id, $user_id, $reply_id, $comment)

@@ -1,5 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+function get_comments($story_id)
+{
+    $CI =& get_instance();
+    $CI->load->model('comment/comment_model', 'comment');
+
+	$comments = $CI->comment->get_comments($story_id);
+
+	return $comments;
+}
+
 /**
  * Count Story Comments
  * 
