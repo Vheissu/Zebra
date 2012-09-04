@@ -606,6 +606,9 @@ header #meta-links a {
   color: #666666;
   text-decoration: none;
 }
+#content .story-row .story-meat .story-meta p a.username {
+  text-transform: none;
+}
 #content .story-row #story-description {
   /* for IE */
   zoom: 1;

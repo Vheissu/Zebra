@@ -1,10 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Get Username
+ * 
+ * Get a username based on the user ID
+ * 
+ * @param int $user_id
+ * @return string or boolean false
+ * 
+ */
 function get_username($user_id)
 {
 	$user = get_user_by_id($user_id);
 
-	return ($user) ? $user->row('username') : FALSE;
+	$array = array(
+		'username'      => $user->row('username'),
+		'nice_username' => $user->row('nice_username')
+	);
+
+	return (!empty($array)) ? $array : FALSE;
 }
 
 /**
@@ -53,6 +67,18 @@ function story_downvoted($story_id = 0, $user_id = 0)
     return $CI->vote->user_has_downvoted_story($story_id, $user_id);
 }
 
+/**
+ * Story Vote
+ * 
+ * A helper function for performing an upvote or
+ * downvote on a particular story submission.
+ * 
+ * @param string $direction
+ * @param int $story_id
+ * @param int $reason_id
+ * @return string
+ * 
+ */
 function story_vote($direction = "up", $story_id = 0, $reason_id = 0)
 {
 	// Get the currently logged in user ID
