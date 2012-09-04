@@ -25,7 +25,7 @@ class Ajax extends MY_Controller {
         // Result to return
         $result = 'Invalid action or URL parameter(s).';
 
-        if ($this->input->post('action'))
+        if ($this->input->post())
         {
             $action   = $this->input->post('action');
             $story_id = $this->input->post('story_id');

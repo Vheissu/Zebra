@@ -57,6 +57,7 @@ class Story extends MY_Controller {
                 if ($insert)
                 {
                     $this->load->model('user/user_model', 'user');
+                    $this->user->add_story_vote_record(current_user_id(), $this->db->insert_id());
                     $this->user->increment_submission_count(current_user_id());
                     $this->session->set_flashdata('success', lang('submission_success'));
                     redirect('stories/new');

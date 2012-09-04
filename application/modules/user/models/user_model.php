@@ -4,6 +4,13 @@ class User_model extends MY_Model {
 
 	protected $_table = 'users';
 
+    public function add_story_vote_record($user_id, $story_id)
+    {
+        $query = $this->db->insert('zebra_votes', array('user_id' => $user_id, 'story_id' => $story_id, 'vote_type' => 'upvote'));
+
+        return ($query);
+    }
+
     /**
      * Get User Karma
      * 
