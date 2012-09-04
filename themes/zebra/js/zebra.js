@@ -21,13 +21,16 @@ var Zebra = Zebra || {};
             {
                 var response = Zebra.Vote.Story.up($storyId);
 
-                if (response)
-                {
+                if (response) {
                     var response_str = response.split("|");
-                    
+
                     var status       = response_str[0];
                     var voteType     = response_str[1];
-                    var storyId      = response_str[2];  
+                    var storyId      = response_str[2];
+
+                    if (status == "success") {
+                        $this.addClass('disabled');
+                    }  
                 }
             }
 
@@ -47,7 +50,19 @@ var Zebra = Zebra || {};
                             }
                             else
                             {
-                                Zebra.Vote.Story.down($storyId, downvoteReason.children("option:selected").val());
+                                var response = Zebra.Vote.Story.down($storyId, downvoteReason.children("option:selected").val());
+
+                                if (response) {
+                                    var response_str = response.split("|");
+
+                                    var status       = response_str[0];
+                                    var voteType     = response_str[1];
+                                    var storyId      = response_str[2];
+
+                                    if (status == "success") {
+                                        $this.addClass('disabled');
+                                    }  
+                                }
                                 
                                 $(this).dialog("close");
                             }
