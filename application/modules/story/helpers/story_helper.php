@@ -22,6 +22,11 @@ function story_upvoted($story_id = 0, $user_id = 0)
     $CI =& get_instance();
     $CI->load->model('vote/vote_model', 'vote');
 
+    if ($user_id == 0)
+    {
+    	$user_id = current_user_id();
+    }
+
     return $CI->vote->user_has_upvoted_story($story_id, $user_id);
 }
 
@@ -39,6 +44,11 @@ function story_downvoted($story_id = 0, $user_id = 0)
 {
     $CI =& get_instance();
     $CI->load->model('vote/vote_model', 'vote');
+
+    if ($user_id == 0)
+    {
+    	$user_id = current_user_id();
+    }
 
     return $CI->vote->user_has_downvoted_story($story_id, $user_id);
 }

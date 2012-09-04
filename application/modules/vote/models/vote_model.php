@@ -13,7 +13,11 @@ class Vote_model extends MY_Model {
 
     public function user_has_upvoted_story($story_id, $user_id)
     {
-        $query = $this->db->get_where($this->_table, array('story_id' => $story_id, 'user_id' => $user_id, 'vote_type' => 'upvote'));
+        $this->db->where('story_id', $story_id);
+        $this->db->where('user_id', $user_id);
+        $this->db->where('vote_type', 'upvote');
+
+        $query = $this->db->get($this->_table);
 
         return ($query->num_rows() >= 1) ? TRUE : FALSE;
     }
