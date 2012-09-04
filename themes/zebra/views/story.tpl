@@ -5,12 +5,13 @@
 	{get_flashdata('error')}
 	{validation_errors()}
 	{if $story}
+		{assign var="usernames" value=get_username($story->user_id)}
 		<div id="story-book">
 			<div class="story-row">
 				<div class="story-voting">
-					<a href="javascript:void(0);" data-story-id="{$story->id}" data-vote-action="up" class="upvote{if story_upvoted()}disabled{/if}">&#9652;</a>
+					<a href="javascript:void(0);" data-story-id="{$story->id}" data-vote-action="up" class="upvote{if story_upvoted($story->id)} disabled{/if}">&#9652;</a>
 					<span class="story-upvotes">{$story->upvotes}</span>
-					<a href="javascript:void(0);" data-story-id="{$story->id}" data-vote-action="down" class="downvote{if story_downvoted()}disabled{/if}">&#9662;</a>
+					<a href="javascript:void(0);" data-story-id="{$story->id}" data-vote-action="down" class="downvote{if story_downvoted($story->id)} disabled{/if}">&#9662;</a>
 				</div>
 				<div class="story-meat">
 					{if $story->external_link}
@@ -20,7 +21,7 @@
 						<a class="story-title" href="story/{$story->id}/{$story->slug}">{$story->title}</a>
 					{/if}
 					<div class="story-meta">
-						<p>by <a href="user/{strtolower(get_username($story->user_id))}">{strtolower(get_username($story->user_id))}</a> {timespan($story->created, time(), 1)} ago | <a href="story/{$story->id}/{$story->slug}#comments">{$story->comment_count} comments</a></p>
+						<p>by <a href="user/{$usernames.username}" class="username">{$usernames.nice_username}</a> {timespan($story->created, time(), 1)} ago | <a href="story/{$story->id}/{$story->slug}#comments">{$story->comment_count} comments</a></p>
 					</div>
 				</div>
 
@@ -46,8 +47,9 @@
 				{if $story->comments}
 					<div id="comments">
 						{foreach $story->comments AS $comment}
+							{assign var="commenter" value=get_username($comment->user_id)}
 							<div class="comment-row {if $comment->parent_id >= 1}child-comment{/if}">
-								<div>Comment by: {strtolower(get_username($comment->user_id))}</div>
+								<div>Comment by: {$commenter.nice_username}</div>
 								<div>{$comment->comment}</div>
 							</div>
 						{/foreach}
