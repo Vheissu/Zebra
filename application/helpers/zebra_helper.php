@@ -11,16 +11,27 @@
  */
 function get_domain($url)
 {
-	$parse = parse_url($url);
+    $host = @parse_url($url, PHP_URL_HOST);
 
-	$url_domain_dot_ar = explode(".", $parse[host]);
+    // If the URL can't be parsed, use the original URL
+    // Change to "return false" if you don't want that
+    if (!$host) 
+    {
+        $host = $url;
+    }
 
-	$url_domain = $url_domain_dot_ar[1] . '.' . $url_domain_dot_ar[2];
+    // The "www." prefix isn't really needed if you're just using
+    // this to display the domain to the user
+    if (substr($host, 0, 4) == "www.") 
+    {
+        $host = substr($host, 4);
+    }
 
-	if ($url_domain_dot_ar[2] != "com") 
-	{ 
-		$url_domain = $url_domain . '.' . $url_domain_dot_ar[3];
-	}
+    // You might also want to limit the length if screen space is limited
+    if (strlen($host) > 50) 
+    {
+        $host = substr($host, 0, 47) . '...';
+    }
 
-	return $url_domain;
+    return $host;
 }
