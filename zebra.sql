@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2012-09-04 16:20:31
+Date: 2012-09-04 16:48:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,12 +30,13 @@ CREATE TABLE `zebra_comments` (
   `created` int(5) NOT NULL DEFAULT '0',
   `updated` int(5) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_comments
 -- ----------------------------
 INSERT INTO `zebra_comments` VALUES ('1', '0', '8', '1', 'Will definitely keep my ears open for further announcements. As much as I avoid webOS due to the lack of quality apps, booting into it even for a short while causes me to realize just how smooth its UX is and how awkward and backwards in a lot of ways the other mobile OSs are.', '1', '0', '0', '0');
+INSERT INTO `zebra_comments` VALUES ('2', '0', '8', '1', 'They should have open sourced this thing right from the beginning I reckon.', '1', '0', '1346741169', '0');
 
 -- ----------------------------
 -- Table structure for `zebra_permissions`
@@ -101,7 +102,7 @@ CREATE TABLE `zebra_sessions` (
 -- ----------------------------
 -- Records of zebra_sessions
 -- ----------------------------
-INSERT INTO `zebra_sessions` VALUES ('2560b5200070128b15fb2bfaf38dd739', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346739441', 'a:5:{s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"zebra\";s:13:\"nice_username\";s:5:\"Zebra\";s:7:\"role_id\";s:1:\"3\";s:9:\"role_name\";s:11:\"super_admin\";}');
+INSERT INTO `zebra_sessions` VALUES ('7dc75cbc9e9ef3483f4b86db2b409eb9', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346740915', 'a:5:{s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"zebra\";s:13:\"nice_username\";s:5:\"Zebra\";s:7:\"role_id\";s:1:\"3\";s:9:\"role_name\";s:11:\"super_admin\";}');
 
 -- ----------------------------
 -- Table structure for `zebra_stories`
@@ -205,7 +206,7 @@ CREATE TABLE `zebra_votes` (
   `comment_id` bigint(20) unsigned NOT NULL,
   `vote_type` enum('upvote','downvote') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_votes
@@ -225,6 +226,7 @@ INSERT INTO `zebra_votes` VALUES ('12', '1', '20', '0', '0', 'upvote');
 INSERT INTO `zebra_votes` VALUES ('13', '1', '21', '0', '0', 'upvote');
 INSERT INTO `zebra_votes` VALUES ('14', '2', '1', '0', '0', 'upvote');
 INSERT INTO `zebra_votes` VALUES ('15', '1', '0', '0', '1', 'upvote');
+INSERT INTO `zebra_votes` VALUES ('16', '1', '0', '0', '2', 'upvote');
 
 -- ----------------------------
 -- Table structure for `zebra_vote_reasons`
