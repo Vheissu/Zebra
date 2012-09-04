@@ -90,18 +90,18 @@ class Vote_model extends MY_Model {
     	if ($type == 'up')
     	{
     		$field_data = array(
-    			'user_id'  => $user_id,
-    			'story_id' => $story_id,
-    			'votetype' => 'upvote'	
+    			'user_id'   => $user_id,
+    			'story_id'  => $story_id,
+    			'vote_type' => 'upvote'	
     		);
     	}
     	elseif ($type == 'down')
     	{
     		$field_data = array(
-    			'user_id'   => $user_id,
-    			'story_id'  => $story_id,
-    			'reason_id' => $reason_id,
-    			'votetype'  => 'downvote'	
+    			'user_id'    => $user_id,
+    			'story_id'   => $story_id,
+    			'reason_id'  => $reason_id,
+    			'vote_type'  => 'downvote'	
     		);
     	}
 
