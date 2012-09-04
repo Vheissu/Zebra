@@ -19,7 +19,16 @@ var Zebra = Zebra || {};
 
             if ($voteAction == "up" && !$this.hasClass('disabled'))
             {
-                Zebra.Vote.Story.up($storyId);
+                var response = Zebra.Vote.Story.up($storyId);
+
+                if (response)
+                {
+                    var response_str = response.split("|");
+                    
+                    var status       = response_str[0];
+                    var voteType     = response_str[1];
+                    var storyId      = response_str[2];  
+                }
             }
 
             if ($voteAction == "down" && !$this.hasClass('disabled'))
