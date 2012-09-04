@@ -602,6 +602,21 @@ header #meta-links a {
   color: #666666;
   text-decoration: none;
 }
+#content .story-row #story-description {
+  /* for IE */
+  zoom: 1;
+  clear: both;
+  display: block;
+  padding: 25px 0 25px 0;
+}
+#content .story-row #story-description:before,
+#content .story-row #story-description:after {
+  content: "";
+  display: table;
+}
+#content .story-row #story-description:after {
+  clear: both;
+}
 .form-row {
   /* for IE */
   zoom: 1;

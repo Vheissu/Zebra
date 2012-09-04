@@ -25,6 +25,13 @@ class Story extends MY_Controller {
 		$this->parser->parse('stories', $this->data);
 	}
 
+    public function view($story_id)
+    {
+        $this->data['story'] = $this->story->get_story($story_id);
+
+        $this->parser->parse('story', $this->data);
+    }
+
     public function submit()
     {
         $this->data['current_segment'] = "submit";

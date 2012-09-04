@@ -12,6 +12,11 @@ class Story_model extends MY_Model {
         $this->load->model('user/user_model');
     }
 
+    public function get_story($story_id)
+    {
+        return $this->get($story_id);
+    }
+
     public function get_popular_stories($limit = 50, $offset = 0)
     {
         $table = $this->db->dbprefix.$this->_table;
