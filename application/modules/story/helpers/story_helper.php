@@ -7,10 +7,49 @@ function get_username($user_id)
 	return ($user) ? $user->row('username') : FALSE;
 }
 
-function cast_vote($direction = "up", $story_id = 0, $reason_id = 0)
+/**
+ * Story Upvoted
+ * 
+ * Has the currently logged in user already 
+ * upvoted a particular story
+ * 
+ * @param int $story_id
+ * @return string
+ * 
+ */
+function story_upvoted($story_id = 0, $user_id = 0)
+{
+    $CI =& get_instance();
+    $CI->load->model('vote/vote_model', 'vote');
+
+    return $CI->vote->user_has_upvoted_story($story_id, $user_id);
+}
+
+/**
+ * Story Downvoted
+ * 
+ * Has the currently logged in user already 
+ * downvoted a particular story
+ * 
+ * @param int $story_id
+ * @return string
+ * 
+ */
+function story_downvoted($story_id = 0, $user_id = 0)
+{
+    $CI =& get_instance();
+    $CI->load->model('vote/vote_model', 'vote');
+
+    return $CI->vote->user_has_downvoted_story($story_id, $user_id);
+}
+
+function story_vote($direction = "up", $story_id = 0, $reason_id = 0)
 {
 	// Get the currently logged in user ID
 	$user_id = current_user_id();
+
+    $CI =& get_instance();
+    $CI->load->model('vote/vote_model', 'vote');
 
 	if (!$user_id)
 	{
@@ -20,14 +59,18 @@ function cast_vote($direction = "up", $story_id = 0, $reason_id = 0)
 	{
 		if ($direction == 'up')
 		{
-			if (!already_upvoted($story_id, $user_id))
+			if (!story_upvoted($story_id, $user_id))
+			{
+				return $CI->vote->cast_story_vote("up", $story_id, $user_id);
+			}
+			else
 			{
 
 			}
 		}
 		elseif ($direction == 'down')
 		{
-
+			return $CI->vote->cast_story_vote("down", $story_id, $user_id, $reason_id);
 		}
 	}
 }

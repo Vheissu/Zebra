@@ -89,9 +89,11 @@
 
 (function(w, Zebra, $, undefined) {
 
-    Zebra.Vote = function() {
+    Zebra.Vote.Story = function() {
 
-        var processing = false;
+        var processing     = false;
+        var slowDown       = "Slow down, you can only vote so fast";
+        var missingBaseurl = "Base URL is missing!";
 
         return {
 
@@ -99,16 +101,16 @@
                 if (base_url) {
                     if (processing == false) {
                         processing = true;
-                        $.post(base_url + 'ajax/vote', { action: "upvote", story_id: story_id }, function(response) {
+                        $.post(base_url + 'ajax/story_vote', { action: "upvote", story_id: story_id }, function(response) {
                             processing = false;
                             return response;
                         });
                     } else {
-                        alert('Slow down, you can only vote one story at a time!');
+                        alert(slowDown);
                     }
 
                 } else {
-                    alert('Base URL is missing!');
+                    alert(missingBaseurl);
                 }
             },
 
@@ -118,16 +120,65 @@
 
                     if (processing == false) {
                         processing = true;
-                        $.post(base_url + 'ajax/vote', { action: "downvote", story_id: story_id, downvote_reason: reason_id }, function(response) {
+                        $.post(base_url + 'ajax/story_vote', { action: "downvote", story_id: story_id, downvote_reason: reason_id }, function(response) {
                             processing = false;
                             return response;
                         });
                     } else {
-                        alert('Slow down, you can only vote one story at a time!');
+                        alert(slowDown);
                     }
 
                 } else {
-                    alert('Base URL is missing!');
+                    alert(missingBaseurl);
+                }
+
+            }
+
+        }
+
+    }();
+
+    Zebra.Vote.Comment = function() {
+
+        var processing     = false;
+        var slowDown       = "Slow down, you can only vote so fast";
+        var missingBaseurl = "Base URL is missing!";
+
+        return {
+
+            up: function(comment_id) {
+                if (base_url) {
+                    if (processing == false) {
+                        processing = true;
+                        $.post(base_url + 'ajax/comment_vote', { action: "upvote", comment_id: comment_id }, function(response) {
+                            processing = false;
+                            return response;
+                        });
+                    } else {
+                        alert(slowDown);
+                    }
+
+                } else {
+                    alert(missingBaseurl);
+                }
+            },
+
+            down: function(comment_id, reason_id) {
+
+                if (base_url) {
+
+                    if (processing == false) {
+                        processing = true;
+                        $.post(base_url + 'ajax/comment_vote', { action: "downvote", comment_id: comment_id, downvote_reason: reason_id }, function(response) {
+                            processing = false;
+                            return response;
+                        });
+                    } else {
+                        alert(slowDown);
+                    }
+
+                } else {
+                    alert(missingBaseurl);
                 }
 
             }

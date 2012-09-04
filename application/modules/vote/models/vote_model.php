@@ -4,25 +4,27 @@ class Vote_model extends MY_Model {
 
 	protected $_table = 'votes';
 
-    protected $belongs_to  = array('user', 'comment', 'story');
-
-    public function user_has_upvoted($story_id, $user_id)
+    public function user_has_upvoted_story($story_id, $user_id)
     {
-    	
+        $query = $this->db->get_where($this->_table, array('story_id' => $story_id, 'user_id' => $user_id, 'vote_type' => 'upvote'));
+
+        return ($query->num_rows() >= 1) ? TRUE : FALSE;
     }
 
-    public function user_has_downvoted($story_id, $user_id)
+    public function user_has_downvoted_story($story_id, $user_id)
     {
-        
+        $query = $this->db->get_where($this->_table, array('story_id' => $story_id, 'user_id' => $user_id, 'vote_type' => 'downvote'));
+
+        return ($query->num_rows() >= 1) ? TRUE : FALSE;    
     }
 
-    public function cast_story_vote($type = "up", $object_id, $user_id, $reason_id = 0)
+    public function cast_story_vote($type = "up", $story_id, $user_id, $reason_id = 0)
     {
     	if ($type == 'up')
     	{
     		$field_data = array(
     			'user_id'  => $user_id,
-    			'story_id' => $object_id,
+    			'story_id' => $story_id,
     			'votetype' => 'upvote'	
     		);
     	}
@@ -30,7 +32,7 @@ class Vote_model extends MY_Model {
     	{
     		$field_data = array(
     			'user_id'   => $user_id,
-    			'story_id'  => $object_id,
+    			'story_id'  => $story_id,
     			'reason_id' => $reason_id,
     			'votetype'  => 'downvote'	
     		);

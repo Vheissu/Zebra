@@ -101,13 +101,13 @@ class Wolfauth {
 	 */
 	public function logged_in()
 	{
-		return ($this->user_id() !== FALSE) ? TRUE : FALSE;
+		return (!$this->user_id()) ? FALSE : TRUE;
 	}
 
 	/**
 	 * Login
 	 *
-	 * Log a user in via email address
+	 * Log a user in via their username
 	 *
 	 * @param string $username - Username
 	 * @param string $password - Password unencrypted
@@ -117,7 +117,7 @@ class Wolfauth {
 	public function login($username, $password, $redirect_to = '')
 	{
 		// Find the user
-		$user = get_user($username);
+		$user = get_user(strtolower($username));
 
 		// If we have a user
 		if ($user)
@@ -126,10 +126,11 @@ class Wolfauth {
 			if ($this->hash($password) === $user->row('password'))
 			{
 				$this->CI->session->set_userdata(array(
-					'user_id'   => $user->row('id'),
-					'username'  => $user->row('username'),
-					'role_id'   => $user->row('role_id'),
-					'role_name' => $user->row('role_name')
+					'user_id'       => $user->row('id'),
+					'username'      => $user->row('username'),
+                    'nice_username' => $user->row('nice_username'),
+					'role_id'       => $user->row('role_id'),
+					'role_name'     => $user->row('role_name')
 				));
 
 				// Remember me?
@@ -178,10 +179,11 @@ class Wolfauth {
 		if ($user)
 		{
 			$this->CI->session->set_userdata(array(
-				'user_id'   => $user->row('id'),
-				'username'  => $user->row('username'),
-				'role_id'   => $user->row('role_id'),
-				'role_name' => $user->row('role_name')
+				'user_id'       => $user->row('id'),
+				'username'      => $user->row('username'),
+                'nice_username' => $user->row('nice_username'),
+				'role_id'       => $user->row('role_id'),
+				'role_name'     => $user->row('role_name')
 			));
 
 			return TRUE;
@@ -206,14 +208,20 @@ class Wolfauth {
 	{
 		$user_id = $this->user_id();
 
-		$this->CI->session->sess_destroy();
-
 		delete_cookie('rememberme');
 
 		$user_data = array(
 			'id'          => $user_id,
 			'remember_me' => ''
 		);
+
+        $this->CI->session->set_userdata(array(
+            'user_id'       => FALSE,
+            'username'      => FALSE,
+            'nice_username' => FALSE,
+            'role_id'       => FALSE,
+            'role_name'     => FALSE
+        ));
 
 		// Update the user
 		if (update_user($user_data))
@@ -251,8 +259,11 @@ class Wolfauth {
 		// Hash the password ASAP
 		$password = $this->hash($password);
 
+        // Create a nice username
+        $nicename = ucfirst($username);
+
 		// Call the add user function and return the result
-		return $this->CI->wolfauth_m->add_user($username, $email, $password, $role_id, $status, $additional_data);
+		return $this->CI->wolfauth_m->add_user($username, $nicename, $email, $password, $role_id, $status, $additional_data);
 	}
 
     /**

@@ -8,13 +8,13 @@ class Ajax extends MY_Controller {
 	}
 
     /**
-     * Vote
+     * Story Vote
      * 
      * Performs an upvote or downvote for a particular
      * story based on its ID.
      * 
      */ 
-    public function vote()
+    public function story_vote()
     {
         // Story helper allows us to perform votes, etc
         $this->load->helper('story/story');
@@ -34,14 +34,61 @@ class Ajax extends MY_Controller {
             switch ($action)
             {
                 case 'upvote':
-                    if (cast_vote('up', $story_id))
+                    if (story_vote('up', $story_id))
                     {
                         $result = "success|upvote|".$story_id."";
                     }
                 break;
 
                 case 'downvote':
-                    if (cast_vote('down', $story_id, $reason))
+                    if (story_vote('down', $story_id, $reason))
+                    {
+                        $result = "success|downvote|".$story_id."";
+                    }
+                break;
+            }
+        }
+
+        set_status_header(200);
+
+        die ($result);
+    }
+
+    /**
+     * Comment Vote
+     * 
+     * Performs an upvote or downvote for a particular
+     * comment based on its ID.
+     * 
+     */ 
+    public function comment_vote()
+    {
+        // Story helper allows us to perform votes, etc
+        $this->load->helper('comment/comment');
+
+        // User helper for user related things
+        $this->load->helper('user/user');
+
+        // Result to return
+        $result = 'Invalid action or URL parameter(s).';
+
+        if ($this->input->post('action'))
+        {
+            $action     = $this->input->post('action');
+            $comment_id = $this->input->post('comment_id');
+            $reason     = $this->input->post('downvote_reason');
+
+            switch ($action)
+            {
+                case 'upvote':
+                    if (comment_vote('up', $comment_id))
+                    {
+                        $result = "success|upvote|".$comment_id."";
+                    }
+                break;
+
+                case 'downvote':
+                    if (comment_vote('down', $comment_id, $reason))
                     {
                         $result = "success|downvote|".$story_id."";
                     }

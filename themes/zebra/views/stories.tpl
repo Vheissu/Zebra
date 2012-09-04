@@ -8,13 +8,9 @@
 			{foreach $stories AS $story}
 				<div class="story-row">
 					<div class="story-voting">
-						{if !story_upvoted()}
-						<a href="javascript:void(0);" data-story-id="{$story->id}" class="upvote">&#9652;</a>
-						{/if}
+						<a href="javascript:void(0);" data-story-id="{$story->id}" class="upvote{if story_upvoted()}disabled{/if}">&#9652;</a>
 						<span class="story-upvotes">{$story->upvotes}</span>
-						{if !story_downvoted()}
-						<a href="javascript:void(0);" data-story-id="{$story->id}" class="downvote">&#9662;</a>
-						{/if}
+						<a href="javascript:void(0);" data-story-id="{$story->id}" class="downvote{if story_downvoted()}disabled{/if}">&#9662;</a>
 					</div>
 					<div class="story-meat">
 						{if $story->external_link}

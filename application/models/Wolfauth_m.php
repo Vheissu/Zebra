@@ -78,11 +78,12 @@ class Wolfauth_m extends CI_Model {
 	 * @return Insert ID on success or False on failure
 	 *
 	 */
-	public function add_user($username, $email, $password, $role_id = 1, $status = "active", $additional_data = array())
+	public function add_user($username, $nicename, $email, $password, $role_id = 1, $status = "active", $additional_data = array())
 	{
 		$data = array(
 			'role_id'       => $role_id,
 			'username'      => $username,
+			'nice_username' => $nicename,
 			'email'         => $email,
 			'password'      => $password,
 			'register_date' => time(),
