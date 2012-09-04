@@ -19,7 +19,7 @@
 						<a class="story-title" href="story/{$story->id}/{$story->slug}">{$story->title}</a>
 					{/if}
 					<div class="story-meta">
-						<p>by <a href="user/{strtolower(get_username($story->user_id))}">{strtolower(get_username($story->user_id))}</a> {timespan($story->created, time(), 1)} ago | <a href="story/{$story->id}/{$story->slug}#comments">5 comments</a></p>
+						<p>by <a href="user/{strtolower(get_username($story->user_id))}">{strtolower(get_username($story->user_id))}</a> {timespan($story->created, time(), 1)} ago | <a href="story/{$story->id}/{$story->slug}#comments">{$story->comment_count} comments</a></p>
 					</div>
 				</div>
 
@@ -29,12 +29,17 @@
 				</div>
 				{/if}
 
+				
 				<div id="comment-form">
+					{if logged_in()}
 					<form action="story/{$story->id}/comment" method="POST">
-						<textarea name="comment" id="comment"></textarea>
+						<textarea name="comment" id="comment" rows="6" cols="50"></textarea><br><br>
+						<input type="submit" value="Comment"><br>
 						<input type="hidden" name="in_reply_to" id="in_reply_to" value="0">
-						<input type="submit" value="Comment">
 					</form>
+					{else}
+					<p class="not-logged-in">You must be logged in to leave a comment.</p>
+					{/if}
 				</div>
 
 				{if $story->comments}
