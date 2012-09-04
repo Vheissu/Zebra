@@ -4,9 +4,6 @@ class Story_model extends MY_Model {
 
 	protected $_table = 'stories';
 
-    protected $belongs_to = array('user');
-    protected $has_many = array('comments');
-
     public $before_create = array( 'timestamps' );
 
     public function __construct()
@@ -17,11 +14,32 @@ class Story_model extends MY_Model {
         $this->load->model('user/user_model');
     }
 
+    /**
+     * Get Story
+     * 
+     * Get one particular story submission via an ID
+     * 
+     * @param int $story_id
+     * 
+     * @return object or boolean false
+     * 
+     */ 
     public function get_story($story_id)
     {
         return $this->get($story_id);
     }
 
+    /**
+     * Get Popular Stories
+     * 
+     * Get all popular stories using the ranking formulae.
+     * 
+     * @param int $limit
+     * @param int $offset
+     * 
+     * @return object or boolean false
+     * 
+     */ 
     public function get_popular_stories($limit = 50, $offset = 0)
     {
         $table = $this->db->dbprefix.$this->_table;
@@ -35,6 +53,17 @@ class Story_model extends MY_Model {
         return ($stories->num_rows() >= 1) ? $stories->result() : FALSE;  
     }
 
+    /**
+     * Get New Stories
+     * 
+     * Get all newly added stories
+     * 
+     * @param int $limit
+     * @param int $offset
+     * 
+     * @return object or boolean false 
+     * 
+     */ 
     public function get_new_stories($limit = 50, $offset = 0)
     {
         $this->db->order_by("created", "DESC");
@@ -43,6 +72,19 @@ class Story_model extends MY_Model {
         return ($stories->num_rows() >= 1) ? $stories->result() : FALSE; 
     }
 
+    /**
+     * Get User Stories
+     * 
+     * Get all stories by a particular user with 
+     * support for limit and page values
+     * 
+     * @param int $limit
+     * @param int $offset
+     * @param int $user_id
+     * 
+     * @return object or boolean false 
+     * 
+     */ 
     public function get_user_stories($limit = 50, $offset = 0, $user_id)
     {
         $this->db->order_by("created", "DESC");
@@ -52,6 +94,17 @@ class Story_model extends MY_Model {
         return ($stories->num_rows() >= 1) ? $stories->result() : FALSE; 
     }
 
+    /**
+     * Get User Story Votes
+     * 
+     * Gets the total number of votes with downvotes
+     * subtracted from the final score.
+     * 
+     * @param int $user_id
+     * 
+     * @return int
+     * 
+     */ 
     public function get_user_story_votes($user_id)
     {
         $this->db->select('upvotes, downvotes');
@@ -78,7 +131,18 @@ class Story_model extends MY_Model {
 
         return $total;   
     }
-    
+
+    /**
+     * Timestamps
+     * 
+     * A callback function called by this model to add
+     * in a created field to every newly added story.
+     * 
+     * @param array $story
+     * 
+     * @return array
+     * 
+     */ 
     protected function timestamps($story)
     {
         $this->load->helper('date');

@@ -1,6 +1,7 @@
 {extends file='layout.zebra.tpl'}
 
 {block name=content}
+	{validation_errors()}
 	<form id="submission-form" action="story/submit" method="POST">
 		<div class="form-row">
 			<input type="text" name="title" id="title" placeholder="Title">

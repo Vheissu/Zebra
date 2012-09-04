@@ -29,5 +29,22 @@ $config = array(
                 'label'    => 'Password',
                 'rules'    => 'required'
             )
+        ),
+        'story' => array(
+            array(
+                'field' => 'title',
+                'label' => 'Title',
+                'rules' => 'required|trim'
+            ),
+            array(
+                'field' => 'link',
+                'label' => 'Link',
+                'rules' => 'prep_url|trim'
+            ),
+            array(
+                'field' => 'text',
+                'label' => 'Text',
+                'rules' => 'trim'
+            )
         )
 );

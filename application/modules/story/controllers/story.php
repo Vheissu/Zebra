@@ -7,7 +7,9 @@ class Story extends MY_Controller {
         parent::__construct();
 
         $this->load->helper('date');
+        $this->load->helper('form');
         $this->load->helper('vote/vote');
+        $this->load->library('form_validation');
         $this->load->model('story_model', 'story');
     }
 
@@ -34,13 +36,10 @@ class Story extends MY_Controller {
 
     public function submit()
     {
+        $this->data['page']['title']   = "Submit new news story";
         $this->data['current_segment'] = "submit";
 
-        if (!$this->input->post())
-        {
-            $this->parser->parse('add', $this->data);
-        }
-        else
+        if ($this->form_validation->run('story') !== FALSE)
         {
             if (logged_in())
             {
@@ -73,8 +72,12 @@ class Story extends MY_Controller {
             {
                 $this->session->set_flashdata('error', lang('submission_login'));
                 redirect(base_url());
-            }
-        }    
+            }    
+        }
+        else
+        {
+            $this->parser->parse('add', $this->data);    
+        }   
     }
 
     public function new_stories($page = 0)
