@@ -259,6 +259,9 @@ class Wolfauth {
 		// Hash the password ASAP
 		$password = $this->hash($password);
 
+        // Lowercase the username
+        $username = strtolower($username);
+
         // Create a nice username
         $nicename = ucfirst($username);
 
