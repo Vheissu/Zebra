@@ -11,6 +11,7 @@
     {/if}
  
     {css('zebra.css')}
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/flick/jquery-ui.css" type="text/css" media="all">
 
     {block name=header_styles}{/block}
 
@@ -56,9 +57,20 @@
     </div>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
     {js('zebra.js')}
 
     {block name=footer}{/block}
+
+    <div id="downvotereason" title="Why are you downvoting?" style="display:none;">
+        {assign var="downvote_reasons" value=get_downvote_reasons()}
+        <h2>Please select a reason for downvoting:</h2>
+        <select id="downvote_reason" name="downvote_reason">
+            {foreach $downvote_reasons AS $reason}
+            <option value="{$reason->id}">{$reason->reason}</option>
+            {/foreach}
+        </select>
+    </div>
 
 </body>  
 </html>

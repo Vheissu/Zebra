@@ -4,6 +4,13 @@ class Vote_model extends MY_Model {
 
 	protected $_table = 'votes';
 
+    public function get_downvote_reasons()
+    {
+        $query = $this->db->get('vote_reasons');
+
+        return ($query->num_rows() >= 1) ? $query->result() : FALSE;
+    }
+
     public function user_has_upvoted_story($story_id, $user_id)
     {
         $query = $this->db->get_where($this->_table, array('story_id' => $story_id, 'user_id' => $user_id, 'vote_type' => 'upvote'));
