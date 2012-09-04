@@ -51,7 +51,7 @@ $config = array(
             array(
                 'field' => 'in_reply_to',
                 'label' => 'Reply ID',
-                'rules' => 'required|numeric'
+                'rules' => 'required'
             ),
             array(
                 'field' => 'comment',

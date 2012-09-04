@@ -12,8 +12,8 @@ $route['user/(:any)'] = "user/view/$1";
 
 // Story routes
 $route['stories']     = 'story';
+$route['story/(:num)/comment'] = "story/comment/$1";
 $route['story/(:num)/(:any)'] = 'story/view/$1/$2';
-$route['story/(:num)/comment'] = "story/comment";
 $route['stories/new'] = 'story/new_stories';
 $route['stories/new/(:num)'] = 'story/new_stories/$1';
 $route['stories/(:num)'] = 'story/index/$1';

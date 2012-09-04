@@ -13,7 +13,7 @@ class User_model extends MY_Model {
 
     public function add_comment_vote_record($user_id, $comment_id)
     {
-        $query = $this->db->insert('zebra_votes', array('user_id' => $user_id, 'comment_id' => $story_id, 'vote_type' => 'upvote'));
+        $query = $this->db->insert('zebra_votes', array('user_id' => $user_id, 'comment_id' => $comment_id, 'vote_type' => 'upvote'));
 
         return ($query);    
     }

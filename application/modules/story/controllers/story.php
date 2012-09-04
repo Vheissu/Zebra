@@ -54,7 +54,7 @@ class Story extends MY_Controller {
             {
                 $comment   = $this->input->post('comment');
                 $reply_to = $this->input->post('in_reply_to', '0');
-                
+
                 $save = $this->comment->save_comment($story_id, current_user_id(), $reply_to, $comment);
 
                 if ($save)
@@ -68,7 +68,9 @@ class Story extends MY_Controller {
                 $this->session->set_flashdata('error', lang('comment_login'));
                 redirect('story/view/'.$story->id.'/'.$story->slug.'');    
             }
-        }     
+        }    
+        
+        redirect('story/view/'.$story->id.'/'.$story->slug.'#comments'); 
     }
 
     public function submit()

@@ -3,6 +3,7 @@
 {block name=content}
 	
 	{get_flashdata('error')}
+	{validation_errors()}
 	{if $story}
 		<div id="story-book">
 			<div class="story-row">
@@ -47,6 +48,7 @@
 						{foreach $story->comments AS $comment}
 							<div class="comment-row">
 								<div>Comment by: {strtolower(get_username($comment->user_id))}</div>
+								<div>{$comment->comment}</div>
 							</div>
 						{/foreach}
 					</div>

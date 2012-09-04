@@ -8,7 +8,14 @@ class Comment_model extends MY_Model {
 
     public function get_comments($story_id)
     {
-        return $this->get_many_by('story_id', $story_id);
+        $this->db->select('c.*');
+        $this->db->from('comments c');
+        $this->db->where('c.story_id', $story_id);
+        $this->db->join('comments', 'comments.id = c.parent_id', 'left');
+
+        $result = $this->db->get();
+
+        return ($result->num_rows() >= 1) ? $result->result() : FALSE;
     }
 
     public function save_comment($story_id, $user_id, $reply_id, $comment)
