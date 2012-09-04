@@ -85,6 +85,8 @@ class Vote_model extends MY_Model {
      */ 
     public function cast_story_vote($type = "up", $story_id, $user_id, $reason_id = 0)
     {
+        $field_data = array();
+
     	if ($type == 'up')
     	{
     		$field_data = array(
@@ -103,7 +105,9 @@ class Vote_model extends MY_Model {
     		);
     	}
 
-    	return ($this->insert($field_data) !== FALSE) ? TRUE : FALSE;
+        $result = $this->insert($field_data); 
+
+    	return ($result !== FALSE) ? TRUE : FALSE;
     }
 
 }
