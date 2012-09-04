@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2012-09-03 16:48:13
+Date: 2012-09-04 12:55:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -101,7 +101,7 @@ CREATE TABLE `zebra_sessions` (
 -- ----------------------------
 -- Records of zebra_sessions
 -- ----------------------------
-INSERT INTO `zebra_sessions` VALUES ('16956b214b3732241008714af34bf7f5', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346653398', 'a:4:{s:7:\"user_id\";s:1:\"2\";s:8:\"username\";s:5:\"Maxxx\";s:7:\"role_id\";s:1:\"1\";s:9:\"role_name\";s:4:\"user\";}');
+INSERT INTO `zebra_sessions` VALUES ('2e19312d00531996368b896f490c59f3', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346727244', 'a:5:{s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"zebra\";s:13:\"nice_username\";s:5:\"Zebra\";s:7:\"role_id\";s:1:\"3\";s:9:\"role_name\";s:11:\"super_admin\";}');
 
 -- ----------------------------
 -- Table structure for `zebra_stories`
@@ -119,7 +119,7 @@ CREATE TABLE `zebra_stories` (
   `created` int(5) NOT NULL DEFAULT '0',
   `updated` int(5) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_stories
@@ -137,6 +137,11 @@ INSERT INTO `zebra_stories` VALUES ('10', '1', 'The Human Who Outrun Horses', 't
 INSERT INTO `zebra_stories` VALUES ('11', '1', 'Birds Hold \'Funerals\' For Dead', 'birds-hold-funerals-for-dead', null, 'http://www.bbc.co.uk/nature/19421217', '1', '0', '1346470110', '0');
 INSERT INTO `zebra_stories` VALUES ('12', '2', 'Left Alone by Its Owner, Reddit Soars', 'left-alone-by-its-owner-reddit-soars', null, 'http://www.nytimes.com/2012/09/03/business/media/reddit-thrives-after-advance-publications-let-it-sink-or-swim.html?hp', '1', '0', '1346637769', '0');
 INSERT INTO `zebra_stories` VALUES ('13', '2', 'Apple Never Invented Anything', 'apple-never-invented-anything', null, 'http://www.mondaynote.com/2012/09/02/apple-never-invented-anything/', '1', '0', '1346639849', '0');
+INSERT INTO `zebra_stories` VALUES ('14', '1', 'When A Kickstarter Campaign Fails, Does Anyone Get Their Money Back?', 'when-a-kickstarter-campaign-fails-does-anyone-get-their-money-back', null, 'http://www.npr.org/blogs/alltechconsidered/2012/09/03/160505449/when-a-kickstarter-campaign-fails-does-anyone-get-their-money-back', '1', '0', '1346726598', '0');
+INSERT INTO `zebra_stories` VALUES ('15', '1', 'Nintendo Almost Made a Knitting Add-On for NES', 'nintendo-almost-made-a-knitting-add-on-for-nes', null, 'http://www.ign.com/articles/2012/08/31/nintendo-almost-made-a-knitting-add-on-for-nes', '1', '0', '1346726686', '0');
+INSERT INTO `zebra_stories` VALUES ('16', '1', 'SQL vs. NoSQL', 'sql-vs-nosql', null, 'http://www.linuxjournal.com/article/10770?page=0,0', '1', '0', '1346726735', '0');
+INSERT INTO `zebra_stories` VALUES ('17', '1', 'Foggy: jQuery plugin for blurring page elements', 'foggy-jquery-plugin-for-blurring-page-elements', null, 'http://nbartlomiej.github.com/foggy/', '1', '0', '1346726807', '0');
+INSERT INTO `zebra_stories` VALUES ('18', '1', 'Pass: The Standard Unix Password Manager', 'pass-the-standard-unix-password-manager', null, 'http://zx2c4.com/projects/password-store/', '1', '0', '1346727252', '0');
 
 -- ----------------------------
 -- Table structure for `zebra_users`
@@ -146,6 +151,7 @@ CREATE TABLE `zebra_users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `role_id` int(5) NOT NULL,
   `username` varchar(80) NOT NULL,
+  `nice_username` varchar(80) NOT NULL,
   `email` varchar(80) NOT NULL,
   `password` varchar(140) NOT NULL,
   `register_date` int(11) NOT NULL DEFAULT '0',
@@ -153,13 +159,14 @@ CREATE TABLE `zebra_users` (
   `user_status` enum('active','pending','banned') NOT NULL,
   `remember_me` text,
   PRIMARY KEY (`id`,`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of zebra_users
 -- ----------------------------
-INSERT INTO `zebra_users` VALUES ('1', '3', 'Zebra', 'wolf@wolfphp.com', '1c40ed3c114c927b0c77bcea4a200f4348cd806bce9b6b641df2f586432ae8d6', '1338865395', '', 'active', null);
-INSERT INTO `zebra_users` VALUES ('2', '1', 'Maxxx', 'throwaway@hotmail.com', '6fcf016c8435510cd7cb42fd355a1d72a80abe4fdacff89e1d4dfa72d164770e', '1342580595', '', 'active', null);
+INSERT INTO `zebra_users` VALUES ('1', '3', 'zebra', 'Zebra', 'zebra@domain.com', '77675e7508dd8b0e2d5cf9514626a86fbd8279e0edca17d67b3a5fffb1def6f1', '1338865395', '', 'active', '');
+INSERT INTO `zebra_users` VALUES ('2', '1', 'maxxx', 'Max', 'throwaway@hotmail.com', '77675e7508dd8b0e2d5cf9514626a86fbd8279e0edca17d67b3a5fffb1def6f1', '1342580595', '', 'active', '');
+INSERT INTO `zebra_users` VALUES ('3', '1', 'Galazy', 'Galazy', 'galazy@domain.com', '77675e7508dd8b0e2d5cf9514626a86fbd8279e0edca17d67b3a5fffb1def6f1', '1346721764', '', 'active', '');
 
 -- ----------------------------
 -- Table structure for `zebra_user_meta`
@@ -181,7 +188,7 @@ INSERT INTO `zebra_user_meta` VALUES ('2', '1', 'last_name', 'De Wolfe');
 INSERT INTO `zebra_user_meta` VALUES ('3', '2', 'first_name', 'Max');
 INSERT INTO `zebra_user_meta` VALUES ('4', '2', 'last_name', 'Green');
 INSERT INTO `zebra_user_meta` VALUES ('5', '2', 'submissions', '2');
-INSERT INTO `zebra_user_meta` VALUES ('6', '1', 'submissions', '11');
+INSERT INTO `zebra_user_meta` VALUES ('6', '1', 'submissions', '3');
 
 -- ----------------------------
 -- Table structure for `zebra_votes`
@@ -195,7 +202,7 @@ CREATE TABLE `zebra_votes` (
   `comment_id` bigint(20) unsigned NOT NULL,
   `vote_type` enum('upvote','downvote') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_votes
@@ -209,6 +216,7 @@ INSERT INTO `zebra_votes` VALUES ('6', '1', '6', '0', '0', 'upvote');
 INSERT INTO `zebra_votes` VALUES ('7', '1', '7', '0', '0', 'upvote');
 INSERT INTO `zebra_votes` VALUES ('8', '1', '8', '0', '0', 'upvote');
 INSERT INTO `zebra_votes` VALUES ('9', '1', '9', '0', '0', 'upvote');
+INSERT INTO `zebra_votes` VALUES ('10', '1', '18', '0', '0', 'upvote');
 
 -- ----------------------------
 -- Table structure for `zebra_vote_reasons`
