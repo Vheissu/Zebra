@@ -259,11 +259,11 @@ class Wolfauth {
 		// Hash the password ASAP
 		$password = $this->hash($password);
 
+        // The user submitted username is the nice name to preserve casing
+        $nicename = $username;
+
         // Lowercase the username
         $username = strtolower($username);
-
-        // Create a nice username
-        $nicename = ucfirst($username);
 
 		// Call the add user function and return the result
 		return $this->CI->wolfauth_m->add_user($username, $nicename, $email, $password, $role_id, $status, $additional_data);
