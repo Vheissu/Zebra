@@ -66,6 +66,7 @@
         {assign var="downvote_reasons" value=get_downvote_reasons()}
         <h2>Please select a reason for downvoting:</h2>
         <select id="downvote_reason" name="downvote_reason">
+            <option value="0" selected="selected">Select a downvote reason</option>
             {foreach $downvote_reasons AS $reason}
             <option value="{$reason->id}">{$reason->reason}</option>
             {/foreach}
