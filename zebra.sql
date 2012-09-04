@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2012-09-04 12:55:34
+Date: 2012-09-04 12:56:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -166,7 +166,7 @@ CREATE TABLE `zebra_users` (
 -- ----------------------------
 INSERT INTO `zebra_users` VALUES ('1', '3', 'zebra', 'Zebra', 'zebra@domain.com', '77675e7508dd8b0e2d5cf9514626a86fbd8279e0edca17d67b3a5fffb1def6f1', '1338865395', '', 'active', '');
 INSERT INTO `zebra_users` VALUES ('2', '1', 'maxxx', 'Max', 'throwaway@hotmail.com', '77675e7508dd8b0e2d5cf9514626a86fbd8279e0edca17d67b3a5fffb1def6f1', '1342580595', '', 'active', '');
-INSERT INTO `zebra_users` VALUES ('3', '1', 'Galazy', 'Galazy', 'galazy@domain.com', '77675e7508dd8b0e2d5cf9514626a86fbd8279e0edca17d67b3a5fffb1def6f1', '1346721764', '', 'active', '');
+INSERT INTO `zebra_users` VALUES ('3', '1', 'galazy', 'Galazy', 'galazy@domain.com', '77675e7508dd8b0e2d5cf9514626a86fbd8279e0edca17d67b3a5fffb1def6f1', '1346721764', '', 'active', '');
 
 -- ----------------------------
 -- Table structure for `zebra_user_meta`
