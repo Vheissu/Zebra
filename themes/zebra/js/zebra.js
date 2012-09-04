@@ -27,6 +27,7 @@ var Zebra = Zebra || {};
                 pageEls.downvoteBox.dialog({
                     resizable: false,
                     modal: true,
+                    width: 500,
                     buttons: {
                         "Save": function() {
                             var downvoteReason = $("#downvote_reason");
@@ -124,7 +125,7 @@ var Zebra = Zebra || {};
 
     });
 
-})(window, window.Zebra, jQuery);
+})(window, Zebra, jQuery);
 
 (function(w, Zebra, $, undefined) {
 
@@ -136,7 +137,7 @@ var Zebra = Zebra || {};
 
         return {
 
-            story: {
+            Story: {
 
                 up: function(story_id) {
                     if (base_url) {
@@ -228,4 +229,4 @@ var Zebra = Zebra || {};
 
     }();
 
-})(window, window.Zebra, jQuery);
+})(window, Zebra, jQuery);
