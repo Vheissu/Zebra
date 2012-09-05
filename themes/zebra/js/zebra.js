@@ -18,6 +18,7 @@ var Zebra = Zebra || {};
             var $voteAction = $this.data('vote-action');
             var $entryRow   = $("#entry-"+$storyId);
             var $storyVotes = $(".story-upvotes", $entryRow);
+            var voteValue   = parseInt($storyVotes.text());
 
             if ($voteAction == "up" && !$this.hasClass('disabled'))
             {
@@ -28,16 +29,13 @@ var Zebra = Zebra || {};
                         var status       = response_str[0];
                         var voteType     = response_str[1];
                         var storyId      = response_str[2];
-
-                        var voteValue = parseInt($storyVotes.text());
-                            voteValue = voteValue+1;
+                        
+                        voteValue = voteValue+1;
 
                         if (status == "success") {
                             $this.addClass('disabled');
 
                             $storyVotes.text(voteValue);
-
-                            alert(voteValue);
                         }  
                     }
                 });
@@ -67,8 +65,12 @@ var Zebra = Zebra || {};
                                         var voteType     = response_str[1];
                                         var storyId      = response_str[2];
 
+                                        voteValue = voteValue-1;
+
                                         if (status == "success") {
                                             $this.addClass('disabled');
+
+                                            $storyVotes.text(voteValue);
                                         }  
                                     }
                                 });
