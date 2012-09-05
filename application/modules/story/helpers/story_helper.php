@@ -68,6 +68,36 @@ function story_downvoted($story_id = 0, $user_id = 0)
 }
 
 /**
+ * Rewind Vote
+ * 
+ * Will remove a vote from a story as well as voting
+ * history in an instance where a user changes their
+ * vote from an up to a down or vice-versa
+ * 
+ * @param string $direction
+ * @param int $story_id
+ * @param int $reason_id
+ * @return string
+ * 
+ */
+function rewind_vote($direction = "up", $story_id = 0)
+{
+    $user_id = current_user_id();
+
+    $CI =& get_instance();
+    $CI->load->model('vote/vote_model', 'vote');
+
+    if (!$user_id)
+    {
+        return lang('user_not_logged_in');
+    }
+    else
+    {
+        return $CI->vote->rewind_story_vote($direction, $story_id, $user_id);
+    }
+}
+
+/**
  * Story Vote
  * 
  * A helper function for performing an upvote or
@@ -97,6 +127,7 @@ function story_vote($direction = "up", $story_id = 0, $reason_id = 0)
 		{
 			if (!story_upvoted($story_id, $user_id))
 			{
+                rewind_vote('down', $story_id);
 				return $CI->vote->cast_story_vote("up", $story_id, $user_id);
 			}
 			else
@@ -108,6 +139,7 @@ function story_vote($direction = "up", $story_id = 0, $reason_id = 0)
 		{
 			if (!story_downvoted($story_id, $user_id))
 			{
+                rewind_vote('up', $story_id);
 				return $CI->vote->cast_story_vote("down", $story_id, $user_id, $reason_id);
 			}
 			else

@@ -126,4 +126,55 @@ class Vote_model extends MY_Model {
     	return ($result !== FALSE) ? TRUE : FALSE;
     }
 
+    /**
+     * Rewind Story Vote
+     * 
+     * Will remove a vote from a story as well as voting
+     * history in an instance where a user changes their
+     * vote from an up to a down or vice-versa
+     * 
+     * @access public
+     * @param string $direction
+     * @param int $story_id
+     * @return string
+     * 
+     */
+    public function rewind_story_vote($type = "up", $story_id, $user_id)
+    {
+        $field_data = array();
+
+        if ($type == 'up')
+        {
+            $this->db->where('user_id', $user_id);
+            $this->db->where('story_id', $story_id);
+            $this->db->where('vote_type', 'upvote');
+        }
+        elseif ($type == 'down')
+        {
+            $this->db->where('user_id', $user_id);
+            $this->db->where('story_id', $story_id);
+            $this->db->where('vote_type', 'downvote');
+        }
+
+        $result = $this->db->delete($this->_table);
+
+        if ($result)
+        {
+            if ($type == 'up')
+            {
+                $this->db->where('id', $story_id);
+                $this->db->set('upvotes', 'upvotes - 1', FALSE);
+                $this->db->update('stories');
+            }
+            elseif ($type == 'down')
+            {
+                $this->db->where('id', $story_id);
+                $this->db->set('downvotes', 'downvotes - 1', FALSE);
+                $this->db->update('stories');
+            }
+        } 
+
+        return ($result !== FALSE) ? TRUE : FALSE;
+    }
+
 }
