@@ -64,6 +64,47 @@ function comment_downvoted($comment_id = 0, $user_id = 0)
     return $CI->vote->user_has_downvoted_comment($comment_id, $user_id);
 }
 
+/**
+ * Rewind Comment Vote
+ * 
+ * Will remove a vote from a comment as well as voting
+ * history in an instance where a user changes their
+ * vote from an up to a down or vice-versa
+ * 
+ * @param string $direction
+ * @param int $comment_id
+ * @return string
+ * 
+ */
+function rewind_comment_vote($direction = "up", $comment_id = 0)
+{
+    $user_id = current_user_id();
+
+    $CI =& get_instance();
+    $CI->load->model('vote/vote_model', 'vote');
+
+    if (!$user_id)
+    {
+        return lang('user_not_logged_in');
+    }
+    else
+    {
+        return $CI->vote->rewind_comment_vote($direction, $story_id, $user_id);
+    }
+}
+
+/**
+ * Comment Vote
+ * 
+ * A helper function for performing an upvote or
+ * downvote on a particular comment.
+ * 
+ * @param string $direction
+ * @param int $comment_id
+ * @param int $reason_id
+ * @return string
+ * 
+ */
 function comment_vote($direction = "up", $comment_id = 0, $reason_id = 0)
 {
 	// Get the currently logged in user ID
@@ -82,6 +123,7 @@ function comment_vote($direction = "up", $comment_id = 0, $reason_id = 0)
 		{
 			if (!comment_upvoted($comment_id, $user_id))
 			{
+                rewind_comment_vote("down", $comment_id);
 				return $CI->vote->cast_comment_vote("up", $comment_id, $user_id);
 			}
 			else
@@ -93,6 +135,7 @@ function comment_vote($direction = "up", $comment_id = 0, $reason_id = 0)
 		{
 			if (!comment_downvoted($comment_id, $user_id))
 			{
+                rewind_comment_vote("up", $comment_id);
 				return $CI->vote->cast_comment_vote("down", $comment_id, $user_id, $reason_id);
 			}
 			else

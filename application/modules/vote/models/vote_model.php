@@ -177,4 +177,113 @@ class Vote_model extends MY_Model {
         return ($result !== FALSE) ? TRUE : FALSE;
     }
 
+    /**
+     * Cast Comment Vote
+     * 
+     * Will insert a vote record into the votes table
+     * if a user votes up or down a particular comment
+     * 
+     * @access public
+     * @param string $type
+     * @param int $comment_id
+     * @param int $user_id
+     * @param int $reason_id
+     * 
+     * @return boolean
+     * 
+     */ 
+    public function cast_comment_vote($type = "up", $comment_id, $user_id, $reason_id = 0)
+    {
+        $field_data = array();
+
+        if ($type == 'up')
+        {
+            $field_data = array(
+                'user_id'    => $user_id,
+                'comment_id' => $comment_id,
+                'vote_type'  => 'upvote' 
+            );
+        }
+        elseif ($type == 'down')
+        {
+            $field_data = array(
+                'user_id'    => $user_id,
+                'comment_id' => $comment_id,
+                'reason_id'  => $reason_id,
+                'vote_type'  => 'downvote'  
+            );
+        }
+
+        $result = $this->insert($field_data);
+
+        if ($result)
+        {
+            if ($type == 'up')
+            {
+                $this->db->where('id', $comment_id);
+                $this->db->set('upvotes', 'upvotes + 1', FALSE);
+                $this->db->update('comments');
+            }
+            elseif ($type == 'down')
+            {
+                $this->db->where('id', $comment_id);
+                $this->db->set('downvotes', 'downvotes + 1', FALSE);
+                $this->db->update('comments');
+            }
+        } 
+
+        return ($result !== FALSE) ? TRUE : FALSE;
+    }
+
+    /**
+     * Rewind Comment Vote
+     * 
+     * Will remove a vote from a comment as well as voting
+     * history in an instance where a user changes their
+     * vote from an up to a down or vice-versa
+     * 
+     * @access public
+     * @param string $direction
+     * @param int $comment_id
+     * @return string
+     * 
+     */
+    public function rewind_comment_vote($type = "up", $comment_id, $user_id)
+    {
+        $field_data = array();
+
+        if ($type == 'up')
+        {
+            $this->db->where('user_id', $user_id);
+            $this->db->where('comment_id', $comment_id);
+            $this->db->where('vote_type', 'upvote');
+        }
+        elseif ($type == 'down')
+        {
+            $this->db->where('user_id', $user_id);
+            $this->db->where('comment_id', $comment_id);
+            $this->db->where('vote_type', 'downvote');
+        }
+
+        $result = $this->db->delete($this->_table);
+
+        if ($result)
+        {
+            if ($type == 'up')
+            {
+                $this->db->where('id', $comment_id);
+                $this->db->set('upvotes', 'upvotes - 1', FALSE);
+                $this->db->update('comments');
+            }
+            elseif ($type == 'down')
+            {
+                $this->db->where('id', $comment_id);
+                $this->db->set('downvotes', 'downvotes - 1', FALSE);
+                $this->db->update('comments');
+            }
+        } 
+
+        return ($result !== FALSE) ? TRUE : FALSE;
+    }
+
 }

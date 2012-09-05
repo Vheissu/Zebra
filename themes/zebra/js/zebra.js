@@ -223,13 +223,13 @@ var Zebra = Zebra || {};
 
                 return {
 
-                    up: function(comment_id) {
+                    up: function(comment_id, callback) {
                         if (base_url) {
                             if (processing == false) {
                                 processing = true;
                                 $.post(base_url + 'ajax/comment_vote', { action: "upvote", comment_id: comment_id }, function(response) {
                                     processing = false;
-                                    return response;
+                                    callback(response);
                                 });
                             } else {
                                 alert(slowDown);
@@ -240,7 +240,7 @@ var Zebra = Zebra || {};
                         }
                     },
 
-                    down: function(comment_id, reason_id) {
+                    down: function(comment_id, reason_id, callback) {
 
                         if (base_url) {
 
@@ -248,7 +248,7 @@ var Zebra = Zebra || {};
                                 processing = true;
                                 $.post(base_url + 'ajax/comment_vote', { action: "downvote", comment_id: comment_id, downvote_reason: reason_id }, function(response) {
                                     processing = false;
-                                    return response;
+                                    callback(response);
                                 });
                             } else {
                                 alert(slowDown);

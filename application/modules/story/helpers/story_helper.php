@@ -68,7 +68,7 @@ function story_downvoted($story_id = 0, $user_id = 0)
 }
 
 /**
- * Rewind Vote
+ * Rewind Story Vote
  * 
  * Will remove a vote from a story as well as voting
  * history in an instance where a user changes their
@@ -80,7 +80,7 @@ function story_downvoted($story_id = 0, $user_id = 0)
  * @return string
  * 
  */
-function rewind_vote($direction = "up", $story_id = 0)
+function rewind_story_vote($direction = "up", $story_id = 0)
 {
     $user_id = current_user_id();
 
@@ -127,7 +127,7 @@ function story_vote($direction = "up", $story_id = 0, $reason_id = 0)
 		{
 			if (!story_upvoted($story_id, $user_id))
 			{
-                rewind_vote('down', $story_id);
+                rewind_story_vote('down', $story_id);
 				return $CI->vote->cast_story_vote("up", $story_id, $user_id);
 			}
 			else
@@ -139,7 +139,7 @@ function story_vote($direction = "up", $story_id = 0, $reason_id = 0)
 		{
 			if (!story_downvoted($story_id, $user_id))
 			{
-                rewind_vote('up', $story_id);
+                rewind_story_vote('up', $story_id);
 				return $CI->vote->cast_story_vote("down", $story_id, $user_id, $reason_id);
 			}
 			else
