@@ -105,7 +105,23 @@ class Vote_model extends MY_Model {
     		);
     	}
 
-        $result = $this->insert($field_data); 
+        $result = $this->insert($field_data);
+
+        if ($result)
+        {
+            if ($type == 'up')
+            {
+                $this->db->where('id', $story_id);
+                $this->db->set('upvotes', 'upvotes + 1', FALSE);
+                $this->db->update('stories');
+            }
+            elseif ($type == 'down')
+            {
+                $this->db->where('id', $story_id);
+                $this->db->set('downvotes', 'downvotes + 1', FALSE);
+                $this->db->update('stories');
+            }
+        } 
 
     	return ($result !== FALSE) ? TRUE : FALSE;
     }

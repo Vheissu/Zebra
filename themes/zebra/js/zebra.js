@@ -17,28 +17,30 @@ var Zebra = Zebra || {};
             var $storyId    = $this.data('story-id');
             var $voteAction = $this.data('vote-action');
             var $entryRow   = $("#entry-"+$storyId);
-            var $storyVotes = $(".story-votes", $entryRow);
+            var $storyVotes = $(".story-upvotes", $entryRow);
 
             if ($voteAction == "up" && !$this.hasClass('disabled'))
             {
-                var response = Zebra.Vote.Story.up($storyId);
+                Zebra.Vote.Story.up($storyId, function(response) {
+                    if (response) {
+                        var response_str = response.split("|");
 
-                if (response) {
-                    var response_str = response.split("|");
+                        var status       = response_str[0];
+                        var voteType     = response_str[1];
+                        var storyId      = response_str[2];
 
-                    var status       = response_str[0];
-                    var voteType     = response_str[1];
-                    var storyId      = response_str[2];
-
-                    if (status == "success") {
-                        $this.addClass('disabled');
-                        
                         var voteValue = parseInt($storyVotes.text());
                             voteValue = voteValue+1;
 
-                        $storyVotes.text(voteValue);
-                    }  
-                }
+                        if (status == "success") {
+                            $this.addClass('disabled');
+
+                            $storyVotes.text(voteValue);
+
+                            alert(voteValue);
+                        }  
+                    }
+                });
             }
 
             if ($voteAction == "down" && !$this.hasClass('disabled'))
@@ -57,19 +59,19 @@ var Zebra = Zebra || {};
                             }
                             else
                             {
-                                var response = Zebra.Vote.Story.down($storyId, downvoteReason.children("option:selected").val());
+                                Zebra.Vote.Story.down($storyId, downvoteReason.children("option:selected").val(), function(response) {
+                                    if (response) {
+                                        var response_str = response.split("|");
 
-                                if (response) {
-                                    var response_str = response.split("|");
+                                        var status       = response_str[0];
+                                        var voteType     = response_str[1];
+                                        var storyId      = response_str[2];
 
-                                    var status       = response_str[0];
-                                    var voteType     = response_str[1];
-                                    var storyId      = response_str[2];
-
-                                    if (status == "success") {
-                                        $this.addClass('disabled');
-                                    }  
-                                }
+                                        if (status == "success") {
+                                            $this.addClass('disabled');
+                                        }  
+                                    }
+                                });
                                 
                                 $(this).dialog("close");
                             }
@@ -170,13 +172,13 @@ var Zebra = Zebra || {};
 
             Story: {
 
-                up: function(story_id) {
+                up: function(story_id, callback) {
                     if (base_url) {
                         if (processing == false) {
                             processing = true;
                             $.post(base_url + 'ajax/story_vote', { action: "upvote", story_id: story_id }, function(response) {
                                 processing = false;
-                                return response;
+                                callback(response);
                             });
                         } else {
                             alert(slowDown);
@@ -187,7 +189,7 @@ var Zebra = Zebra || {};
                     }
                 },
 
-                down: function(story_id, reason_id) {
+                down: function(story_id, reason_id, callback) {
 
                     if (base_url) {
 
@@ -195,7 +197,7 @@ var Zebra = Zebra || {};
                             processing = true;
                             $.post(base_url + 'ajax/story_vote', { action: "downvote", story_id: story_id, downvote_reason: reason_id }, function(response) {
                                 processing = false;
-                                return response;
+                                callback(response);
                             });
                         } else {
                             alert(slowDown);
