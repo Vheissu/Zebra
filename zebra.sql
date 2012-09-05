@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2012-09-04 16:48:31
+Date: 2012-09-05 10:47:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -102,7 +102,7 @@ CREATE TABLE `zebra_sessions` (
 -- ----------------------------
 -- Records of zebra_sessions
 -- ----------------------------
-INSERT INTO `zebra_sessions` VALUES ('7dc75cbc9e9ef3483f4b86db2b409eb9', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346740915', 'a:5:{s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"zebra\";s:13:\"nice_username\";s:5:\"Zebra\";s:7:\"role_id\";s:1:\"3\";s:9:\"role_name\";s:11:\"super_admin\";}');
+INSERT INTO `zebra_sessions` VALUES ('9808df6ceb8a51c7b5f20a49f74abdbf', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1', '1346806012', 'a:5:{s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"zebra\";s:13:\"nice_username\";s:5:\"Zebra\";s:7:\"role_id\";s:1:\"3\";s:9:\"role_name\";s:11:\"super_admin\";}');
 
 -- ----------------------------
 -- Table structure for `zebra_stories`
@@ -120,7 +120,7 @@ CREATE TABLE `zebra_stories` (
   `created` int(5) NOT NULL DEFAULT '0',
   `updated` int(5) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_stories
@@ -137,7 +137,7 @@ INSERT INTO `zebra_stories` VALUES ('9', '1', 'Moving From Heroku To Hardware', 
 INSERT INTO `zebra_stories` VALUES ('10', '1', 'The Human Who Outrun Horses', 'the-human-who-outrun-horses', null, 'http://www.smh.com.au/world/science/the-humans-who-outrun-horses-20120606-1zv96.html', '1', '0', '1346469806', '0');
 INSERT INTO `zebra_stories` VALUES ('11', '1', 'Birds Hold \'Funerals\' For Dead', 'birds-hold-funerals-for-dead', null, 'http://www.bbc.co.uk/nature/19421217', '1', '0', '1346470110', '0');
 INSERT INTO `zebra_stories` VALUES ('12', '2', 'Left Alone by Its Owner, Reddit Soars', 'left-alone-by-its-owner-reddit-soars', null, 'http://www.nytimes.com/2012/09/03/business/media/reddit-thrives-after-advance-publications-let-it-sink-or-swim.html?hp', '1', '0', '1346637769', '0');
-INSERT INTO `zebra_stories` VALUES ('13', '2', 'Apple Never Invented Anything', 'apple-never-invented-anything', null, 'http://www.mondaynote.com/2012/09/02/apple-never-invented-anything/', '1', '0', '1346639849', '0');
+INSERT INTO `zebra_stories` VALUES ('13', '2', 'Apple Never Invented Anything', 'apple-never-invented-anything', null, 'http://www.mondaynote.com/2012/09/02/apple-never-invented-anything/', '2', '0', '1346639849', '0');
 INSERT INTO `zebra_stories` VALUES ('14', '1', 'When A Kickstarter Campaign Fails, Does Anyone Get Their Money Back?', 'when-a-kickstarter-campaign-fails-does-anyone-get-their-money-back', null, 'http://www.npr.org/blogs/alltechconsidered/2012/09/03/160505449/when-a-kickstarter-campaign-fails-does-anyone-get-their-money-back', '1', '0', '1346726598', '0');
 INSERT INTO `zebra_stories` VALUES ('15', '1', 'Nintendo Almost Made a Knitting Add-On for NES', 'nintendo-almost-made-a-knitting-add-on-for-nes', null, 'http://www.ign.com/articles/2012/08/31/nintendo-almost-made-a-knitting-add-on-for-nes', '1', '0', '1346726686', '0');
 INSERT INTO `zebra_stories` VALUES ('16', '1', 'SQL vs. NoSQL', 'sql-vs-nosql', null, 'http://www.linuxjournal.com/article/10770?page=0,0', '1', '0', '1346726735', '0');
@@ -146,6 +146,9 @@ INSERT INTO `zebra_stories` VALUES ('18', '1', 'Pass: The Standard Unix Password
 INSERT INTO `zebra_stories` VALUES ('19', '1', 'Ask:  How do you find clients?', 'ask-how-do-you-find-clients', 'Hi, I\'m thinking about doing some freelance web design and marketing for a bit of extra cash.\r\n\r\nAside from cold calls what are some good ways to obtain clients?', null, '1', '0', '1346731355', '0');
 INSERT INTO `zebra_stories` VALUES ('20', '1', 'AntiSec leaks 1,000,001 Apple UDIDs, Device Names/Types', 'antisec-leaks-1000001-apple-udids-device-namestypes', null, 'http://pastebin.com/nfVT7b0Z', '1', '0', '1346733681', '0');
 INSERT INTO `zebra_stories` VALUES ('21', '1', 'Cable lacing on the Curiosity rover', 'cable-lacing-on-the-curiosity-rover', null, 'http://igkt.net/sm/index.php?topic=4028', '1', '0', '1346735888', '0');
+INSERT INTO `zebra_stories` VALUES ('22', '3', 'Google Search is only 18% Search', 'google-search-is-only-18-search', null, 'http://blog.jitbit.com/2012/09/googles-serp-is-only-25-serp.html', '1', '1', '1346803080', '0');
+INSERT INTO `zebra_stories` VALUES ('23', '3', 'FBI Says Laptop Wasn\'t Hacked; Never Possessed File of Apple Device IDs', 'fbi-says-laptop-wasnt-hacked-never-possessed-file-of-apple-device-ids', null, 'http://www.wired.com/threatlevel/2012/09/fbi-says-laptop-wasnt-hacked-never-possessed-file-of-apple-device-ids', '2', '0', '1346803101', '0');
+INSERT INTO `zebra_stories` VALUES ('24', '3', 'What\'s a $4000 Suit Worth?', 'whats-a-4000-suit-worth', null, 'http://www.nytimes.com/2012/09/09/magazine/whats-a-4000-suit-worth.html?pagewanted=all', '1', '0', '1346803216', '0');
 
 -- ----------------------------
 -- Table structure for `zebra_users`
@@ -182,7 +185,7 @@ CREATE TABLE `zebra_user_meta` (
   `umeta_key` varchar(255) NOT NULL,
   `umeta_value` longtext NOT NULL,
   PRIMARY KEY (`umeta_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of zebra_user_meta
@@ -193,6 +196,7 @@ INSERT INTO `zebra_user_meta` VALUES ('3', '2', 'first_name', 'Max');
 INSERT INTO `zebra_user_meta` VALUES ('4', '2', 'last_name', 'Green');
 INSERT INTO `zebra_user_meta` VALUES ('5', '2', 'submissions', '2');
 INSERT INTO `zebra_user_meta` VALUES ('6', '1', 'submissions', '6');
+INSERT INTO `zebra_user_meta` VALUES ('7', '3', 'submissions', '3');
 
 -- ----------------------------
 -- Table structure for `zebra_votes`
@@ -206,7 +210,7 @@ CREATE TABLE `zebra_votes` (
   `comment_id` bigint(20) unsigned NOT NULL,
   `vote_type` enum('upvote','downvote') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zebra_votes
@@ -227,6 +231,14 @@ INSERT INTO `zebra_votes` VALUES ('13', '1', '21', '0', '0', 'upvote');
 INSERT INTO `zebra_votes` VALUES ('14', '2', '1', '0', '0', 'upvote');
 INSERT INTO `zebra_votes` VALUES ('15', '1', '0', '0', '1', 'upvote');
 INSERT INTO `zebra_votes` VALUES ('16', '1', '0', '0', '2', 'upvote');
+INSERT INTO `zebra_votes` VALUES ('18', '1', '12', '0', '0', 'upvote');
+INSERT INTO `zebra_votes` VALUES ('19', '3', '22', '0', '0', 'upvote');
+INSERT INTO `zebra_votes` VALUES ('20', '3', '23', '0', '0', 'upvote');
+INSERT INTO `zebra_votes` VALUES ('21', '3', '24', '0', '0', 'upvote');
+INSERT INTO `zebra_votes` VALUES ('22', '1', '24', '0', '0', 'upvote');
+INSERT INTO `zebra_votes` VALUES ('23', '1', '23', '0', '0', 'upvote');
+INSERT INTO `zebra_votes` VALUES ('26', '1', '13', '0', '0', 'upvote');
+INSERT INTO `zebra_votes` VALUES ('27', '1', '22', '5', '0', 'downvote');
 
 -- ----------------------------
 -- Table structure for `zebra_vote_reasons`
