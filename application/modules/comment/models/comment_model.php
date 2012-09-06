@@ -10,14 +10,16 @@ class Comment_model extends MY_Model {
     {
         $this->db->select('*');
         $this->db->from('comments');
+		$this->db->where('story_id', $story_id);
 
         $comments = $this->db->get();
-
+		
         return ($comments->num_rows() >= 1) ? $comments->result() : FALSE;
     }
 
     public function save_comment($story_id, $user_id, $reply_id, $comment)
     {
+		$comment = nl2br($comment);
         $comment_id =  $this->insert(array(
             'user_id'   => $user_id,
             'story_id'  => $story_id,
