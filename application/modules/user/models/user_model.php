@@ -52,7 +52,7 @@ class User_model extends MY_Model {
         
         if ($user)
         {
-            $days = abs($user->row('register_date') - now())/60/60/24;
+            $days = ceil(abs($user->row('register_date') - now())/86400);
 
             $average = round(($karma/$days), 2);
 
