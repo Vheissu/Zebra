@@ -59,11 +59,11 @@ class Comment_model extends MY_Model {
         {
             foreach ($comments->result() AS $result)
             {
-                $upvotes = $upvotes + $result->upvotes;
+                $upvotes = $upvotes + (1-$result->upvotes);
 
                 if ($result->downvotes !== 0)
                 {
-                    $downvotes = $downvotes + $result->downvotes; 
+                    $downvotes = $downvotes + (1-$result->downvotes); 
                 }
             }
         }
