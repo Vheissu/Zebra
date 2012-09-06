@@ -10,3 +10,8 @@ Zebra is a social news website application in a box only without the pretty wrap
 At present Zebra is very basic. Simple login/registration, simple profiles, simple voting and lots of missing pieces. At present it works but has no installer and is missing a lot of functionality.
 
 You can read about it here: http://ilikekillnerds.com/2012/08/introducing-zebra-an-open-source-social-news-application/ - updates will be posted as often as possible in relation to the progress of Zebra on my blog.
+
+Templating & Theming Zebra
+===
+
+All template files are located in the root directory themes folder. Currently there is only one theme called, 'Zebra' which contains all of the theme assets and the view files in TPL format utilising Smarty templating to make things easier to style and work with. The Smarty functionality uses another library I maintain called CI Smarty - https://github.com/Vheissu/Ci-Smarty - which allows you to add in Smarty and theme support into your Codeigniter apps.
