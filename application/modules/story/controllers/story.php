@@ -32,6 +32,7 @@ class Story extends MY_Controller {
     public function view($story_id, $slug = '')
     {
         $this->data['story']                = $this->story->get_story($story_id);
+		$this->data['story']->description	= nl2br($this->data['story']->description);
         $this->data['story']->comments      = $this->comment->get_comments($story_id);
         $this->data['story']->comment_count = $this->comment->count_story_comments($story_id);
 
@@ -85,7 +86,7 @@ class Story extends MY_Controller {
                 $title = $this->input->post('title');
                 $slug  = url_title($this->input->post('title'), '-', TRUE);
                 $link  = $this->input->post('link', '');
-                $text  = $this->input->post('text', '');
+                $text  = nl2br($this->input->post('text', ''));
 
                 $field_data = array(
                     'user_id'       => current_user_id(),

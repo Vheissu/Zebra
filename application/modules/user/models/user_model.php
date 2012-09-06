@@ -52,7 +52,7 @@ class User_model extends MY_Model {
         
         if ($user)
         {
-            $days = abs($user->row('register_date') - now())/60/60/24;
+            $days = ceil(abs($user->row('register_date') - now())/86400);
 
             $average = round(($karma/$days), 2);
 
@@ -76,8 +76,12 @@ class User_model extends MY_Model {
         {
             $user_meta = $this->wolfauth->get_user_meta($user_id);
 
-            $days        = abs($user->row('register_date') - now())/60/60/24;
-            $submissions = $user_meta->submissions;
+            $days = ceil(abs($user->row('register_date') - now())/86400);
+			
+			if (isset($user_meta->submissions))
+				$submissions = $user_meta->submissions;
+			else
+				$submissions = 0;
 
             $average = round(($submissions/$days), 2);
 
