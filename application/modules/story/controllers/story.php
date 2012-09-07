@@ -31,15 +31,19 @@ class Story extends MY_Controller {
 
     public function view($story_id, $slug = '')
     {
+        // Assign submission info to the global data variable
         $this->data['story']                = $this->story->get_story($story_id);
 		$this->data['story']->description	= nl2br($this->data['story']->description);
         $this->data['story']->comment_count = $this->comment->count_story_comments($story_id);
 
+
+        // A trivial thing, but keeping the slug correct is better for SEO purposes
         if ($slug !== $this->data['story']->slug)
         {
             redirect('story/view/'.$story_id.'/'.$this->data['story']->slug.'', 'location', 301);
         }
 
+        // Load the story template see: themes/zebra/views/story.tpl
         $this->parser->parse('story', $this->data);
     }
 
