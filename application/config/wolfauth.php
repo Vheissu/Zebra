@@ -10,6 +10,9 @@ $config['wolfauth'] = array(
 	// Hash key by default uses the encryption key in the config/config.php file
 	// You can change this to something else if you wish
 	'hash.key' => config_item('encryption_key'),
+
+	//The database field used to log a user in
+	'login.field' => 'username',
 	
 	// The name of the site (used for emails, etc)
 	'site.name' => 'Wolfauth Test',
