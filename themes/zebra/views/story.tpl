@@ -45,6 +45,7 @@
 				</div>
 				{if $story->comment_count >= 1}
 					<div id="comments">
+						{* See: application/modules/comment/helpers/comment_helper.php to see where this function is defined *}
 						{display_comments($story->id)}
 					</div>
 				{/if}
