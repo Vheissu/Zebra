@@ -103,11 +103,11 @@ class Comment_model extends MY_Model {
         $comment = nl2br($comment);
 
         $update = $this->update($comment_id, array(
-            'story_id' => $story_id,
-            'user_id'  => $user_id,
-            'reply_id' => $reply_id,
-            'comment'  => $comment,
-            'updated'  => now()
+            'story_id'  => $story_id,
+            'user_id'   => $user_id,
+            'parent_id' => $reply_id,
+            'comment'   => $comment,
+            'updated'   => now()
         ));
 
         return $update;
