@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2012-09-07 15:38:35
+Date: 2012-09-07 17:05:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,7 +35,7 @@ CREATE TABLE `zebra_comments` (
 -- ----------------------------
 -- Records of zebra_comments
 -- ----------------------------
-INSERT INTO `zebra_comments` VALUES ('1', '0', '8', '1', 'Will definitely keep my ears open for further announcements. As much as I avoid webOS due to the lack of quality apps, booting into it even for a short while causes me to realize just how smooth its UX is and how awkward and backwards in a lot of ways the other mobile OSs are.', '1', '0', '0', '0');
+INSERT INTO `zebra_comments` VALUES ('1', '0', '8', '1', 'Will definitely keep my ears open for further announcements. As much as I avoid webOS due to the lack of quality apps, booting into it even for a short while causes me to realize just how smooth its UX is and how awkward and backwards in a lot of ways the other mobile OSs are. I also think I am a great commenter.', '1', '0', '0', '1347001526');
 INSERT INTO `zebra_comments` VALUES ('2', '1', '8', '1', 'They should have open sourced this thing right from the beginning I reckon.', '1', '0', '1346741169', '0');
 
 -- ----------------------------
@@ -46,11 +46,12 @@ CREATE TABLE `zebra_permissions` (
   `permission_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `permission_string` varchar(255) NOT NULL,
   PRIMARY KEY (`permission_id`,`permission_string`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of zebra_permissions
 -- ----------------------------
+INSERT INTO `zebra_permissions` VALUES ('1', 'edit_own_comments');
 
 -- ----------------------------
 -- Table structure for `zebra_permissions_roles`
@@ -65,6 +66,9 @@ CREATE TABLE `zebra_permissions_roles` (
 -- ----------------------------
 -- Records of zebra_permissions_roles
 -- ----------------------------
+INSERT INTO `zebra_permissions_roles` VALUES ('0', '2');
+INSERT INTO `zebra_permissions_roles` VALUES ('0', '3');
+INSERT INTO `zebra_permissions_roles` VALUES ('1', '1');
 
 -- ----------------------------
 -- Table structure for `zebra_roles`
@@ -102,7 +106,7 @@ CREATE TABLE `zebra_sessions` (
 -- ----------------------------
 -- Records of zebra_sessions
 -- ----------------------------
-INSERT INTO `zebra_sessions` VALUES ('63fe9da56a3c0327ffb6e018e9b21d3f', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1', '1346996103', 'a:5:{s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"zebra\";s:13:\"nice_username\";s:5:\"Zebra\";s:7:\"role_id\";s:1:\"3\";s:9:\"role_name\";s:11:\"super_admin\";}');
+INSERT INTO `zebra_sessions` VALUES ('30fa7075677aee4235cc0f9ae5a64f7b', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1', '1347001330', 'a:5:{s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"zebra\";s:13:\"nice_username\";s:5:\"Zebra\";s:7:\"role_id\";s:1:\"3\";s:9:\"role_name\";s:11:\"super_admin\";}');
 
 -- ----------------------------
 -- Table structure for `zebra_stories`
