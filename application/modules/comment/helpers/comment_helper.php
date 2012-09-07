@@ -10,6 +10,34 @@ function get_comments($story_id)
 	return $comments;
 }
 
+function display_comments($story_id)
+{
+    $CI =& get_instance();
+    $CI->load->library('comment/comments_parser');  
+
+    $comments = get_comments($story_id);
+
+    $CI->comments_parser->arrange($comments);
+}
+
+/**
+ * Get Comment
+ * 
+ * Get a singular comment from the database
+ * based on its ID
+ * 
+ * @param int $comment_id
+ * @return object or boolean false
+ * 
+ */
+function get_comment($comment_id)
+{
+    $CI =& get_instance();
+    $CI->load->model('comment/comment_model', 'comment');
+
+    return $CI->comment->get($comment_id);
+}
+
 /**
  * Count Story Comments
  * 

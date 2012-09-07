@@ -43,16 +43,9 @@
 					<p class="not-logged-in">You must be logged in to leave a comment.</p>
 					{/if}
 				</div>
-
 				{if $story->comments}
 					<div id="comments">
-						{foreach $story->comments AS $comment}
-							{assign var="commenter" value=get_username($comment->user_id)}
-							<div class="comment-row {if $comment->parent_id >= 1}child-comment{/if}">
-								<div>Comment by: {$commenter.nice_username}</div>
-								<div>{$comment->comment}</div>
-							</div>
-						{/foreach}
+						{display_comments($story->id)}
 					</div>
 				{/if}
 			</div>
