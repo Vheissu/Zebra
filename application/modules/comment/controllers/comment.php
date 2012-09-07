@@ -54,6 +54,45 @@ class Comment extends MY_Controller {
     }
 
     /**
+     * Edit a singular comment
+     * 
+     * @param  integer $comment_id Comment to view
+     * @return void
+     */
+    public function edit($comment_id)
+    {
+        $comment = $this->comment_model->get($comment_id);
+        $user_id = current_user_id();
+
+        // Make sure the comment exists
+        if ($comment)
+        {
+            // Are we an admin or have permission to edit comments?
+            if (is_admin() OR user_can('edit_own_comments'))
+            {
+                // Are we an admin or the owner of the comment itself?
+                if (is_admin() || $comment->user_id == $user_id)
+                {
+                    // Run form validation
+                    if ($this->form_validation->run('comment') == FALSE )
+                    {
+                        $this->parser->parse('edit_comment', $this->data);
+                    }
+                    else
+                    {
+                        $update = $this->comment_model->update_comment($comment->id, $comment->story_id, $user_id, $comment->parent_id, $this->input->post('comment'));
+                        $this->parser->parse('edit_comment', $this->data);   
+                    }
+                }
+                else
+                {
+                    show_error("You do not have permission to edit this comment.", 500);
+                }
+            }
+        }
+    }
+
+    /**
      * Get recently added site comments
      * 
      * @param  integer $limit Show this many comments at once

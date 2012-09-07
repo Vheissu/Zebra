@@ -391,8 +391,6 @@ class Wolfauth {
 	}
 
     /**
-     * Delete Permission
-     *
      * Delete a permission via its permission string
      * from the permissions table.
      *
@@ -406,8 +404,6 @@ class Wolfauth {
 	}
 
     /**
-     * Delete Permission By ID
-     *
      * Delete a permission by it's ID
      * from the permissions table.
      *
@@ -420,8 +416,6 @@ class Wolfauth {
 	}
 
     /**
-     * Get User Meta
-     *
      * Get user meta for a particular user from the user_meta
      * table.
      *
@@ -434,13 +428,10 @@ class Wolfauth {
     }
 
 	/**
-	 * Hash
-	 *
 	 * Hashes a password using hmac
 	 *
 	 * @access public
 	 * @param $value
-	 *
 	 */
 	public function hash($value)
 	{
@@ -448,14 +439,11 @@ class Wolfauth {
 	}
 
 	/**
-	 * Populate Permissions
-     *
      * Populate the permissions array for the
      * currently logged in user.
      *
      * @access private
      * @return void
-     *
      */
 	private function _populate_permissions()
 	{
@@ -463,14 +451,11 @@ class Wolfauth {
 	}
 
 	/**
-	 * Set Remember Me
-	 *
 	 * Updates the remember me cookie and database information
 	 *
 	 * @access  private
 	 * @param	$user_id
 	 * @return	void
-	 *
 	 */
 	private function _set_remember_me($user_id)
 	{
@@ -497,7 +482,6 @@ class Wolfauth {
 	 *
 	 * @access	private
 	 * @return	bool
-	 *
 	 */
 	private function _check_remember_me()
 	{
@@ -550,8 +534,6 @@ class Wolfauth {
 	}
 
     /**
-     * Set Error
-     *
      * Sets an error message
      *
      * @param $error
@@ -562,8 +544,6 @@ class Wolfauth {
     }
 
     /**
-     * Auth Errors
-     *
      * Display error messages
      *
      * @param string $before

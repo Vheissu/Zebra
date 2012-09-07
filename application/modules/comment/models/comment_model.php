@@ -89,6 +89,31 @@ class Comment_model extends MY_Model {
     }
 
     /**
+     * Updates a comment in the database
+     * 
+     * @param  integer $comment_id The Id of the comment
+     * @param  integer $story_id The story submission ID
+     * @param  integer $user_id  The owner of the comment
+     * @param  integer $reply_id The comment parent ID
+     * @param  string $comment  The comment text
+     * @return boolean
+     */
+    public function update_comment($comment_id, $story_id, $user_id, $reply_id, $comment)
+    {
+        $comment = nl2br($comment);
+
+        $update = $this->update($comment_id, array(
+            'story_id' => $story_id,
+            'user_id'  => $user_id,
+            'reply_id' => $reply_id,
+            'comment'  => $comment,
+            'updated'  => now()
+        ));
+
+        return $update;
+    }
+
+    /**
      * Count the number of comments a story has
      * 
      * @param  integer $story_id The story submission ID
