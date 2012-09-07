@@ -41,7 +41,7 @@
 						<input type="hidden" name="in_reply_to" id="in_reply_to" value="0">
 					</form>
 					{else}
-					<p class="not-logged-in">You must be logged in to leave a comment.</p>
+					<p class="not-logged-in">{lang('comment_login')}</p>
 					{/if}
 				</div>
 				{if $story->comment_count >= 1}
@@ -54,7 +54,7 @@
 		</div>
 	{else}
 		<div id="empty-book">
-			<p>Sorry, there are no stories to display. Either something broke or nobody has submitted anything yet.</p>
+			<p>{lang('no_stories')}</p>
 		</div>
 	{/if}
 {/block}
