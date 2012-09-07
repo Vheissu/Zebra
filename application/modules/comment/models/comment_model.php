@@ -41,6 +41,21 @@ class Comment_model extends MY_Model {
     }
 
     /**
+     * Get all newly added comments
+     * 
+     * @param int $limit
+     * @param int $offset
+     * @return object or boolean false 
+     */ 
+    public function get_new_comments($limit = 50, $offset = 0)
+    {
+        $this->db->order_by("created", "DESC");
+        $stories = $this->db->get($this->_table, $limit, $offset);
+
+        return ($stories->num_rows() >= 1) ? $stories->result() : FALSE; 
+    }
+
+    /**
      * Saves a comment into the database
      * 
      * @param  integer $story_id The story submission ID

@@ -15,14 +15,10 @@ class Story_model extends MY_Model {
     }
 
     /**
-     * Get Story
-     * 
      * Get one particular story submission via an ID
      * 
      * @param int $story_id
-     * 
      * @return object or boolean false
-     * 
      */ 
     public function get_story($story_id)
     {
@@ -30,15 +26,11 @@ class Story_model extends MY_Model {
     }
 
     /**
-     * Get Popular Stories
-     * 
      * Get all popular stories using the ranking formulae.
      * 
      * @param int $limit
      * @param int $offset
-     * 
      * @return object or boolean false
-     * 
      */ 
     public function get_popular_stories($limit = 50, $offset = 0)
     {
@@ -54,15 +46,11 @@ class Story_model extends MY_Model {
     }
 
     /**
-     * Get New Stories
-     * 
      * Get all newly added stories
      * 
      * @param int $limit
      * @param int $offset
-     * 
      * @return object or boolean false 
-     * 
      */ 
     public function get_new_stories($limit = 50, $offset = 0)
     {
@@ -73,17 +61,13 @@ class Story_model extends MY_Model {
     }
 
     /**
-     * Get User Stories
-     * 
      * Get all stories by a particular user with 
      * support for limit and page values
      * 
      * @param int $limit
      * @param int $offset
      * @param int $user_id
-     * 
-     * @return object or boolean false 
-     * 
+     * @return object or boolean false  
      */ 
     public function get_user_stories($limit = 50, $offset = 0, $user_id)
     {
@@ -95,15 +79,11 @@ class Story_model extends MY_Model {
     }
 
     /**
-     * Get User Story Votes
-     * 
      * Gets the total number of votes with downvotes
      * subtracted from the final score.
      * 
      * @param int $user_id
-     * 
      * @return int
-     * 
      */ 
     public function get_user_story_votes($user_id)
     {
@@ -133,15 +113,11 @@ class Story_model extends MY_Model {
     }
 
     /**
-     * Timestamps
-     * 
      * A callback function called by this model to add
      * in a created field to every newly added story.
      * 
      * @param array $story
-     * 
      * @return array
-     * 
      */ 
     protected function timestamps($story)
     {
