@@ -97,7 +97,7 @@ class Comment extends MY_Controller {
         }
         else
         {
-            die('Comment not exist');
+            show_error("That comment doesn't exist", 404);
         }
     }
 
