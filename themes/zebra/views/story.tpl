@@ -15,7 +15,8 @@
 				</div>
 				<div class="story-meat">
 					{if $story->external_link}
-						<a class="story-title" href="{$story->external_link}" target="_blank">{$story->title}</a> 
+						<a class="story-title" href="{$story->external_link}" target="_blank">{$story->title}</a>
+						{* See: application/helpers/zebra_helper.php to see where this function is defined *} 
 						<span class="story-domain">({get_domain($story->external_link)})</span>
 					{else}
 						<a class="story-title" href="story/{$story->id}/{$story->slug}">{$story->title}</a>
