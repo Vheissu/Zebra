@@ -447,7 +447,12 @@ class Wolfauth {
      */
 	private function _populate_permissions()
 	{
-		$this->_permissions = $this->CI->permissions_m->get_user_permissions($this->user_id());
+		$permissions = $this->CI->permissions_m->get_user_permissions($this->user_id());
+
+		if ($permissions)
+		{
+			$this->_permissions = array();
+		}
 	}
 
 	/**

@@ -90,6 +90,14 @@ class Comment extends MY_Controller {
                     show_error("You do not have permission to edit this comment.", 500);
                 }
             }
+            else
+            {
+                show_error("You do not have permission to edit this comment.", 500);
+            }
+        }
+        else
+        {
+            die('Comment not exist');
         }
     }
 
