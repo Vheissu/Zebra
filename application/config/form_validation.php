@@ -58,5 +58,12 @@ $config = array(
                 'label' => 'Comment',
                 'rules' => 'required|xss_clean'
             )
+        ),
+        'edit_comment' => array(
+            array(
+                'field' => 'comment',
+                'label' => 'Comment',
+                'rules' => 'required|xss_clean'
+            )
         )
 );

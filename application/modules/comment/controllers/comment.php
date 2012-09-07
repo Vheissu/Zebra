@@ -74,8 +74,9 @@ class Comment extends MY_Controller {
                 if (is_admin() || $comment->user_id == $user_id)
                 {
                     // Run form validation
-                    if ($this->form_validation->run('comment') == FALSE )
+                    if ($this->form_validation->run('edit_comment') == FALSE )
                     {
+                        $this->data['comment'] = $comment;
                         $this->parser->parse('edit_comment', $this->data);
                     }
                     else
