@@ -10,6 +10,27 @@ if (!function_exists('auth_errors'))
     }
 }
 
+if (!function_exists('get_username'))
+{
+	/**
+	 * Get a username based on the user ID
+	 * 
+	 * @param int $user_id
+	 * @return string or boolean false
+	 */
+	function get_username($user_id)
+	{
+		$user = get_user_by_id($user_id);
+
+		$array = array(
+			'username'      => $user->row('username'),
+			'nice_username' => $user->row('nice_username')
+		);
+
+		return (!empty($array)) ? $array : FALSE;
+	}
+}
+
 if (!function_exists('current_user_id'))
 {
 	/**

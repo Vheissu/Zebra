@@ -62,6 +62,7 @@
 
     {block name=footer}{/block}
 
+    {if isset($story) || isset($stories)}
     <div id="downvotereason" title="Why are you downvoting?" style="display:none;">
         {assign var="downvote_reasons" value=get_downvote_reasons()}
         <h2>Please select a reason for downvoting:</h2>
@@ -72,6 +73,7 @@
             {/foreach}
         </select>
     </div>
+    {/if}
 
 </body>  
 </html>

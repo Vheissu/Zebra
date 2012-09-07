@@ -1,27 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Get Username
- * 
- * Get a username based on the user ID
- * 
- * @param int $user_id
- * @return string or boolean false
- * 
- */
-function get_username($user_id)
-{
-	$user = get_user_by_id($user_id);
-
-	$array = array(
-		'username'      => $user->row('username'),
-		'nice_username' => $user->row('nice_username')
-	);
-
-	return (!empty($array)) ? $array : FALSE;
-}
-
-/**
  * Story Upvoted
  * 
  * Has the currently logged in user already 

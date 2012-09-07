@@ -11,6 +11,8 @@ class Comment extends MY_Controller {
 
         $this->load->helper('date');
         $this->load->helper('form');
+        $this->load->helper('comment/comment');
+        $this->load->helper('vote/vote');
         $this->load->library('form_validation');
         $this->load->model('comment/comment_model');
     }
