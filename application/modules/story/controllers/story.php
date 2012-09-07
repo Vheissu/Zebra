@@ -33,7 +33,6 @@ class Story extends MY_Controller {
     {
         $this->data['story']                = $this->story->get_story($story_id);
 		$this->data['story']->description	= nl2br($this->data['story']->description);
-        $this->data['story']->comments      = $this->comment->get_comments($story_id);
         $this->data['story']->comment_count = $this->comment->count_story_comments($story_id);
 
         if ($slug !== $this->data['story']->slug)

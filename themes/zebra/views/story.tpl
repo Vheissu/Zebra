@@ -43,7 +43,7 @@
 					<p class="not-logged-in">You must be logged in to leave a comment.</p>
 					{/if}
 				</div>
-				{if $story->comments}
+				{if $story->comment_count >= 1}
 					<div id="comments">
 						{display_comments($story->id)}
 					</div>
