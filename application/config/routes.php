@@ -19,6 +19,9 @@ $route['stories/new/(:num)'] = 'story/new_stories/$1';
 $route['stories/(:num)'] = 'story/index/$1';
 $route['story/submit'] = 'story/submit';
 
+$route['admin'] = "admin/admin";
+$route['admin/login'] = "admin/admin/login";
+
 // Comment routes
 $route['comments/latest'] = 'comment/latest';
 

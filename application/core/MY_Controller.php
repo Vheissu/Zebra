@@ -17,3 +17,18 @@ class MY_Controller extends CI_Controller {
 	}
 
 }
+
+class Admin_Controller extends MY_Controller {
+
+	public function __construct()
+	{
+		parent::__construct();
+
+		if (!is_admin())
+		{
+			set_flashdata("error", lang('no_permission'));
+			redirect('/');
+		}
+	}
+
+}
