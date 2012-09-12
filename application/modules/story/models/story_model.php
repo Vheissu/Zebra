@@ -22,6 +22,7 @@ class Story_model extends MY_Model {
      */ 
     public function get_story($story_id)
     {
+        $this->db->cache_on();
         return $this->get($story_id);
     }
 
@@ -34,6 +35,7 @@ class Story_model extends MY_Model {
      */ 
     public function get_popular_stories($limit = 50, $offset = 0)
     {
+        $this->db->cache_on();
         $table = $this->db->dbprefix.$this->_table;
 
         $stories = $this->db->query('
@@ -54,6 +56,7 @@ class Story_model extends MY_Model {
      */ 
     public function get_new_stories($limit = 50, $offset = 0)
     {
+        $this->db->cache_on();
         $this->db->order_by("created", "DESC");
         $stories = $this->db->get($this->_table, $limit, $offset);
 
@@ -71,6 +74,7 @@ class Story_model extends MY_Model {
      */ 
     public function get_user_stories($limit = 50, $offset = 0, $user_id)
     {
+        $this->db->cache_on();
         $this->db->order_by("created", "DESC");
         $this->db->where('user_id', $user_id);
         $stories = $this->db->get($this->_table, $limit, $offset);
@@ -87,6 +91,7 @@ class Story_model extends MY_Model {
      */ 
     public function get_user_story_votes($user_id)
     {
+        $this->db->cache_on();
         $this->db->select('upvotes, downvotes');
         $this->db->where('user_id', $user_id);
         $stories = $this->db->get($this->_table);
@@ -110,6 +115,30 @@ class Story_model extends MY_Model {
         $total = $upvotes - $downvotes;
 
         return $total;   
+    }
+
+    /**
+     * Return the number of stories in the stories table
+     * @return integer The number of stories in the database
+     */
+    public function total_stories()
+    {
+        $this->db->cache_on();
+        return $this->db->count_all_results('stories');
+    }
+
+    /**
+     * Return the last submission submitted to the site
+     * 
+     * @return object The submission row from the database
+     */
+    public function last_submission()
+    {
+        $this->db->cache_on();
+        $this->db->order_by("created", "DESC");
+        $story = $this->db->get($this->_table, 1, 0);
+
+        return ($story->num_rows() == 1) ? $story->row() : FALSE; 
     }
 
     /**

@@ -2,6 +2,14 @@
 
 class Admin extends MY_Controller {
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->load->helper('date');
+        $this->load->model('story/story_model');
+    }
+
 	public function index()
 	{
         $this->login();
@@ -51,6 +59,11 @@ class Admin extends MY_Controller {
     {
         if (is_admin())
         {
+            $obj = new stdClass;
+            $obj->last_submission   = $this->story_model->last_submission();
+            $obj->total_submissions = $this->story_model->total_stories();
+
+            $this->data['analytics'] = $obj;
             $this->parser->parse('admin/index.tpl', $this->data);  
         }
         else
