@@ -10,3 +10,5 @@ $lang['register_success']   = "You have successfully registered";
 $lang['submission_success'] = "Story submitted successfully";
 $lang['comment_success'] = "Comment successfully posted";
 $lang['logout_success']     = "You have successfully logged out";
+
+$lang['no_permission'] = "You do not have permission to access this resource";

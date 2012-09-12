@@ -668,6 +668,21 @@ header #meta-links a {
   padding: 5px;
   width: 35%;
 }
+#admin-body h2 {
+  margin: 0 0 15px 0;
+}
+#admin-body .admin-block {
+  /* for IE */
+  zoom: 1;
+}
+#admin-body .admin-block:before,
+#admin-body .admin-block:after {
+  content: "";
+  display: table;
+}
+#admin-body .admin-block:after {
+  clear: both;
+}
 @media only screen and (max-width: 1024px) {
   
 }
