@@ -44,12 +44,20 @@ class Ajax extends MY_Controller {
                         {
                             $result = "success|upvote|".$story_id."";
                         }
+                        else
+                        {
+                            $result = "error|Story could not be upvoted";
+                        }
                     break;
 
                     case 'downvote':
                         if (story_vote('down', $story_id, $reason))
                         {
                             $result = "success|downvote|".$story_id."";
+                        }
+                        else
+                        {
+                            $result = "error|Story could not be downvoted";
                         }
                     break;
                 }

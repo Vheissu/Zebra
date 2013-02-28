@@ -98,7 +98,7 @@ function story_vote($direction = "up", $story_id = 0, $reason_id = 0)
 
 	if (!$user_id)
 	{
-		return lang('user_not_logged_in');
+		return FALE;
 	}
 	else
 	{
