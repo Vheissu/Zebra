@@ -4,90 +4,162 @@
     
     $(function() {
 
-        pageEls.link        = $("#link");
-        pageEls.text        = $("#text");
-        pageEls.storyVoting = $(".story-voting");
-        pageEls.topics      = $("#topics");
-        pageEls.downvoteBox = $("#downvotereason");
+        pageEls.link          = $("#link");
+        pageEls.text          = $("#text");
+        pageEls.contentVoting = $(".content-voting");
+        pageEls.topics        = $("#topics");
+        pageEls.downvoteBox   = $("#downvotereason");
 
-        if (pageEls.storyVoting.length) {
+        if (pageEls.contentVoting.length) {
 
-            pageEls.storyVoting.on("click", "a", function(e) {
+            pageEls.contentVoting.on("click", "a", function(e) {
 
                 var $this       = $(this);
                 var $storyId    = $this.data('story-id');
+                var $commentId  = $this.data('comment-id');
                 var $voteAction = $this.data('vote-action');
                 var $entryRow   = $("#entry-"+$storyId);
                 var $storyVotes = $(".story-upvotes", $entryRow);
                 var voteValue   = parseInt($storyVotes.text());
 
-                if ($voteAction == "up" && !$this.hasClass('disabled'))
-                {
-                    Zebra.Vote.Story.up($storyId, function(response) {
-                        if (response) {
-                            var response_str = response.split("|");
+                if ($storyId && $storyId.length) {
 
-                            var status       = response_str[0];
-                            var voteType     = response_str[1];
-                            var storyId      = response_str[2];
-                            
-                            voteValue = voteValue+1;
+                    if ($voteAction == "up" && !$this.hasClass('disabled')) {
+                        Zebra.Vote.Story.up($storyId, function(response) {
+                            if (response) {
+                                var response_str = response.split("|");
 
-                            if (status == "success") {
-                                pageEls.storyVoting.children('a').removeClass('disabled');
-                                $this.addClass('disabled');
+                                var status       = response_str[0];
+                                var voteType     = response_str[1];
+                                var storyId      = response_str[2];
+                                
+                                voteValue = voteValue+1;
 
-                                $storyVotes.text(voteValue);
-                            } else if (status == "error") {
-                                alert(voteType);
-                            }  
-                        }
-                    });
-                }
+                                if (status == "success") {
+                                    pageEls.contentVoting.children('a').removeClass('disabled');
+                                    $this.addClass('disabled');
 
-                if ($voteAction == "down" && !$this.hasClass('disabled'))
-                {
-                    pageEls.downvoteBox.dialog({
-                        resizable: false,
-                        modal: true,
-                        width: 500,
-                        buttons: {
-                            "Save": function() {
-                                var downvoteReason = $("#downvote_reason");
-
-                                if (!downvoteReason.children("option:selected").length)
-                                {
-                                    alert('You must choose a reason to downvote');
-                                }
-                                else
-                                {
-                                    Zebra.Vote.Story.down($storyId, downvoteReason.children("option:selected").val(), function(response) {
-                                        if (response) {
-                                            var response_str = response.split("|");
-
-                                            var status       = response_str[0];
-                                            var voteType     = response_str[1];
-                                            var storyId      = response_str[2];
-
-                                            voteValue = voteValue-1;
-
-                                            if (status == "success") {
-                                                pageEls.storyVoting.children('a').removeClass('disabled');
-                                                $this.addClass('disabled');
-
-                                                $storyVotes.text(voteValue);
-                                            }  
-                                        }
-                                    });
-                                    
-                                    $(this).dialog("close");
-                                }
-                            },
-                            Cancel: function() {
-                                $(this).dialog("close");    
+                                    $storyVotes.text(voteValue);
+                                } else if (status == "error") {
+                                    alert(voteType);
+                                }  
                             }
-                        }
-                    });
+                        });
+                    }
+
+                    if ($voteAction == "down" && !$this.hasClass('disabled')) {
+                        pageEls.downvoteBox.dialog({
+                            resizable: false,
+                            modal: true,
+                            width: 500,
+                            buttons: {
+                                "Save": function() {
+                                    var downvoteReason = $("#downvote_reason");
+
+                                    if (!downvoteReason.children("option:selected").length)
+                                    {
+                                        alert('You must choose a reason to downvote');
+                                    }
+                                    else
+                                    {
+                                        Zebra.Vote.Story.down($storyId, downvoteReason.children("option:selected").val(), function(response) {
+                                            if (response) {
+                                                var response_str = response.split("|");
+
+                                                var status       = response_str[0];
+                                                var voteType     = response_str[1];
+                                                var storyId      = response_str[2];
+
+                                                voteValue = voteValue-1;
+
+                                                if (status == "success") {
+                                                    pageEls.contentVoting.children('a').removeClass('disabled');
+                                                    $this.addClass('disabled');
+
+                                                    $storyVotes.text(voteValue);
+                                                }  
+                                            }
+                                        });
+                                        
+                                        $(this).dialog("close");
+                                    }
+                                },
+                                Cancel: function() {
+                                    $(this).dialog("close");    
+                                }
+                            }
+                        });
+                    }
+
+                } else if ($commentId && $commentId.length) {
+
+                    if ($voteAction == "up" && !$this.hasClass('disabled')) {
+                        Zebra.Vote.Comment.up($storyId, function(response) {
+                            if (response) {
+                                var response_str = response.split("|");
+
+                                var status       = response_str[0];
+                                var voteType     = response_str[1];
+                                var storyId      = response_str[2];
+                                
+                                voteValue = voteValue+1;
+
+                                if (status == "success") {
+                                    pageEls.contentVoting.children('a').removeClass('disabled');
+                                    $this.addClass('disabled');
+
+                                    $storyVotes.text(voteValue);
+                                } else if (status == "error") {
+                                    alert(voteType);
+                                }  
+                            }
+                        });
+                    }
+
+                    if ($voteAction == "down" && !$this.hasClass('disabled')) {
+                        pageEls.downvoteBox.dialog({
+                            resizable: false,
+                            modal: true,
+                            width: 500,
+                            buttons: {
+                                "Save": function() {
+                                    var downvoteReason = $("#downvote_reason");
+
+                                    if (!downvoteReason.children("option:selected").length)
+                                    {
+                                        alert('You must choose a reason to downvote');
+                                    }
+                                    else
+                                    {
+                                        Zebra.Vote.Comment.down($storyId, downvoteReason.children("option:selected").val(), function(response) {
+                                            if (response) {
+                                                var response_str = response.split("|");
+
+                                                var status       = response_str[0];
+                                                var voteType     = response_str[1];
+                                                var storyId      = response_str[2];
+
+                                                voteValue = voteValue-1;
+
+                                                if (status == "success") {
+                                                    pageEls.contentVoting.children('a').removeClass('disabled');
+                                                    $this.addClass('disabled');
+
+                                                    $storyVotes.text(voteValue);
+                                                }  
+                                            }
+                                        });
+                                        
+                                        $(this).dialog("close");
+                                    }
+                                },
+                                Cancel: function() {
+                                    $(this).dialog("close");    
+                                }
+                            }
+                        });
+                    }
+
                 }
 
                 e.preventDefault();
