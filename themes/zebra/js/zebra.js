@@ -19,10 +19,10 @@
                 var $commentId  = $this.data('comment-id');
                 var $voteAction = $this.data('vote-action');
                 var $entryRow   = $("#entry-"+$storyId);
-                var $storyVotes = $(".story-upvotes", $entryRow);
+                var $storyVotes = $(".content-upvotes", $entryRow);
                 var voteValue   = parseInt($storyVotes.text());
 
-                if ($storyId && $storyId.length) {
+                if ($storyId) {
 
                     if ($voteAction == "up" && !$this.hasClass('disabled')) {
                         Zebra.Vote.Story.up($storyId, function(response) {
@@ -91,7 +91,7 @@
                         });
                     }
 
-                } else if ($commentId && $commentId.length) {
+                } else if ($commentId) {
 
                     if ($voteAction == "up" && !$this.hasClass('disabled')) {
                         Zebra.Vote.Comment.up($storyId, function(response) {
