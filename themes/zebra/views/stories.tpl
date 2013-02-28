@@ -8,11 +8,13 @@
 			{foreach $stories AS $story}
 				{assign var="usernames" value=get_username($story->user_id)}
 				<div id="entry-{$story->id}" class="story-row">
+					{if logged_in()}
 					<div class="story-voting">
 						<a href="javascript:void(0);" data-story-id="{$story->id}" data-vote-action="up" class="upvote{if story_upvoted($story->id)} disabled{/if}">&#9652;</a>
 						<span class="story-upvotes">{$story->upvotes}</span>
 						<a href="javascript:void(0);" data-story-id="{$story->id}" data-vote-action="down" class="downvote{if story_downvoted($story->id)} disabled{/if}">&#9662;</a>
 					</div>
+					{/if}
 					<div class="story-meat">
 						{if $story->external_link}
 							<a class="story-title" href="{$story->external_link}" target="_blank">{$story->title}</a> 

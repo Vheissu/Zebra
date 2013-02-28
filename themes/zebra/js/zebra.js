@@ -38,6 +38,8 @@
                                 $this.addClass('disabled');
 
                                 $storyVotes.text(voteValue);
+                            } else if (status == "error") {
+                                alert(voteType);
                             }  
                         }
                     });
