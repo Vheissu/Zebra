@@ -2,6 +2,7 @@
 
 {block name=content}
 	{validation_errors()}
+	{if logged_in()}
 	<form id="submission-form" action="story/submit" method="POST">
 		<div class="form-row">
 			<input type="text" name="title" id="title" placeholder="Title">
@@ -19,4 +20,7 @@
 			<input type="submit" name="submit" value="Submit">
 		</div>
 	</form>
+	{else}
+		<div id="error-div">You must be logged in submit stuff.</div>
+	{/if}
 {/block}
