@@ -7,8 +7,8 @@
 		<div id="story-book">
 			{foreach $comments AS $comment}
 				{assign var="usernames" value=get_username($comment->user_id)}
-				<div id="entry" class="story-row">
-					<div class="story-meat">
+				<div class="content-row">
+					<div class="content-meat">
 						{$comment->comment}
 					</div>
 				</div>

@@ -549,29 +549,29 @@ header #meta-links a {
 #content:after {
   clear: both;
 }
-#content .story-row {
+#content .content-row {
   /* for IE */
   zoom: 1;
   margin: 0 0 15px 0;
 }
-#content .story-row:before,
-#content .story-row:after {
+#content .content-row:before,
+#content .content-row:after {
   content: "";
   display: table;
 }
-#content .story-row:after {
+#content .content-row:after {
   clear: both;
 }
-#content .story-row .story-voting,
-#content .story-row .story-meat {
+#content .content-row .content-voting,
+#content .content-row .content-meat {
   float: left;
 }
-#content .story-row .story-voting {
+#content .content-row .content-voting {
   line-height: 1;
   margin: 0 10px 0 0;
   text-align: center;
 }
-#content .story-row .story-voting a {
+#content .content-row .content-voting a {
   font-size: 1.5em;
   color: #111111;
   display: block;
@@ -579,21 +579,21 @@ header #meta-links a {
   line-height: 0.7;
   text-decoration: none;
 }
-#content .story-row .story-voting a.disabled {
+#content .content-row .content-voting a.disabled {
   color: #cccccc;
   cursor: not-allowed;
 }
-#content .story-row .story-voting .story-upvotes {
+#content .content-row .content-voting .content-upvotes {
   font-size: 0.6875em;
   color: #555555;
   display: block;
   margin: 0 0 -5px 0;
 }
-#content .story-row .story-meat .story-title {
+#content .content-row .content-meat .content-title {
   font-size: 1.125em;
   font-weight: normal;
 }
-#content .story-row .story-meat .story-meta p {
+#content .content-row .content-meat .content-meta p {
   font-size: 0.8125em;
   color: #666666;
   display: block;
@@ -602,26 +602,26 @@ header #meta-links a {
   padding: 0;
   text-transform: lowercase;
 }
-#content .story-row .story-meat .story-meta p a {
+#content .content-row .content-meat .content-meta p a {
   color: #666666;
   text-decoration: none;
 }
-#content .story-row .story-meat .story-meta p a.username {
+#content .content-row .content-meat .content-meta p a.username {
   text-transform: none;
 }
-#content .story-row #story-description {
+#content .content-row #story-description {
   /* for IE */
   zoom: 1;
   clear: both;
   display: block;
   padding: 25px 0 25px 0;
 }
-#content .story-row #story-description:before,
-#content .story-row #story-description:after {
+#content .content-row #story-description:before,
+#content .content-row #story-description:after {
   content: "";
   display: table;
 }
-#content .story-row #story-description:after {
+#content .content-row #story-description:after {
   clear: both;
 }
 #comment-form {

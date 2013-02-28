@@ -7,21 +7,21 @@
 	{if $story}
 		{assign var="usernames" value=get_username($story->user_id)}
 		<div id="story-book">
-			<div class="story-row">
-				<div class="story-voting">
+			<div class="content-row">
+				<div class="content-voting">
 					<a href="javascript:void(0);" data-story-id="{$story->id}" data-vote-action="up" class="upvote{if story_upvoted($story->id)} disabled{/if}">&#9652;</a>
 					<span class="story-upvotes">{$story->upvotes}</span>
 					<a href="javascript:void(0);" data-story-id="{$story->id}" data-vote-action="down" class="downvote{if story_downvoted($story->id)} disabled{/if}">&#9662;</a>
 				</div>
-				<div class="story-meat">
+				<div class="content-meat">
 					{if $story->external_link}
 						<a class="story-title" href="{$story->external_link}" target="_blank">{$story->title}</a>
 						{* See: application/helpers/zebra_helper.php to see where this function is defined *} 
-						<span class="story-domain">({get_domain($story->external_link)})</span>
+						<span class="content-domain">({get_domain($story->external_link)})</span>
 					{else}
-						<a class="story-title" href="story/{$story->id}/{$story->slug}">{$story->title}</a>
+						<a class="content-title" href="story/{$story->id}/{$story->slug}">{$story->title}</a>
 					{/if}
-					<div class="story-meta">
+					<div class="content-meta">
 						<p>by <a href="user/{$usernames.username}" class="username">{$usernames.nice_username}</a> {timespan($story->created, time(), 1)} ago | <a href="story/{$story->id}/{$story->slug}#comments">{$story->comment_count} comments</a></p>
 					</div>
 				</div>
