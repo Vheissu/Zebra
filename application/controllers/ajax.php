@@ -28,28 +28,36 @@ class Ajax extends MY_Controller {
         // Result to return
         $result = 'Invalid action or URL parameter(s).';
 
-        if ($this->input->post('action'))
+        // Make sure we are logged in first
+        if (logged_in())
         {
-            $action   = $this->input->post('action');
-            $story_id = $this->input->post('story_id');
-            $reason   = $this->input->post('downvote_reason');
-
-            switch ($action)
+            if ($this->input->post('action'))
             {
-                case 'upvote':
-                    if (story_vote('up', $story_id))
-                    {
-                        $result = "success|upvote|".$story_id."";
-                    }
-                break;
+                $action   = $this->input->post('action');
+                $story_id = $this->input->post('story_id');
+                $reason   = $this->input->post('downvote_reason');
 
-                case 'downvote':
-                    if (story_vote('down', $story_id, $reason))
-                    {
-                        $result = "success|downvote|".$story_id."";
-                    }
-                break;
+                switch ($action)
+                {
+                    case 'upvote':
+                        if (story_vote('up', $story_id))
+                        {
+                            $result = "success|upvote|".$story_id."";
+                        }
+                    break;
+
+                    case 'downvote':
+                        if (story_vote('down', $story_id, $reason))
+                        {
+                            $result = "success|downvote|".$story_id."";
+                        }
+                    break;
+                }
             }
+        }
+        else
+        {
+            $result = 'error|Please login to vote';
         }
 
         $this->output->set_status_header(200);
@@ -74,28 +82,36 @@ class Ajax extends MY_Controller {
         // Result to return
         $result = 'Invalid action or URL parameter(s).';
 
-        if ($this->input->post('action'))
+        // Make sure we are logged in first
+        if (logged_in())
         {
-            $action     = $this->input->post('action');
-            $comment_id = $this->input->post('comment_id');
-            $reason     = $this->input->post('downvote_reason');
-
-            switch ($action)
+            if ($this->input->post('action'))
             {
-                case 'upvote':
-                    if (comment_vote('up', $comment_id))
-                    {
-                        $result = "success|upvote|".$comment_id."";
-                    }
-                break;
+                $action     = $this->input->post('action');
+                $comment_id = $this->input->post('comment_id');
+                $reason     = $this->input->post('downvote_reason');
 
-                case 'downvote':
-                    if (comment_vote('down', $comment_id, $reason))
-                    {
-                        $result = "success|downvote|".$story_id."";
-                    }
-                break;
+                switch ($action)
+                {
+                    case 'upvote':
+                        if (comment_vote('up', $comment_id))
+                        {
+                            $result = "success|upvote|".$comment_id."";
+                        }
+                    break;
+
+                    case 'downvote':
+                        if (comment_vote('down', $comment_id, $reason))
+                        {
+                            $result = "success|downvote|".$story_id."";
+                        }
+                    break;
+                }
             }
+        }
+        else
+        {
+            $result = 'You must be logged in to vote.';  
         }
 
         $this->output->set_status_header(200);
