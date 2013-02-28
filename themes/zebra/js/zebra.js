@@ -165,7 +165,7 @@
 
     });
 
-})(window, Zebra, jQuery);
+})(window, Zebra = window.Zebra || {}, jQuery);
 
 (function(w, Zebra, $, undefined) {
 
