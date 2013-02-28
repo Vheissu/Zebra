@@ -1,6 +1,4 @@
-var Zebra = Zebra || {};
-
-(function(w, Zebra, $, undefined) {
+;(function(w, Zebra, $, undefined) {
 
     var pageEls = Zebra.Elements || {};
     
@@ -267,4 +265,4 @@ var Zebra = Zebra || {};
 
     }();
 
-})(window, Zebra, jQuery);
+})(window, Zebra = window.Zebra || {}, jQuery);
