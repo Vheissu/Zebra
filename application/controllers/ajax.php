@@ -106,12 +106,20 @@ class Ajax extends MY_Controller {
                         {
                             $result = "success|upvote|".$comment_id."";
                         }
+                        else
+                        {
+                            $result = "error|Comment could not be voted up";
+                        }
                     break;
 
                     case 'downvote':
                         if (comment_vote('down', $comment_id, $reason))
                         {
                             $result = "success|downvote|".$story_id."";
+                        }
+                        else
+                        {
+                            $result = "error|Comment could not be voted down";
                         }
                     break;
                 }
