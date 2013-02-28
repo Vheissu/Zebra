@@ -23,7 +23,8 @@ $route['admin'] = "admin/admin";
 $route['admin/login'] = "admin/admin/login";
 
 // Comment routes
-$route['comments/latest'] = 'comment/latest';
+$route['comments']        = 'comment/new_comments';
+$route['comments/latest'] = 'comment/new_comments';
 
 
 $route['404_override'] = '';

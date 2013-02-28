@@ -50,9 +50,9 @@ class Comment_model extends MY_Model {
     public function get_new_comments($limit = 50, $offset = 0)
     {
         $this->db->order_by("created", "DESC");
-        $stories = $this->db->get($this->_table, $limit, $offset);
+        $comments = $this->db->get($this->_table, $limit, $offset);
 
-        return ($stories->num_rows() >= 1) ? $stories->result() : FALSE; 
+        return ($comments->num_rows() >= 1) ? $comments->result() : FALSE; 
     }
 
     /**

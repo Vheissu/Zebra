@@ -119,7 +119,7 @@ class Comment extends MY_Controller {
         }
 
         // Get all stories
-        $this->data['comments'] = $this->comments_model->get_new_comments($limit, $page);
+        $this->data['comments'] = $this->comment_model->get_new_comments($limit, $page);
 
         // Load the story template see: themes/zebra/views/comments.tpl
         $this->parser->parse('comments', $this->data); 
@@ -145,7 +145,7 @@ class Comment extends MY_Controller {
         $user_id = $user->row('id');
 
         // Get all stories
-        $this->data['comments'] = $this->comments_model->get_user_comments($limit, $page, $user_id);
+        $this->data['comments'] = $this->comment_model->get_user_comments($limit, $page, $user_id);
 
         // Load the story template see: themes/zebra/views/comments.tpl
         $this->parser->parse('comments', $this->data);     
