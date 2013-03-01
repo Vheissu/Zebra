@@ -1,0 +1,41 @@
+
+// Normalize is a CSS reset stylesheet, but only better
+@import "normalize";
+@import "variables";
+@import "mixins";
+
+// Reset heights and widths
+html, 
+body { 
+	height: 100%; 
+	width: 100%; 
+}
+
+// Responsive imagery
+audio, video, img { 
+	height: auto; 
+	max-width: 100%; 
+}
+
+* {
+	.fixboxmodel;
+	position: relative;
+}
+
+body {
+	background: #F8F8F8;
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: @defaultfontsize;
+	line-height: @defaultlineheight;
+}
+
+#container {
+	background: #FFF;
+	margin: 0 auto;
+	max-width: @containerWidth;
+	width: 92%;
+}
+
+
+
+@import "media_queries";
