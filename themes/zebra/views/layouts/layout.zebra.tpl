@@ -29,7 +29,7 @@
 
     <div id="container">
 
-        <header>
+        <header data-area="header">
             <a href="{base_url()}" id="logo">{$site.name}</a>
 
             <nav>
@@ -50,7 +50,7 @@
 
         </header>
 
-        <div id="content">
+        <div id="content" data-area="main">
             {block name=content}{/block}
         </div>
 
@@ -58,7 +58,7 @@
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
-    {js('zebra.layout.js')}
+    {js('zebra.api.js')}
     {js('zebra.js')}
 
     {block name=footer}{/block}

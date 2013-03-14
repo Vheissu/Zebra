@@ -10,8 +10,8 @@
         pageEls.topics        = $("#topics");
         pageEls.downvoteBox   = $("#downvotereason");
 
-        Zebra.Layout.Story.Get(1, function(data) {
-            alert(data);
+        Zebra.Api.Story.Get(1, function(data) {
+            console.log(data);
         });
 
         if (pageEls.contentVoting.length) {
