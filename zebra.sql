@@ -267,3 +267,15 @@ INSERT INTO `zebra_vote_reasons` VALUES ('7', 'Too biased');
 INSERT INTO `zebra_vote_reasons` VALUES ('8', 'Fails to make a compelling argument');
 INSERT INTO `zebra_vote_reasons` VALUES ('9', 'Lacking facts');
 INSERT INTO `zebra_vote_reasons` VALUES ('10', 'Quite clearly don\'t know what they\'re on about');
+
+DROP TABLE IF EXISTS `zebra_keys`;
+CREATE TABLE `zebra_keys` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` varchar(40) NOT NULL,
+  `level` int(2) NOT NULL,
+  `ignore_limits` tinyint(1) NOT NULL DEFAULT '0',
+  `is_private_key` tinyint(1)  NOT NULL DEFAULT '0',
+  `ip_addresses` TEXT NULL DEFAULT NULL,
+  `date_created` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
