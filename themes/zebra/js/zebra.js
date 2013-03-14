@@ -10,6 +10,10 @@
         pageEls.topics        = $("#topics");
         pageEls.downvoteBox   = $("#downvotereason");
 
+        Zebra.Layout.Story.Get(1, function(data) {
+            alert(data);
+        });
+
         if (pageEls.contentVoting.length) {
 
             pageEls.contentVoting.on("click", "a", function(e) {
